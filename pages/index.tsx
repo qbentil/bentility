@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Hola from '../components/Hola'
+import Navbar from '../components/Navbar'
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 
@@ -11,11 +12,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Bentil's Blog| Bentility" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navbar />
+      <Hola message={'We have the ability to build infinite way for us.'} />
       <main className={styles.main}>
-        <h1 className={`text-red-800 font-bold`}>
-          Welcome to Next.js!
-        </h1>
       </main>
     </div>
   )
