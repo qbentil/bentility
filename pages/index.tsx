@@ -2,11 +2,11 @@ import Head from 'next/head'
 import Hola from '../components/Hola'
 import Navbar from '../components/Navbar'
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
+import BlogHeader from '../components/BlogHeader'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={'items-center flex flex-col'}>
       <Head>
         <title>Bentility| Home</title>
         <meta name="description" content="Bentil's Blog| Bentility" />
@@ -14,7 +14,8 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
       <Hola message={'We have the ability to build infinite way for us.'} />
-      <main className={styles.main}>
+      <main className={`md:w-[80%] `}>
+        <BlogHeader />
       </main>
     </div>
   )
