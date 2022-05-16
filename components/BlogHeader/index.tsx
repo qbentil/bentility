@@ -1,7 +1,8 @@
+import {CgListTree} from 'react-icons/cg'
+import {FaList} from 'react-icons/fa'
 import Image from "next/image";
 import React from "react";
-import {FaList} from 'react-icons/fa'
-import {CgListTree} from 'react-icons/cg'
+
 const BlogHeader = () => {
   return (
     <div className="w-full min-h-[20vh] flex items-center justify-between my-4">
