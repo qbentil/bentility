@@ -1,8 +1,9 @@
+import BlogHeader from '../components/BlogHeader'
+import Footer from '../components/Footer'
 import Head from 'next/head'
 import Hola from '../components/Hola'
 import Navbar from '../components/Navbar'
 import type { NextPage } from 'next'
-import BlogHeader from '../components/BlogHeader'
 
 const Home: NextPage = () => {
   return (
@@ -14,9 +15,12 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
       <Hola message={'We have the ability to build infinite way for us.'} />
-      <main className={`md:w-[80%] `}>
+      <main className={`md:w-[80%] min-h-[40vh] `}>
         <BlogHeader />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
