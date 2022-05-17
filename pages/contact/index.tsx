@@ -4,6 +4,7 @@ import React from 'react'
 import Hola from '../../components/Hola'
 import BlogHeader from '../../components/BlogHeader'
 import Footer from '../../components/Footer'
+import Pageheader from '../../components/PageHeader'
 
 const Contact = () => {
     return (
@@ -14,9 +15,8 @@ const Contact = () => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Navbar />
-          <Hola message={'Contact us'} />
           <main className={`md:w-[80%] min-h-[40vh] `}>
-            <BlogHeader />
+          <Pageheader title='Contact Us' />
           </main>
     
           {/* Footer */}
