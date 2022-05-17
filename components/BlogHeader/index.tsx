@@ -2,12 +2,14 @@ import {CgListTree} from 'react-icons/cg'
 import {FaList} from 'react-icons/fa'
 import Image from "next/image";
 import React from "react";
+import Link from 'next/link';
 
 const BlogHeader = () => {
   return (
     <div className="w-full min-h-[20vh] md:flex items-center justify-between my-4 hidden md:visible">
       <div className="w-[80%] lg:w-[70%] flex items-center">
-        <div className="h-10 w-10 lg:h-16 lg:w-16 items-center flex justify-center rounded-full border border-gray-300 mr-2 cursor-pointer">
+      <Link href = "/">
+      <div className="h-10 w-10 lg:h-16 lg:w-16 items-center flex justify-center rounded-full border border-gray-300 mr-2 cursor-pointer">
           <img
             src="https://codersquiz.netlify.app/img/bentil.jpeg"
             alt="ben"
@@ -17,6 +19,7 @@ const BlogHeader = () => {
           />
 
         </div>
+      </Link>
         <p className="md:text-sm text-[0.7rem] font-semibold text-gray-500 lg:w-[60%] w-[90%] font-thin">
           Bentility is a tech blog created with the sole purpose of explaining
           complex tech in a simple and concise way thus creating value for
