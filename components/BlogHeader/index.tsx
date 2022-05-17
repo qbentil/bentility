@@ -5,7 +5,7 @@ import React from "react";
 
 const BlogHeader = () => {
   return (
-    <div className="w-full min-h-[20vh] flex items-center justify-between my-4">
+    <div className="w-full min-h-[20vh] md:flex items-center justify-between my-4 hidden md:visible">
       <div className="w-[80%] lg:w-[70%] flex items-center">
         <div className="h-10 w-10 lg:h-16 lg:w-16 items-center flex justify-center rounded-full border border-gray-300 mr-2 cursor-pointer">
           <img
