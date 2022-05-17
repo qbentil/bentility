@@ -8,7 +8,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="border-t-2 border-gray-200 w-[80%] pt-5 flex-col md:flex-row flex justify-around md:justify-center items-center ">
+    <div className="border-t-2 border-gray-200 w-[80%] pt-5 flex-col md:flex-row flex justify-around md:justify-center items-center pb-8">
       <div className="md:w-[15%] mb-2 md:mb-0">
         <p className="text-gray-500">
           &copy; 2022-{new Date().getFullYear()} Bentility
