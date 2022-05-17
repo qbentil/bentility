@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
+
 import {CgListTree} from 'react-icons/cg'
 import {FaList} from 'react-icons/fa'
 import Image from "next/image";
-import React from "react";
 import Link from 'next/link';
+import React from "react";
 
 const BlogHeader = () => {
   return (
@@ -20,7 +22,7 @@ const BlogHeader = () => {
 
         </div>
       </Link>
-        <p className="md:text-sm text-[0.7rem] font-semibold text-gray-500 lg:w-[60%] w-[90%] font-thin">
+        <p className="md:text-sm text-[0.7rem]  text-gray-500 lg:w-[60%] w-[90%] font-semibold">
           Bentility is a tech blog created with the sole purpose of explaining
           complex tech in a simple and concise way thus creating value for
           budding developers out there.
