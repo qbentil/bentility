@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Bentility| Home</title>
         <meta name="description" content="Bentil's Blog| Bentility" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Navbar />
       <Hola message={'We have the ability to build infinite way for us.'} />

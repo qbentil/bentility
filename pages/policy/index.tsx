@@ -12,7 +12,7 @@ const Policy = () => {
           <Head>
             <title>Bentility | Policy</title>
             <meta name="description" content="Bentil's Blog| Bentility" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/favicon.png" />
           </Head>
           <Navbar />
           <main className={`md:w-[80%] min-h-[40vh] `}>
