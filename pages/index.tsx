@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Head from "next/head";
 import Hola from "../components/Hola";
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
 import type { NextPage } from "next";
 import SearchBar from "../components/Searchbar";
 
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
       <main className={`md:w-[80%] w-[95%] min-h-[40vh] `}>
         <BlogHeader />
         <AdBanner />
+        <Newsletter />
       </main>
 
       {/* Footer */}

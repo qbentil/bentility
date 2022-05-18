@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+
 import { CgListTree } from "react-icons/cg";
 import { FaList } from "react-icons/fa";
-import React from "react";
 import Link from "next/link";
+import React from "react";
+
 interface Props {
   title: string;
 }
@@ -25,8 +27,8 @@ const Pageheader: React.FC<Props> = ({ title }) => {
               />
             </Link>
           </div>
-          <p className="md:text-xl text-lg text-gray-500 lg:w-[60%] w-[90%] font-semibold">
-            Bentility, <span className="font-normal">January 24, 2021</span>
+          <p className="md:text-lg text-sm text-gray-500 lg:w-[60%] w-[90%] font-semibold">
+            Bentility, <span className="font-normal">January 24, 2021 . 6 min read</span>
           </p>
         </div>
       </div>
