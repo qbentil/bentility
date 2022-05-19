@@ -1,5 +1,6 @@
 import AdBanner from "../components/Ad";
 import BlogHeader from "../components/BlogHeader";
+import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import Hola from "../components/Hola";
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
       <main className={`md:w-[80%] w-[95%] min-h-[40vh] `}>
         <BlogHeader />
         <AdBanner />
+        <Categories />
         <Newsletter />
       </main>
 
