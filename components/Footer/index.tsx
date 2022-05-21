@@ -18,7 +18,7 @@ const Footer: React.FC<Props> = ({ nav }) => {
         </p>
       </div>
       <div className="w-full md:w-[60%]  flex items-center justify-around mb-5 md:mb-0">
-        {!nav && (
+        {nav && (
           <>
             <Link href={"about"}>
               <p className="text-blue-700 font-thin cursor-pointer">About</p>
