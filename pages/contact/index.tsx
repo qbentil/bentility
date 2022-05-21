@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Navbar from '../../components/Navbar'
-import React from 'react'
-import Hola from '../../components/Hola'
 import BlogHeader from '../../components/BlogHeader'
 import Footer from '../../components/Footer'
+import Head from 'next/head'
+import Hola from '../../components/Hola'
+import Navbar from '../../components/Navbar'
 import Pageheader from '../../components/PageHeader'
+import React from 'react'
 
 const Contact = () => {
     return (
@@ -20,7 +20,7 @@ const Contact = () => {
           </main>
     
           {/* Footer */}
-          <Footer />
+          <Footer nav />
         </div>
       )
 }
