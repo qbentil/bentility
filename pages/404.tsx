@@ -34,7 +34,7 @@ const NotFound = () => {
             </Link>
           </div>
       </div>
-      <Footer nav />
+      <Footer nav = {false} />
     </div>
   );
 };
