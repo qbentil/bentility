@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer nav />
     </div>
   );
 };
