@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { CgListTree } from "react-icons/cg";
-import { FaList } from "react-icons/fa";
+// import { CgListTree } from "react-icons/cg";
+
 import Link from "next/link";
 import React from "react";
+
+// import { FaList } from "react-icons/fa";
+
+
 
 interface Props {
   title: string;
