@@ -1,9 +1,8 @@
+import Footer from '../../components/Footer'
 import Head from 'next/head'
 import Navbar from '../../components/Navbar'
-import React from 'react'
-
-import Footer from '../../components/Footer'
 import Pageheader from '../../components/PageHeader'
+import React from 'react'
 
 const About = () => {
     return (
@@ -19,7 +18,7 @@ const About = () => {
           </main>
     
           {/* Footer */}
-          <Footer />
+          <Footer nav />
         </div>
       )
 }
