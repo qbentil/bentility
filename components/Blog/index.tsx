@@ -7,7 +7,7 @@ const Blog = () => {
         <div className='py-2 grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-2'>
         {            
             blogs.map((b, index) => (
-                <SingleBlog key={index} />
+                <SingleBlog key={index} position = {index} />
             ))  
             }
         </div>
