@@ -24,7 +24,7 @@ const SingleBlog = () => {
               </Link>
             </div>
             <p className="text-[0.5rem] md:text-[0.8rem] text-gray-500 lg:w-[60%] w-[90%] font-semibold">
-              Poster by Bentility
+              Poster by <span className="font-bold">Bentility</span>
             </p>
           </div>
         </div>
