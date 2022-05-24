@@ -9,7 +9,7 @@ interface Props{
 const SingleBlog: React.FC<Props> = ({position}) => {
   return (
     <div className={`hover:cursor-pointer mb-14`}>
-      <div className="h-[43vh] bg-orange-50 items-center flex  justify-center shadow-sm shadow-gray-50 hover:shadow-lg mb-3 mr-2">
+      <div className="h-[40vh] bg-orange-50 items-center flex  justify-center shadow-sm shadow-gray-50 hover:shadow-lg mb-3 mr-2">
         <div className="w-full md:w-[85%] flex flex-col items-center justify-around min-h-[20vh]">
           <div className="w-full lg:w-[80%] text-lg lg:text-xl px-5  font-bold text-gray-600">
             <p className={``}>How to concat two strings in javascript?</p>
