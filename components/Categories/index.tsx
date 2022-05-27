@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
-import { categories } from '../../data'
 import SectionTitle from '../SectionTitle'
+import { categories } from '../../data'
 
 const Categories = () => {
   return (
-    <div className='w-full bg-transparent min-h-[20vh]'>
+    <div className='w-full bg-transparent min-h-[20vh] mb-10'>
         <SectionTitle title='Categories' />
-        <div className='w-full bg-white grid grid-flow-row grid-cols-2 gap-1 md:grid-cols-5 lg:grid-cols-7 md:gap-2 col-start-auto p-2'>
+        <div className='w-full pb-20 bg-white grid grid-flow-row grid-cols-2 gap-1 md:grid-cols-5 lg:grid-cols-7 md:gap-2 col-start-auto p-2'>
         {
             categories.map(category => (
                 <Link  href={`cateory/${category.title}`} key={category.id}>
