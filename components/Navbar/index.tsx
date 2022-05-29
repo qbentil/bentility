@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { BsMoonFill } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
@@ -11,7 +12,18 @@ const Navbar = () => {
       }
     >
       <div className="md:w-[80%] flex justify-between items-center w-[90%]">
-        <div>
+        <div className = "flex justify-center items-center">
+        <Link href="/">
+        <div className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full">
+        <img
+              src="https://codersquiz.netlify.app/img/bentil.jpeg"
+              alt="ben"
+              // width={"50px"}
+              // height={"50px"}
+              className="w-[90%] h-[90%] border border-gray-200 rounded-full"
+            />
+        </div>
+          </Link>
           <Link href="/">
             <h1 className="font-brand font-[500] text-2xl md:text-5xl cursor-pointer">
               Bentility
