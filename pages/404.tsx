@@ -29,7 +29,7 @@ const NotFound = () => {
         <div className="mb-3 text-sm md:text-lg text-gray-500 font-thin">
           <p>{`Sorry, we didn't find the page you are looking for`}</p>
         </div>
-        <div className="my-4 text-blue-600 font-semibold">
+        <div className="my-4 text-blue-600 font-semibold border border-blue-800 py-2 px-5 rounded-full">
           <Link href="/">
             <div className="flex items-center justify-center uppercase cursor-pointer">
               <span>Go home</span> <IoIosHome className="ml-2 text-lg" />
