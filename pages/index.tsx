@@ -27,8 +27,8 @@ const Home: NextPage = () => {
         <BlogHeader />
         <AdBanner />
         <Blog />
-        <Categories />
-        <Newsletter />
+        <Categories titlePosition="start" />
+        <Newsletter  />
       </main>
 
       {/* Footer */}
