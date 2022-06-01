@@ -1,7 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import React from "react";
 
-const SearchBar = () => {
+interface Props{
+  className?: string
+}
+const SearchBar:React.FC<Props> = ({className}) => {
   return (
     <div className="w-[95%] md:w-[80%] my-10 p-2 flex justify-center  bg-white">
       <div className="flex w-full items-center justify-around">
