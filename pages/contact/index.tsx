@@ -24,7 +24,7 @@ const Contact = () => {
       <main
         className={`md:w-[100%] min-h-[40vh]  flex items-center justify-start flex-col`}
       >
-        <Pageheader title="Contact Us" />
+        <Pageheader title="Contact" />
         <SearchBar />
         <div className={`md:w-[80%] w-[95%] min-h-[40vh] `}>
           <Form />
