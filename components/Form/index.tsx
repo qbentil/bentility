@@ -4,12 +4,16 @@ import { ValidateInput as ValidateOnInputChange} from "../Validations";
 import SectionTitle from "../SectionTitle";
 
 const Form = () => {
+
+  // FormData state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("");
+
+  // Error states
   const [fnameError, setFnameError] = useState('');
   const [lnameError, setLnameError] = useState('');
   const [emailError, setEmailError] = useState('');
