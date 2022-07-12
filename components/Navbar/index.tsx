@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import { BsMoonFill } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
@@ -18,8 +19,6 @@ const Navbar = () => {
         <img
               src="https://codersquiz.netlify.app/img/bentil.jpeg"
               alt="ben"
-              // width={"50px"}
-              // height={"50px"}
               className="w-[90%] h-[90%] border border-gray-200 rounded-full"
             />
         </div>
