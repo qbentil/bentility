@@ -32,6 +32,7 @@ module.exports = {
         'very-dark-rgba': 'rgba(0, 0, 0, 0.6)',
       },
     },
+    display: ["group-hover"],
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
       brand: ['Beau Rivage', 'Poppins', 'cursive']
