@@ -9,27 +9,27 @@ const Navs = [
   {
     name: "Dashboard",
     icon: <FiHome />,
-    link: "/admin",
+    link: "",
   },
   {
     name: "Posts",
     icon: <FaClipboardList />,
-    link: "/admin/posts",
+    link: "/posts",
   },
   {
-    name: "Category",
+    name: "Categories",
     icon: <CgListTree />,
-    link: "/admin/categories",
+    link: "/categories",
   },
   {
     name: "Settings",
     icon: <FiSettings />,
-    link: "admin/settings",
+    link: "/settings",
   },
   {
     name: "Archives",
     icon: <BsCalendarEvent />,
-    link: "/admin/archives",
+    link: "/archives",
   },
 ];
 
@@ -40,7 +40,7 @@ function Sidenav({ page }: { page: string }) {
         <div className=" w-full h-[50vh] flex flex-col gap-2">
           {/* Navigations */}
           {Navs.map((nav, index) => (
-            <Link href={nav.link} key={index}>
+            <Link href={`/admin/${nav.link}`} key={index}>
               <div className={`flex gap-2 items-center cursor-pointer ${page === nav.name? "hover:text-[#5C6E9A] hover:bg-transparent bg-[#EB2E64] text-white":"text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white"} py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out`}>
                 {nav.icon}
                 <p>{nav.name}</p>
