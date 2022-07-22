@@ -14,8 +14,8 @@ const Home: NextPage = () => {
   return (
     <div className={"items-center flex flex-col"}>
       <Head>
-        <title>Bentility| Home</title>
-        <meta name="description" content="Bentil's Blog| Bentility" />
+        <title>Bentility | Home</title>
+        <meta name="description" content="Bentil's Blog | Bentility" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <>
