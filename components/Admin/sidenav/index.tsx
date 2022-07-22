@@ -5,43 +5,48 @@ import { FaClipboardList } from "react-icons/fa";
 import { CgListTree } from "react-icons/cg";
 import { BsCalendarEvent } from "react-icons/bs";
 import { BiLogOutCircle } from "react-icons/bi";
+const Navs = [
+  {
+    name: "Dashboard",
+    icon: <FiHome />,
+    link: "/admin",
+  },
+  {
+    name: "Posts",
+    icon: <FaClipboardList />,
+    link: "/admin/posts",
+  },
+  {
+    name: "Category",
+    icon: <CgListTree />,
+    link: "/admin/categories",
+  },
+  {
+    name: "Settings",
+    icon: <FiSettings />,
+    link: "admin/settings",
+  },
+  {
+    name: "Archives",
+    icon: <BsCalendarEvent />,
+    link: "/admin/archives",
+  },
+];
 
-function Sidenav() {
+function Sidenav({ page }: { page: string }) {
   return (
     <div className="bg-white px-4 h-[90vh] w-[20%] flex items-center justify-between">
       <div className="w-[85%] mx-auto h-full flex flex-col justify-between items-center pt-20">
         <div className=" w-full h-[50vh] flex flex-col gap-2">
           {/* Navigations */}
-          <Link href="/admin">
-            <div className="flex gap-2 items-center cursor-pointer text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out">
-              <FiHome />
-              <p>Dashboard</p>
-            </div>
-          </Link>
-          <Link href="/admin">
-            <div className="flex gap-2 items-center cursor-pointer text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out">
-              <FaClipboardList />
-              <p>Posts</p>
-            </div>
-          </Link>
-          <Link href="/admin">
-            <div className="flex gap-2 items-center cursor-pointer text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out">
-              <CgListTree />
-              <p>Categories</p>
-            </div>
-          </Link>
-          <Link href="/admin">
-            <div className="flex gap-2 items-center cursor-pointer text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out">
-              <BsCalendarEvent />
-              <p>Archives </p>
-            </div>
-          </Link>
-          <Link href="/admin">
-            <div className="flex gap-2 items-center cursor-pointer text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out">
-              <FiSettings />
-              <p>Settings</p>
-            </div>
-          </Link>
+          {Navs.map((nav, index) => (
+            <Link href={nav.link} key={index}>
+              <div className={`flex gap-2 items-center cursor-pointer ${page === nav.name? "hover:text-[#5C6E9A] hover:bg-transparent bg-[#EB2E64] text-white":"text-[#5C6E9A] hover:bg-[#EB2E64] hover:text-white"} py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out`}>
+                {nav.icon}
+                <p>{nav.name}</p>
+              </div>
+            </Link>
+          ))}
         </div>
         <div className=" w-full flex flex-col mb-5">
           <Link href="/admin">
