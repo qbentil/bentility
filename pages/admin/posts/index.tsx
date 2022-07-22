@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import { Navbar, Sidenav } from "../../../components/Admin";
 
-const Dashboard = () => {
+const Posts = () => {
   return (
     <div>
       <Head>
@@ -20,4 +20,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Posts;
