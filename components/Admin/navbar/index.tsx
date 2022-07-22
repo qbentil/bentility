@@ -4,7 +4,7 @@ import React from "react";
 import { FaUserLock } from "react-icons/fa";
 import { RiSearch2Line } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOutCircle } from "react-icons/bi";
 function Navbar() {
   return (
     <div className="bg-white py-2 px-4 w-screen h-[10vh] flex items-center">
@@ -78,7 +78,7 @@ export const UserProfile = () => (
       </Link>
       <Link href="/">
         <div className="flex items-center gap-2 text-[#5F677D] cursor-pointer hover:bg-[#eee] p-2">
-          <BiLogOut className="text-lg" />
+          <BiLogOutCircle className="text-lg" />
           <p>Logout</p>
         </div>
       </Link>
