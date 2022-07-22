@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import { Navbar, Sidenav } from "../../../components/Admin";
 
 const Dashboard = () => {
   return (
@@ -9,6 +10,12 @@ const Dashboard = () => {
         <meta name="description" content="Bentil's Blog| Bentility" />
         <link rel="icon" href="/favicon.png" />
       </Head>
+      <main className="bg-gray-200 w-screen h-screen ">
+        <div className="">
+          <Navbar />
+          <Sidenav />
+        </div>
+      </main>
     </div>
   );
 };
