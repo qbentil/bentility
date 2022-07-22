@@ -7,13 +7,13 @@ const Dashboard = () => {
     <div>
       <Head>
         <title>Bentility| Admin</title>
-        <meta name="description" content="Bentil's Blog| Bentility" />
+        <meta name="description" content="Bentility Admin | Dashboard" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="bg-gray-200 w-screen h-screen ">
         <div className="">
           <Navbar />
-          <Sidenav />
+          <Sidenav page="Dashboard" />
         </div>
       </main>
     </div>
