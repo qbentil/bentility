@@ -39,11 +39,12 @@ function Navbar() {
 export const Searchbar = () => {
   return (
     <div className="bg-[#f8f8f8] h-10 w-80 rounded-full flex items-center px-2 gap-2 ">
-      <RiSearch2Line className="text-xl text-black cursor-pointer" />
+      <RiSearch2Line className="text-lg text-[#5C6E9A] cursor-pointer" />
       <input
         type="search"
         name="search"
         id="search"
+        autoComplete="off"
         placeholder="post search"
         className="bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-[#C7CCD7]"
       />
