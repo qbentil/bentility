@@ -3,7 +3,7 @@ import { BsBook, BsEye } from 'react-icons/bs'
 
 const Post = () => {
   return (
-    <div className='w-full flex items-center justify-between py-2 px-4 hover:bg-active-bg group cursor-pointer'>
+    <div className='w-full flex items-center justify-between py-2 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
         <div className='flex items-center w-[80%] gap-8 font-sans '>
             <div className='w-10 h-10 flex justify-center text-primary items-center bg-active-bg rounded-full group-hover:bg-white'>CP</div>
             <div className="flex flex-col mr-10">
