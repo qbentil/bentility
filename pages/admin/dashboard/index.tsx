@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { Navbar, Sidenav, Tabs } from "../../../components/Admin";
+import { Navbar, PopularPosts, Sidenav, Tabs } from "../../../components/Admin";
 
 const Dashboard = () => {
   return (
@@ -16,6 +16,7 @@ const Dashboard = () => {
           <Sidenav page="Dashboard" />
           <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-5">
             <Tabs />
+            <PopularPosts />
           </div>
         </div>
       </main>
