@@ -11,11 +11,11 @@ function Navbar() {
       {/* Brand */}
       <div className="flex justify-center items-center w-[20%] gap-5">
         <Link href="/admin">
-          <div className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full">
+          <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full">
             <img
               src="https://codersquiz.netlify.app/img/bentil.jpeg"
               alt=""
-              className="w-[90%] h-[90%] border border-gray-200 rounded-full"
+              className="w-[90%] h-[90%] border border-active-bg rounded-full"
             />
           </div>
         </Link>
@@ -58,11 +58,11 @@ export const UserProfile = () => (
       <p className="text-active">qBentil</p>
       <p className="text-[#888A91] text-sm">Administrator</p>
     </div>
-    <div className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full cursor-pointer">
+    <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full cursor-pointer">
       <img
         src="https://codersquiz.netlify.app/img/bentil.jpeg"
         alt=""
-        className="w-[90%] h-[90%] border border-gray-200 rounded-full"
+        className="w-[90%] h-[90%] border border-active-bg rounded-full"
       />
     </div>
     <div className="hidden bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans group-hover:flex w-48">
