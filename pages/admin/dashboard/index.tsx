@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { Navbar, Sidenav } from "../../../components/Admin";
+import { Navbar, Sidenav, Tabs } from "../../../components/Admin";
 
 const Dashboard = () => {
   return (
@@ -10,10 +10,13 @@ const Dashboard = () => {
         <meta name="description" content="Bentility Admin | Dashboard" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main className="bg-gray-200 w-screen h-screen ">
-        <div className="">
-          <Navbar />
+      <main className="bg-[#f8f8f8] w-screen h-screen ">
+        <Navbar />
+        <div className="flex">
           <Sidenav page="Dashboard" />
+          <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-5">
+            <Tabs />
+          </div>
         </div>
       </main>
     </div>
