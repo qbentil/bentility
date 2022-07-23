@@ -38,15 +38,15 @@ function Navbar() {
 
 export const Searchbar = () => {
   return (
-    <div className="bg-[#f8f8f8] h-10 w-80 rounded-full flex items-center px-2 gap-2 ">
-      <RiSearch2Line className="text-lg text-[#5C6E9A] cursor-pointer" />
+    <div className="bg-active-bg h-10 w-80 rounded-full flex items-center px-2 gap-2 ">
+      <RiSearch2Line className="text-lg text-active cursor-pointer" />
       <input
         type="search"
         name="search"
         id="search"
         autoComplete="off"
-        placeholder="post search"
-        className="bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-[#C7CCD7]"
+        placeholder="search here..."
+        className="bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-active text-active"
       />
     </div>
   );
@@ -55,7 +55,7 @@ export const Searchbar = () => {
 export const UserProfile = () => (
   <div className="flex items-center gap-4 group relative">
     <div className="flex flex-col items-end font-sans cursor-pointer">
-      <p className="text-[#5F677D]">qBentil</p>
+      <p className="text-active">qBentil</p>
       <p className="text-[#888A91] text-sm">Administrator</p>
     </div>
     <div className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full cursor-pointer">
@@ -66,19 +66,19 @@ export const UserProfile = () => (
       />
     </div>
     <div className="hidden bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans group-hover:flex w-48">
-      <div className="text-[#5F677D] flex gap-2 items-center ">
+      <div className="text-active flex gap-2 items-center ">
         <FaUserLock className="text-lg" />
         <p>Shadrack Bentil</p>
       </div>
-      <div className="w-full h-[2px] my-2 bg-[#eee]"></div>
-      <Link href="/">
-        <div className="flex items-center gap-2 text-[#5F677D] cursor-pointer hover:bg-[#eee] p-2">
+      <div className="w-full h-[2px] my-2 bg-active-bg"></div>
+      <Link href="/admin/settings">
+        <div className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2">
           <FiSettings className="text-lg" />
           <p>settings</p>
         </div>
       </Link>
       <Link href="/">
-        <div className="flex items-center gap-2 text-[#5F677D] cursor-pointer hover:bg-[#eee] p-2">
+        <div className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2">
           <BiLogOutCircle className="text-lg" />
           <p>Logout</p>
         </div>
