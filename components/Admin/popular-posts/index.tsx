@@ -14,7 +14,7 @@ function PopularPosts() {
             </div>
         </div>
         {/* posts table */}
-        <div className='w-full flex flex-col bg-white pt-2 gap-2'>
+        <div className='w-full flex flex-col bg-transparent pt-2 gap-2'>
             <Post />
             <Post />
             <Post />
