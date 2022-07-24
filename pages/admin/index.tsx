@@ -2,14 +2,13 @@ import React, { useState } from "react";
 
 import Auth from "./auth";
 import Dashboard from "./dashboard";
-import Head from "next/head";
 
-const Admin = () => {
-    const [isLoggedin, setIsLoggedin] = useState(true);
+const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
+    const [isLoggedin, setIsLoggedin] = useState(false);
   return (
     <div>
         {
-            !isLoggedin ? <Dashboard />: <Auth />
+            !isLoggedin ? <Auth />: page
         }
     </div>
   );
