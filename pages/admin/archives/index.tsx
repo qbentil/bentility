@@ -1,23 +1,11 @@
-import Head from "next/head";
-import React from "react";
-import { Navbar, Sidenav } from "../../../components/Admin";
+import { useState } from "react";
+import Admin from "..";
+import Archives from "./__auth";
 
-const Archives = () => {
+const Page = () => {
   return (
-    <div>
-      <Head>
-        <title>Bentility| Admin</title>
-        <meta name="description" content="Bentility Admin | Archives" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-      <main className="bg-gray-200 w-screen h-screen ">
-        <div className="">
-          <Navbar />
-          <Sidenav page="Archives" />
-        </div>
-      </main>
-    </div>
+    <Admin page={<Archives />} />
   );
 };
 
-export default Archives;
+export default Page;
