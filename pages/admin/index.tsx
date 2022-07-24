@@ -5,7 +5,7 @@ import Dashboard from "./dashboard";
 import Head from "next/head";
 
 const Admin = () => {
-    const [isLoggedin, setIsLoggedin] = useState(false);
+    const [isLoggedin, setIsLoggedin] = useState(true);
   return (
     <div>
         {
