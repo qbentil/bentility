@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Admin from "..";
-import Categories from "./__auth";
+import Post from "./__auth";
 
 const Page = () => {
   return (
-    <Admin page={<Categories />} />
+    <Admin page={<Post />} />
   );
 };
 
