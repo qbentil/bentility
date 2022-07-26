@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Admin from "..";
-import Dashboard from "./__auth";
+import Dashboard from "../../../admin/dashboard";
 
 const Page = () => {
   return (
