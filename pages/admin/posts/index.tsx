@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Admin from "..";
-import Posts from "./__auth";
+import Posts from "../../../admin/posts";
 
 const Page = () => {
   return (

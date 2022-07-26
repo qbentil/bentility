@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Admin from "..";
-import Settings from "./__auth";
+import Settings from "../../../admin/settings/";
 
 const Page = () => {
   return (

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { Navbar, PopularPosts, Sidenav, Tabs } from "../../../components/Admin";
+import { Navbar, PopularPosts, Sidenav, Tabs } from "../../components/Admin";
 
 const Dashboard = () => {
   return (

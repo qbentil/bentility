@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Admin from "..";
-import Categories from "./__auth";
+import Categories from "../../../admin/categories";
 
 const Page = () => {
   return (
