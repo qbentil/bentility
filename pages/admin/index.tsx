@@ -8,7 +8,7 @@ const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
   return (
     <div>
         {
-            !isLoggedin ? <Auth />: page
+            isLoggedin ? <Auth />: page
         }
     </div>
   );
