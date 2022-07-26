@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Admin from "..";
-import Archives from "./__auth";
+import Archives from "../../../admin/archives";
+
 
 const Page = () => {
   return (
