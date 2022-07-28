@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Admin from "..";
-import Posts from "../../../admin/posts";
+import New from "../../../admin/new";
 
 const Page = () => {
   return (
-    <Admin page={<Posts />} />
+    <Admin page={<New />} />
   );
 };
 
