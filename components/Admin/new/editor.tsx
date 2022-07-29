@@ -165,7 +165,7 @@
 // export default CustomEditor
 import React from 'react'
 
-function CustomEditor() {
+function CustomEditor({val, setVal}: {val:strng, setVal:any}) {
   return (
     <div>CustomEditor</div>
   )
