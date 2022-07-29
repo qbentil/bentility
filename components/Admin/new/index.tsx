@@ -1,6 +1,7 @@
 import React from "react";
 import {BiAddToQueue} from 'react-icons/bi'
 import CategorySelector from "./categorySelector";
+import CustomEditor from "./editor";
 function NewPost() {
   return (
     <div className="w-full h-full bg-tansparent">
@@ -18,7 +19,8 @@ function NewPost() {
           <input
             type="text"
             id="large-input"
-            className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+            className="block p-2 px-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+            placeholder="Title"
           />
         </div>
         <div className="flex flex-col mb-3">
@@ -28,11 +30,6 @@ function NewPost() {
           >
             Category
           </label>
-          {/* <input
-            type="text"
-            id="large-input"
-            className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
-          /> */}
           <CategorySelector className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none" />
         </div>
         <div className="flex flex-col mb-3">
@@ -42,13 +39,7 @@ function NewPost() {
           >
             Body
           </label>
-          <textarea
-            name="body"
-            id="body"
-            className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
-            cols={30}
-            rows={9}
-          ></textarea>
+          <CustomEditor />
         </div>
         <div className="flex flex-col mb-3 items-end">
             {/* submit button */}
