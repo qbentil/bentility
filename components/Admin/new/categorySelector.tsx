@@ -10,13 +10,14 @@ const options = categories.map(category => ({
 }))
 
 
-const CategorySelector = ({className}: {className?:string}) => (
+const CategorySelector = ({onChange}: {onChange: (e:any)=>void}) => (
   <Select
     isMulti
     name="categories"
     options={options}
     placeholder="Select categories......"
     className={`basic-multi-select`}
+    onChange={onChange}
     classNamePrefix="select"
   />
 );
