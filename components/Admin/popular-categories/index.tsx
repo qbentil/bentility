@@ -1,10 +1,11 @@
 import React from 'react'
 import { RiSoundModuleLine } from 'react-icons/ri'
-import Post from '../post'
 
-function PopularPosts() {
+import Unit from './unit'
+
+function PopularCategories() {
   return (
-    <div className='w-[60%] flex flex-col items-center px-5 my-4'>
+    <div className='w-[40%] flex flex-col items-center px-5 my-4'>
         {/* section head */}
         <div className='bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 border-b-2 border-gray-200'>
             <p className=' text-active font-sans'>Popular Posts</p>
@@ -14,15 +15,11 @@ function PopularPosts() {
             </div>
         </div>
         {/* posts table */}
-        <div className='w-full flex flex-col bg-white pt-2 gap-2 overflow-y-auto h-[59vh]'>
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-
+        <div className='w-full flex flex-col bg-white pt-2 gap-2'>
+            <Unit />
         </div>
     </div>
   )
 }
 
-export default PopularPosts
+export default PopularCategories
