@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
-import { Navbar, Sidenav } from "../../components/Admin";
+import { Categories, Navbar, Sidenav } from "../../components/Admin";
 
-const Categories = () => {
+const Categorie = () => {
   return (
     <div>
       <Head>
@@ -13,11 +13,16 @@ const Categories = () => {
       <main className="bg-gray-200 w-screen h-screen ">
         <div className="">
           <Navbar />
-          <Sidenav page="Categories" />
+          <div className="flex">
+          <Sidenav page="New" />
+          <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5">
+            <Categories />
+          </div>
+        </div>
         </div>
       </main>
     </div>
   );
 };
 
-export default Categories;
+export default Categorie;
