@@ -17,6 +17,8 @@ function PopularCategories() {
         {/* posts table */}
         <div className='w-full flex flex-col bg-white pt-2 gap-2'>
             <Unit />
+            <Unit />
+            <Unit />
         </div>
     </div>
   )
