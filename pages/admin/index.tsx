@@ -4,7 +4,7 @@ import Auth from "./auth";
 import Dashboard from "./dashboard";
 
 const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
-    const [isLoggedin, setIsLoggedin] = useState(true);
+    const [isLoggedin, setIsLoggedin] = useState(false);
   return (
     <div>
         {

@@ -1,4 +1,4 @@
-import { FiHome, FiSettings } from "react-icons/fi";
+import { FiHome, FiSettings, FiUsers } from "react-icons/fi";
 import Link from "next/link";
 import React from "react";
 import { FaClipboardList } from "react-icons/fa";
@@ -21,6 +21,11 @@ const Navs = [
     name: "Categories",
     icon: <CgListTree />,
     link: "/categories",
+  },
+  {
+    name: "Users",
+    icon: <FiUsers />,
+    link: "/users",
   },
   {
     name: "Settings",
