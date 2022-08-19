@@ -68,7 +68,7 @@ const Auth = () => {
           </div>
           {/* form */}
           <div className='bg-white rounded-lg py-5 px-10'>
-            <h2 className='font-sans text-center font-bold text-2xl mb-4'>Administrator</h2>
+            <h2 className='font-sans text-center font-bold text-2xl mb-4'>Admin . Writer</h2>
             <form method="POST" autoComplete="OFF">
               <div className='flex flex-col items-end gap-2 text-active w-80 my-2'>
                 <label className='text-sm font-sans' htmlFor="email">Email</label>
