@@ -7,16 +7,19 @@ import Link from "next/link";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    email: "",
+    secret: "",
+  });
   const [passwordInputType, setPasswordInputType] = useState('password');
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (email === "" || password === "") {
+    if (credentials.email === "" || credentials.secret === "") {
       toast.error("Please enter all fields");
     } else {
-      if (!validateEmail(email)) {
+      if (!validateEmail(credentials.email)) {
         toast.error("Please enter a valid email", {
           autoClose: 3000,
         });
@@ -76,8 +79,8 @@ const Auth = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={credentials.email}
+                  onChange={(e) => setCredentials({email: e.target.value, secret: credentials.secret})}
                   className="w-full border border-active-bg px-2 focus:border-active outline-none font-sans h-10 text-right"
                 />
               </div>
@@ -87,15 +90,15 @@ const Auth = () => {
                   type={passwordInputType}
                   name="password"
                   id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={credentials.secret}
+                  onChange={(e) => setCredentials({email: credentials.email, secret: e.target.value})}
                   className="w-full border border-active-bg px-2 pl-8 group focus:border-active outline-none font-sans h-10 text-right"
                 />
                 {
                   passwordInputType === 'password' ? (
-                    <BsEye className={`${password.length > 0? 'text-active':'text-active-bg'} text-lg absolute top-10 left-2 cursor-pointer `} onClick = {togglePasswordShow} />
+                    <BsEye className={`${credentials.secret.length > 0? 'text-active':'text-active-bg'} text-lg absolute top-10 left-2 cursor-pointer `} onClick = {togglePasswordShow} />
                   ) : (
-                    <BsEyeSlash className={`${password.length > 0? 'text-active':'text-active-bg'} text-lg absolute top-10 left-2 cursor-pointer `}  onClick = {togglePasswordShow} />
+                    <BsEyeSlash className={`${credentials.secret.length > 0? 'text-active':'text-active-bg'} text-lg absolute top-10 left-2 cursor-pointer `}  onClick = {togglePasswordShow} />
                   )
                 }
               </div>
