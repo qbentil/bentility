@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "babel-polyfill": "^6.26.0",
     "draft-js": "^0.11.7",
     "next": "12.1.6",
