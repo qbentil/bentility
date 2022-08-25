@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-import {ImSpinner9} from "react-icons/im";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import React, { useState } from "react";
+
+import {ImSpinner9} from "react-icons/im";
+import { toast } from "react-toastify";
+import Axios from "../../../util/axios";
+import { useStateValue } from "../../../context/StateProvider";
+
 const LoginForm = ({setForm}: {setForm: any}) => {
+  const [{}, dispatch] = useStateValue();
   const [credentials, setCredentials] = useState({
     email: "",
     secret: "",
@@ -10,21 +15,47 @@ const LoginForm = ({setForm}: {setForm: any}) => {
   const [passwordInputType, setPasswordInputType] = useState("password");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     setLoading(true);
     e.preventDefault();
     if (credentials.email === "" || credentials.secret === "") {
       toast.error("Please enter all fields");
-    } else {
+      setLoading(false);
+      return
+    } 
       if (!validateEmail(credentials.email)) {
         toast.error("Please enter a valid email", {
           autoClose: 3000,
         });
-      } else {
-        setError("");
-        toast.success("Login Successful");
-      }
-    }
+        setLoading(false);
+        return;
+      } 
+      
+        try {
+          const { data } = await Axios({
+            url: "auth",
+            method: "POST",
+            data: credentials,
+          })
+          
+          if (data.success) {
+            dispatch({
+                type: "SET_USER",
+                user: data.user
+            })
+            toast.success(data.message);
+          }else{
+            toast.error(data.message);
+          }
+          setLoading(false);
+          
+        } catch (e: any) {
+            toast.error(e.response.data.message)
+            setLoading(false);
+        }
+      
+    
     // setLoading(false);
   };
   const validateEmail = (email: string) => {
@@ -110,6 +141,7 @@ const LoginForm = ({setForm}: {setForm: any}) => {
       <div className="flex items-center justify-center py-5">
         <button
           type="submit"
+          {...(loading ? { disabled: true } : {})}
           onClick={handleSubmit}
           className={`w-[95%] ${
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
