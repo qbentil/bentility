@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { FaSpinner } from "react-icons/fa";
-import { CgSpinnerTwo } from "react-icons/cg";
+import {ImSpinner9} from "react-icons/im";
 const ForgotForm = ({setForm}: {setForm: any}) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState("");
@@ -57,7 +56,7 @@ const ForgotForm = ({setForm}: {setForm: any}) => {
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
-          {loading && <CgSpinnerTwo className="animate-spin" />}
+          {loading && <ImSpinner9 className="animate-spin" />}
           {loading ? "Sending......" : "SEND PASSWORD RESET LINK"}
         </button>
       </div>

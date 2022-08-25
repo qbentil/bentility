@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { FaSpinner } from "react-icons/fa";
-import { CgSpinnerTwo } from "react-icons/cg";
+import {ImSpinner9} from "react-icons/im";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 const LoginForm = ({setForm}: {setForm: any}) => {
   const [credentials, setCredentials] = useState({
@@ -26,7 +25,7 @@ const LoginForm = ({setForm}: {setForm: any}) => {
         toast.success("Login Successful");
       }
     }
-    setLoading(false);
+    // setLoading(false);
   };
   const validateEmail = (email: string) => {
     const re =
@@ -116,7 +115,7 @@ const LoginForm = ({setForm}: {setForm: any}) => {
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
-          {loading && <CgSpinnerTwo className="animate-spin" />}
+          {loading && <ImSpinner9 className="animate-spin" />}
           {loading ? "Logging in..." : "SIGN IN"}
         </button>
       </div>
