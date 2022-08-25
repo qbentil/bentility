@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Auth from "./auth";
 import Dashboard from "./dashboard";
+import { useStateValue } from "../../context/StateProvider";
 
 const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
-    const [isLoggedin, setIsLoggedin] = useState(false);
+    const [{user}, dispatch] = useStateValue();
+    useEffect(()=> {
+      console.log("user", user);
+    })
   return (
     <div>
         {
-            !isLoggedin ? <Auth />: page
+            !user ? <Auth />: page
         }
     </div>
   );
