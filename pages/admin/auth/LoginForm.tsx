@@ -1,10 +1,11 @@
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {ImSpinner9} from "react-icons/im";
 import { toast } from "react-toastify";
 import Axios from "../../../util/axios";
 import { useStateValue } from "../../../context/StateProvider";
+import { SESSION } from "../../../util/session";
 
 const LoginForm = ({setForm}: {setForm: any}) => {
   const [{}, dispatch] = useStateValue();
@@ -13,7 +14,6 @@ const LoginForm = ({setForm}: {setForm: any}) => {
     secret: "",
   });
   const [passwordInputType, setPasswordInputType] = useState("password");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -54,9 +54,7 @@ const LoginForm = ({setForm}: {setForm: any}) => {
             toast.error(e.response.data.message)
             setLoading(false);
         }
-      
-    
-    // setLoading(false);
+    setLoading(false);
   };
   const validateEmail = (email: string) => {
     const re =
@@ -71,6 +69,10 @@ const LoginForm = ({setForm}: {setForm: any}) => {
       setPasswordInputType("password");
     }
   };
+
+  useEffect(() => {
+    SESSION() 
+  })
   return (
     <form method="POST" autoComplete="OFF">
       <div className="flex flex-col items-end gap-2 text-active w-80 my-2">
