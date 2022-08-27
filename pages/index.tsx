@@ -9,14 +9,8 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import type { NextPage } from "next";
 import SearchBar from "../components/Searchbar";
-import { useStateValue } from "../context/StateProvider";
-import { useEffect } from "react";
 
 const Home: NextPage = () => {
-  const [{user}, dispatch] = useStateValue();
-  useEffect(() => {
-    console.log("user", user);
-  })
   return (
     <div className={"items-center flex flex-col"}>
       <Head>
