@@ -5,7 +5,7 @@ import Dashboard from "./dashboard";
 import { useStateValue } from "../../context/StateProvider";
 import { NextPage } from "next";
 
-const Admin: NextPage = ({page = <Dashboard />}: {page?:JSX.Element}) => {
+const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
     const [{user}, dispatch] = useStateValue();
     useEffect(()=> {
       console.log("user", user);
