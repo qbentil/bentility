@@ -147,8 +147,8 @@ const LoginForm = ({setForm}: {setForm: any}) => {
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
-          {loading && <ImSpinner9 className="animate-spin" />}
-          {loading ? "Logging in..." : "SIGN IN"}
+          {loading && <ImSpinner9 className="animate-spin text-2xl" />}
+          {!loading && "SIGN IN"}
         </button>
       </div>
     </form>
