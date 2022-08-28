@@ -5,7 +5,10 @@ import { FaUserLock } from "react-icons/fa";
 import { RiSearch2Line } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 import { BiLogOutCircle } from "react-icons/bi";
-function Navbar() {
+import Axios from "../../../util/axios";
+import { toast } from "react-toastify";
+import { useStateValue } from "../../../context/StateProvider";
+const Navbar = () => {
   return (
     <div className="bg-white py-2 px-4 w-screen h-[10vh] flex items-center">
       {/* Brand */}
@@ -52,39 +55,62 @@ export const Searchbar = () => {
   );
 };
 
-export const UserProfile = () => (
-  <div className="flex items-center gap-4 group relative">
-    <div className="flex flex-col items-end font-sans cursor-pointer">
-      <p className="text-active">qBentil</p>
-      <p className="text-[#888A91] text-sm">Administrator</p>
-    </div>
-    <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full cursor-pointer">
-      <img
-        src="https://codersquiz.netlify.app/img/bentil.jpeg"
-        alt=""
-        className="w-[90%] h-[90%] border border-active-bg rounded-full"
-      />
-    </div>
-    <div className="hidden bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans group-hover:flex w-48">
-      <div className="text-active flex gap-2 items-center ">
-        <FaUserLock className="text-lg" />
-        <p>Shadrack Bentil</p>
+export const UserProfile = () =>{
+  const [{user}, dispatch] = useStateValue();
+  const LOGOUT = async () => {
+    try {
+      const { data } = await Axios({
+        url: "auth/",
+        method: "GET",
+      });
+      if (data.success) {
+        toast.success(data.message);
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      } else {
+        toast.error(data.message);
+      }
+    } catch (e: any) {
+      toast.error(e.response.data.message);
+    }
+  };
+  return(
+    <div className="flex items-center gap-4 group relative">
+      <div className="flex flex-col items-end font-sans cursor-pointer">
+        <p className="text-active">{user?.username || 'username'}</p>
+        <p className="text-[#888A91] text-sm">{user.role == 'admin'? 'Admin':'Writer'}</p>
       </div>
-      <div className="w-full h-[2px] my-2 bg-active-bg"></div>
-      <Link href="/admin/settings">
-        <div className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2">
-          <FiSettings className="text-lg" />
-          <p>settings</p>
+      <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full cursor-pointer">
+        <img
+          src="https://codersquiz.netlify.app/img/bentil.jpeg"
+          alt=""
+          className="w-[90%] h-[90%] border border-active-bg rounded-full"
+        />
+      </div>
+      <div className="hidden bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans group-hover:flex w-48">
+        <div className="text-active flex gap-2 items-center ">
+          <FaUserLock className="text-lg" />
+          <p>{user.name}</p>
         </div>
-      </Link>
-      <Link href="/">
-        <div className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2">
+        <div className="w-full h-[2px] my-2 bg-active-bg"></div>
+        <Link href="/admin/settings">
+          <div className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2">
+            <FiSettings className="text-lg" />
+            <p>settings</p>
+          </div>
+        </Link>
+        <div
+          onClick={LOGOUT}
+          className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2"
+        >
           <BiLogOutCircle className="text-lg" />
           <p>Logout</p>
         </div>
-      </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+} 
 
 export default Navbar;
