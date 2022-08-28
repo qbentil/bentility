@@ -15,32 +15,32 @@ const Navs = [
   {
     name: "Posts",
     icon: <FaClipboardList />,
-    link: "/posts",
+    link: "posts",
   },
   {
     name: "Categories",
     icon: <CgListTree />,
-    link: "/categories",
+    link: "categories",
   },
   {
     name: "Users",
     icon: <FiUsers />,
-    link: "/users",
+    link: "users",
   },
   {
     name: "Settings",
     icon: <FiSettings />,
-    link: "/settings",
+    link: "settings",
   },
   {
     name: "Archives",
     icon: <BsCalendarEvent />,
-    link: "/archives",
+    link: "archives",
   },
   {
     name: "Logout",
     icon: <BiLogOutCircle />,
-    link: "/logout",
+    link: "logout",
   }
 ];
 
