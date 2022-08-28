@@ -5,7 +5,6 @@ import {ImSpinner9} from "react-icons/im";
 import { toast } from "react-toastify";
 import Axios from "../../../util/axios";
 import { useStateValue } from "../../../context/StateProvider";
-import { SESSION } from "../../../util/session";
 
 const LoginForm = ({setForm}: {setForm: any}) => {
   const [{}, dispatch] = useStateValue();
@@ -70,9 +69,6 @@ const LoginForm = ({setForm}: {setForm: any}) => {
     }
   };
 
-  useEffect(() => {
-    SESSION() 
-  })
   return (
     <form method="POST" autoComplete="OFF">
       <div className="flex flex-col items-end gap-2 text-active w-80 my-2">
