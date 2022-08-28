@@ -62,11 +62,7 @@ const LoginForm = ({setForm}: {setForm: any}) => {
   };
 
   const togglePasswordShow = () => {
-    if (passwordInputType === "password") {
-      setPasswordInputType("text");
-    } else {
-      setPasswordInputType("password");
-    }
+    credentials.secret.length > 0  && setPasswordInputType(passwordInputType === "password" ? "text" : "password");
   };
 
   return (
