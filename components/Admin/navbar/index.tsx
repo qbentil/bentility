@@ -1,13 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
-import { FaUserLock } from "react-icons/fa";
+import { FaBlog, FaUserLock } from "react-icons/fa";
 import { RiSearch2Line } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 import { BiLogOutCircle } from "react-icons/bi";
-import Axios from "../../../util/axios";
-import { toast } from "react-toastify";
 import { useStateValue } from "../../../context/StateProvider";
+import { LOGOUT } from "../../../util";
 const Navbar = () => {
   return (
     <div className="bg-white py-2 px-4 w-screen h-[10vh] flex items-center">
@@ -37,50 +36,36 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
 export const Searchbar = () => {
   return (
-    <div className="bg-active-bg h-10 w-80 rounded-full flex items-center px-2 gap-2 ">
-      <RiSearch2Line className="text-lg text-active cursor-pointer" />
-      <input
-        type="search"
-        name="search"
-        id="search"
-        autoComplete="off"
-        placeholder="search here..."
-        className="bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-active text-active"
-      />
+    <div className="flex w-96 justify-between items-center gap-x-1">
+      <div className="bg-active-bg h-10 w-[90%] rounded-full flex items-center px-2 gap-2 ">
+        <RiSearch2Line className="text-lg text-active cursor-pointer" />
+        <input
+          type="search"
+          name="search"
+          id="search"
+          autoComplete="off"
+          placeholder="search here..."
+          className="bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-active text-active"
+        />
+      </div>
+      <Link href={"/"}><FaBlog className="text-xl text-active cursor-pointer"  /></Link>
     </div>
   );
 };
 
-export const UserProfile = () =>{
-  const [{user}, dispatch] = useStateValue();
-  const LOGOUT = async () => {
-    try {
-      const { data } = await Axios({
-        url: "auth/",
-        method: "GET",
-      });
-      if (data.success) {
-        toast.success(data.message);
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      } else {
-        toast.error(data.message);
-      }
-    } catch (e: any) {
-      toast.error(e.response.data.message);
-    }
-  };
-  return(
+export const UserProfile = () => {
+  const [{ user }, dispatch] = useStateValue();
+  return (
     <div className="flex items-center gap-4 group relative">
       <div className="flex flex-col items-end font-sans cursor-pointer">
-        <p className="text-active">{user?.username || 'username'}</p>
-        <p className="text-[#888A91] text-sm">{user.role == 'admin'? 'Admin':'Writer'}</p>
+        <p className="text-active">{user?.username || "username"}</p>
+        <p className="text-[#888A91] text-sm">
+          {user.role == "admin" ? "Admin" : "Writer"}
+        </p>
       </div>
       <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full cursor-pointer">
         <img
@@ -102,7 +87,7 @@ export const UserProfile = () =>{
           </div>
         </Link>
         <div
-          onClick={LOGOUT}
+          onClick={() => LOGOUT(dispatch)}
           className="flex items-center gap-2 text-active cursor-pointer hover:bg-active-bg p-2"
         >
           <BiLogOutCircle className="text-lg" />
@@ -111,6 +96,6 @@ export const UserProfile = () =>{
       </div>
     </div>
   );
-} 
+};
 
 export default Navbar;
