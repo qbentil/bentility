@@ -64,7 +64,7 @@ export const UserProfile = () => {
       <div className="flex flex-col items-end font-sans cursor-pointer">
         <p className="text-active">{user?.username || "username"}</p>
         <p className="text-[#888A91] text-sm">
-          {user.role == "admin" ? "Admin" : "Writer"}
+          {user?.role == "admin" ? "Admin" : "Writer"}
         </p>
       </div>
       <div className="w-10 h-10 flex items-center justify-center border border-active-bg rounded-full cursor-pointer">
@@ -77,7 +77,7 @@ export const UserProfile = () => {
       <div className="hidden bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans group-hover:flex w-48">
         <div className="text-active flex gap-2 items-center ">
           <FaUserLock className="text-lg" />
-          <p>{user.name}</p>
+          <p>{user?.name || 'name'}</p>
         </div>
         <div className="w-full h-[2px] my-2 bg-active-bg"></div>
         <Link href="/admin/settings">
