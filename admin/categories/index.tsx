@@ -14,7 +14,7 @@ const Categorie = () => {
         <div className="">
           <Navbar />
           <div className="flex">
-          <Sidenav page="New" />
+          <Sidenav page="Categories" />
           <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5">
             <Categories />
           </div>
