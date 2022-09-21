@@ -9,7 +9,11 @@ import reducer from '../context/reducer';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <ToastContainer />
+      <ToastContainer 
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
       <Component {...pageProps} />
     </StateProvider>
   );
