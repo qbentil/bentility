@@ -1,8 +1,8 @@
 import { MdCloudUpload } from "react-icons/md";
 import { toast } from "react-toastify";
 
-const Uploader = ({setImageURI, setImage}) => {
-  const onImageChange = (e) => {
+const Uploader = ({setImageURI, setImage}: {setImageURI:any, setImage:any}) => {
+  const onImageChange = (e:any) => {
     const file = e.target.files[0];
     // accept only image files
     if (!file.type.match("image.*")) {

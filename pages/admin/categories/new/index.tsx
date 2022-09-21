@@ -3,7 +3,7 @@ import NewCategory from "../../../../admin/categories/new";
 
 const Page = () => {
   return (
-    <NewCategory />
+    <Admin page = {<NewCategory />} />
   );
 };
 

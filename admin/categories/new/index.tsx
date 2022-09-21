@@ -1,8 +1,13 @@
-import Head from "next/head";
-import React from "react";
 import { Navbar, Sidenav } from "../../../components/Admin";
+import React, { useState } from "react";
+
+import Head from "next/head";
 import ImageUploader from "../../../components/ImageUploader";
+
 const NewCategory = () => {
+  const [image, setImage] = useState();
+  const [imageURI, setImageURI] = useState();
+
   return (
     <div>
       <Head>
@@ -20,11 +25,16 @@ const NewCategory = () => {
                 <h1 className="font-poppins font-bold text-2xl">
                   New Category
                 </h1>
-                <form action="" className="w-full mt-5 flex items-start  gap-10">
-                  <div className="flex flex-col gap-2 mt-5 w-1/2">
-                    <ImageUploader />
+                <form action="">
+                  <div className="flex flex-col gap-2 mt-5">
+                    <ImageUploader
+                      image={image}
+                      setImage={setImage}
+                      setImageURI={setImageURI}
+                      className="w-40 h-40"
+                    />
                   </div>
-                  <div className="w-1/2">
+                  <div className=" p-10 w-1/2">
                     <div className="flex flex-col gap-2">
                       <label
                         htmlFor="name"

@@ -2,11 +2,11 @@
 import React from 'react'
 import { MdDeleteForever } from 'react-icons/md';
 
-const ImageBox = ({setImage, imageURI}) => {
+const ImageBox = ({setImage, image}:{image:any, setImage:any}) => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center rounded-lg cursor-pointer border-2 border-dashed p-2 relative">
         <img
-          src={imageURI}
+          src={image}
           className="w-full h-full object-cover"
           alt='bentil'
         />
