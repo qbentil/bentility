@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Unit from './unit'
 import {categories as Cats} from '../../../util/data'
 import Link from 'next/link'
 import { CgListTree } from 'react-icons/cg'
+import axios from 'axios'
+
 function Categories() {
+
+  const [categories, setCategories] = useState([])
+
+  axios.get("https://bentility-api.herokuapp.com/categories").then(
+            (res) => {            
+              setCategories(res.data.categories);
+            }
+          ).catch((error) => {
+            console.log(error)
+          })
+  
+  
+  
   return (
     <div>
         <div className="bg-white w-full flex items-center justify-between px-5 mb-2 py-2 rounded-lg shadow-lg">
@@ -20,12 +35,15 @@ function Categories() {
           </Link>
         </div>
         </div>
-        <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-3 gap-4'>
+        
           {
-            Cats.map(Cat => (
-              <Unit key={Cat._id} data={Cat} />
+            categories.map((Cat, index) => (
+              <Unit key={index} data={Cat} />
             ))
           }
+        
+        
 
         </div>
     </div>
