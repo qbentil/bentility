@@ -2,7 +2,7 @@ export type Category = {
     _id: string;
     title: string;
     slug: string;
-    imageURL: string;
+    imageURL?: string;
     description: string;
     createdAt?: string;
     updatedAt?: string;
