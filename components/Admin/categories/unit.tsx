@@ -2,6 +2,7 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Category } from "../../../types";
+
 function UnitCat({data}:{data:Category}) {
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md ">
@@ -15,7 +16,7 @@ function UnitCat({data}:{data:Category}) {
       <div className="p-5">
         <div>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-            {data.name}
+            {data.title}
           </h5>
         </div>
         <p className="mb-3 font-normal text-gray-700">
