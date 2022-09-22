@@ -36,7 +36,7 @@ const Footer: React.FC<Props> = ({ nav }) => {
       </div>
       <div className="w-full md:w-[25%] flex items-center justify-around text-gray-500 text-xl mb-2 md:mb-0">
         <a
-          href="https://www.linkedin.com/in/shadrack-bentil-410422199"
+          href="https://www.linkedin.com/in/bentil"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-black"

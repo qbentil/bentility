@@ -9,7 +9,7 @@ function UnitCat({data}:{data:Category}) {
       <div>
         <img
           className="rounded-t-lg"
-          src={newFunction()}
+          src={data.imageURL || newFunction()}
           alt=""
         />
       </div>

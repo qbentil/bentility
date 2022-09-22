@@ -1,5 +1,5 @@
 ## BENTILITY
-**Bentil's** Personal VLOG
+**Bentil's** Personal BLOG
 
 ## PHASE I
 ![image](https://user-images.githubusercontent.com/55560024/170698745-72270c45-d37e-41d4-aac6-e32cab36682c.png)

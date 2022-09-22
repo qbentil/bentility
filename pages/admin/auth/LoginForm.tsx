@@ -1,12 +1,13 @@
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import React, { useEffect, useState } from "react";
 
-import {ImSpinner9} from "react-icons/im";
+import { ImSpinner9 } from "react-icons/im";
 import { toast } from "react-toastify";
 import Axios from "../../../util/axios";
 import { useStateValue } from "../../../context/StateProvider";
+import { LOGIN } from "../../../util";
 
-const LoginForm = ({setForm}: {setForm: any}) => {
+const LoginForm = ({ setForm }: { setForm: any }) => {
   const [{}, dispatch] = useStateValue();
   const [credentials, setCredentials] = useState({
     email: "",
@@ -21,38 +22,22 @@ const LoginForm = ({setForm}: {setForm: any}) => {
     if (credentials.email === "" || credentials.secret === "") {
       toast.error("Please enter all fields");
       setLoading(false);
-      return
-    } 
-      if (!validateEmail(credentials.email)) {
-        toast.error("Please enter a valid email", {
-          autoClose: 3000,
-        });
-        setLoading(false);
-        return;
-      } 
-      
-        try {
-          const { data } = await Axios({
-            url: "auth",
-            method: "POST",
-            data: credentials,
-          })
-          
-          if (data.success) {
-            dispatch({
-                type: "SET_USER",
-                user: data.user
-            })
-            toast.success(data.message);
-          }else{
-            toast.error(data.message);
-          }
-          setLoading(false);
-          
-        } catch (e: any) {
-            toast.error(e.response.data.message)
-            setLoading(false);
-        }
+      return;
+    }
+    if (!validateEmail(credentials.email)) {
+      toast.error("Please enter a valid email", {
+        autoClose: 3000,
+      });
+      setLoading(false);
+      return;
+    }
+    LOGIN(credentials, (data: any) => {
+      dispatch({
+        type: "SET_USER",
+        user: data,
+      });
+      toast.success("Login successful");
+    });
     setLoading(false);
   };
   const validateEmail = (email: string) => {
@@ -62,7 +47,10 @@ const LoginForm = ({setForm}: {setForm: any}) => {
   };
 
   const togglePasswordShow = () => {
-    credentials.secret.length > 0  && setPasswordInputType(passwordInputType === "password" ? "text" : "password");
+    credentials.secret.length > 0 &&
+      setPasswordInputType(
+        passwordInputType === "password" ? "text" : "password"
+      );
   };
 
   return (
@@ -119,7 +107,12 @@ const LoginForm = ({setForm}: {setForm: any}) => {
         )}
       </div>
       <div className="flex items-center justify-between font-sans px-1 py-3">
-        <p className="text-primary text-sm cursor-pointer" onClick={() => setForm('forgot')}>forgot password</p>
+        <p
+          className="text-primary text-sm cursor-pointer"
+          onClick={() => setForm("forgot")}
+        >
+          forgot password
+        </p>
         <div className="flex items-center flex-row-reverse justify-center gap-2">
           <input
             type="checkbox"

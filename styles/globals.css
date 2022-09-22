@@ -21,3 +21,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+::placeholder {
+  font-family: 'Poppins', sans-serif;
+
+}
