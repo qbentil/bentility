@@ -19,8 +19,8 @@ const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
                 type: "SET_USER",
                 user: data
             });
-            setLoading(false);
         });
+        setLoading(false);
     }, []);
     useEffect(() => {
     //   fetch and dispatch posts and categories if empty
