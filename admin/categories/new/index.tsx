@@ -1,13 +1,12 @@
+import { MdDriveFileRenameOutline, MdOutlineColorLens } from 'react-icons/md'
 import { Navbar, Sidenav } from '../../../components/Admin'
 import React, { useState } from 'react'
-import { SketchPicker } from 'react-color'
 
-import { MdDriveFileRenameOutline, MdOutlineColorLens } from 'react-icons/md'
 import { BsTextCenter } from 'react-icons/bs'
-
+import Button from '../../../components/Button/Button'
 import Head from 'next/head'
 import ImageUploader from '../../../components/ImageUploader'
-import Button from '../../../components/Button/Button'
+import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, SketchPicker, SwatchesPicker, TwitterPicker } from 'react-color'
 
 const NewCategory = () => {
 	const [image, setImage] = useState(null)
@@ -19,8 +18,8 @@ const NewCategory = () => {
 	const [slug, setSlug] = useState('')
 
 	const changeColor = (color: any) => {
-		setShowColorPicker(false)
 		setColor(color.hex)
+		// setShowColorPicker(false)
 	}
 
 	const generateSlug = (e: any) => {
@@ -118,13 +117,22 @@ const NewCategory = () => {
 											</label>
 											<div className='flex w-full items-center '>
 												{showColorPicker ? (
-													<SketchPicker
+													<div className='absolute z-10'>
+														<div className='fixed top-0 left-0 bottom-0 right-0' onClick={() => setShowColorPicker(false)} />
+														<SketchPicker
 														onChangeComplete={
 															changeColor
 														}
+												       color={color}
+													   className='absolute z-10'
 													/>
+													</div>
 												) : (
-													<div className='flex items-center gap-4'>
+													<div className='flex items-center gap-4 cursor-pointer' 															onClick={() =>
+																setShowColorPicker(
+																	true
+																)
+															}>
 														<MdOutlineColorLens
 															style={{
 																color: color,
@@ -134,11 +142,6 @@ const NewCategory = () => {
 														<input
 															color={color}
 															type='button'
-															onClick={() =>
-																setShowColorPicker(
-																	true
-																)
-															}
 															placeholder={
 																'Select Color'
 															}
@@ -150,7 +153,7 @@ const NewCategory = () => {
 															style={{
 																color: color,
 															}}
-															className='poppins font-bold'
+															className='poppins font-bold cursor-pointer'
 														/>
 
 														<div
@@ -179,7 +182,7 @@ const NewCategory = () => {
 													name='description'
 													id='description'
 													cols={40}
-													rows={3}
+													rows={7}
 													placeholder='Enter category description'
 													className=' rounded-md px-2 focus:outline-none focus:border-active-bg resize-none w-full pl-5 '
 													value={description}
