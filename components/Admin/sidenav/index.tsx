@@ -8,6 +8,7 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { LOGOUT } from "../../../util";
 import { useStateValue } from "../../../context/StateProvider";
+import Button from "../../Button/Button";
 const Navs = [
   {
     name: "Dashboard",
@@ -72,12 +73,8 @@ function Sidenav({ page }: { page: string }) {
         </div>
         <div className=" w-full flex flex-col mb-5">
           <Link href="/admin/new">
-            <div
-              className={`flex gap-3 justify-center items-center cursor-pointer bg-primary text-white hover:bg-active-bg hover:text-active py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out`}
-            >
-              <AiOutlineAppstoreAdd />
-              <p>New Post</p>
-            </div>
+            
+            <Button icon={<AiOutlineAppstoreAdd />} text={'New Post'} />
           </Link>
         </div>
       </div>

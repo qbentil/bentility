@@ -7,26 +7,48 @@ import { BsTextCenter } from 'react-icons/bs'
 
 import Head from 'next/head'
 import ImageUploader from '../../../components/ImageUploader'
+import Button from '../../../components/Button/Button'
 
 const NewCategory = () => {
-	const [image, setImage] = useState()
+	const [image, setImage] = useState(null)
 	const [imageURI, setImageURI] = useState()
 	const [showColorPicker, setShowColorPicker] = useState(false)
-  const [color, setColor] = useState('#000')
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [slug, setSlug] = useState('')
+	const [color, setColor] = useState('#000')
+	const [title, setTitle] = useState('')
+	const [description, setDescription] = useState('')
+	const [slug, setSlug] = useState('')
 
 	const changeColor = (color: any) => {
 		setShowColorPicker(false)
 		setColor(color.hex)
-  }
-  
-  const generateSlug = (e: any) => { 
-    const value = e.target.value
-    const slug = value.toLowerCase().replace(/ /g, '-')
-    setSlug(slug)
-  }
+	}
+
+	const generateSlug = (e: any) => {
+		const value = e.target.value
+		const slug = value.toLowerCase().replace(/ /g, '-')
+		setSlug(slug)
+	}
+
+	const clearFields = () => {
+		setColor('#000')
+		setTitle('')
+		setSlug('')
+		setDescription('')
+		setImage(null)
+	}
+
+
+	//TODO: Add category to database here
+	const addCategory = () => {
+		console.log(`
+		Title: ${title}\n
+		Slug: ${slug}\n
+		Color: ${color}\n
+		Description: ${description}
+		`)
+
+		clearFields()
+	}
 
 	return (
 		<div>
@@ -75,12 +97,12 @@ const NewCategory = () => {
 													name='name'
 													id='name'
 													placeholder='Enter category title'
-                          className=' rounded-md px-2 py-1 focus:outline-none focus:border-active-bg w-full pl-5 '
-                          value={title}
-                          onChange={(e) => {
-                            setTitle(e.target.value)
-                            generateSlug(e)
-                          }}
+													className=' rounded-md px-2 py-1 focus:outline-none focus:border-active-bg w-full pl-5 '
+													value={title}
+													onChange={(e) => {
+														setTitle(e.target.value)
+														generateSlug(e)
+													}}
 												/>
 											</div>
 											<p className='text-sm text-gray-400 font-medium'>
@@ -159,17 +181,18 @@ const NewCategory = () => {
 													cols={40}
 													rows={3}
 													placeholder='Enter category description'
-                          className=' rounded-md px-2 focus:outline-none focus:border-active-bg resize-none w-full pl-5 '
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
+													className=' rounded-md px-2 focus:outline-none focus:border-active-bg resize-none w-full pl-5 '
+													value={description}
+													onChange={(e) =>
+														setDescription(
+															e.target.value
+														)
+													}
 												/>
 											</div>
-                    </div>
-                    <div className='mx-auto bg-primary text-white '>
-                      <button type='submit'>
-                            Add Category
-                      </button>
-                    </div>
+										</div>
+										
+										<Button text={'Add Category'} onClick={addCategory} />
 									</div>
 								</form>
 							</div>

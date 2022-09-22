@@ -20,3 +20,10 @@ export type User = {
     createdAt?: string;
     updatedAt?: string;
 }
+
+export type Button = {
+    text: string;
+    icon?: any;
+    onClick?: () => void;
+    
+}
