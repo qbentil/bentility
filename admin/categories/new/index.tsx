@@ -1,14 +1,20 @@
-import { MdDriveFileRenameOutline, MdOutlineColorLens } from 'react-icons/md'
+import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, SketchPicker, SwatchesPicker, TwitterPicker } from 'react-color'
+import { MdDriveFileRenameOutline, MdOutlineAddCircleOutline, MdOutlineColorLens } from 'react-icons/md'
 import { Navbar, Sidenav } from '../../../components/Admin'
 import React, { useState } from 'react'
 
 import { BsTextCenter } from 'react-icons/bs'
-import Button from '../../../components/Button/Button'
+import Button from '../../../components/Button/'
 import Head from 'next/head'
 import ImageUploader from '../../../components/ImageUploader'
-import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, SketchPicker, SwatchesPicker, TwitterPicker } from 'react-color'
+import { removeImage, uploadImage } from '../../../firebase'
+import { ADD_CATEGORY } from '../../../util/categories'
+import { useStateValue } from '../../../context/StateProvider'
+import { toast } from 'react-toastify'
+import { BiLoaderCircle } from 'react-icons/bi'
 
 const NewCategory = () => {
+	const [{user}, dispatch] = useStateValue();
 	const [image, setImage] = useState(null)
 	const [imageURI, setImageURI] = useState()
 	const [showColorPicker, setShowColorPicker] = useState(false)
@@ -16,10 +22,10 @@ const NewCategory = () => {
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
 	const [slug, setSlug] = useState('')
+	const [loading, setLoading] = useState(false);
 
 	const changeColor = (color: any) => {
 		setColor(color.hex)
-		// setShowColorPicker(false)
 	}
 
 	const generateSlug = (e: any) => {
@@ -35,18 +41,46 @@ const NewCategory = () => {
 		setDescription('')
 		setImage(null)
 	}
+	const validate = () => {
+		if (!title || !description || !slug || !image || color == '#000') {
+			toast.error('All fields are required')
+			return false
+		}
+		return true
+	}
 
 
-	//TODO: Add category to database here
+	//Add category to database here
 	const addCategory = () => {
-		console.log(`
-		Title: ${title}\n
-		Slug: ${slug}\n
-		Color: ${color}\n
-		Description: ${description}
-		`)
-
-		clearFields()
+		if (!validate()) {
+			setLoading(false);
+			return
+		};
+		setLoading(true);
+		uploadImage(imageURI, 'categories', async (url: string) => {
+			const category = {
+				title,
+				slug,
+				description,
+				imageURL: url,
+				color
+			}
+			await ADD_CATEGORY(user?.access_token, category, async(data: any) => {
+				if(data.success)
+				{
+					dispatch({
+						type: 'ADD_CATEGORY',
+						category: data.data
+					})
+					toast.success(data?.message || 'Category added successfully')
+					clearFields()
+				}else{
+					await removeImage(url)
+					toast.error(data?.message || 'Something went wrong')
+				}
+			})
+		})
+		setLoading(false)
 	}
 
 	return (
@@ -195,7 +229,12 @@ const NewCategory = () => {
 											</div>
 										</div>
 										
-										<Button text={'Add Category'} onClick={addCategory} />
+										<Button 
+										icon={!loading? <MdOutlineAddCircleOutline />: <BiLoaderCircle className='animate animate-spin' />}
+										text={loading? "Adding.....": 'Add Category'} 
+										disabled={loading}
+										onClick={addCategory}
+										/>
 									</div>
 								</form>
 							</div>
