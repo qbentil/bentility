@@ -1,15 +1,4 @@
-import {
-	AlphaPicker,
-	BlockPicker,
-	ChromePicker,
-	CirclePicker,
-	CompactPicker,
-	GithubPicker,
-	HuePicker,
-	SketchPicker,
-	SwatchesPicker,
-	TwitterPicker,
-} from 'react-color'
+import {	SketchPicker} from 'react-color'
 import {
 	MdDriveFileRenameOutline,
 	MdOutlineAddCircleOutline,
