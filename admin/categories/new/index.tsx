@@ -1,5 +1,20 @@
-import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, SketchPicker, SwatchesPicker, TwitterPicker } from 'react-color'
-import { MdDriveFileRenameOutline, MdOutlineAddCircleOutline, MdOutlineColorLens } from 'react-icons/md'
+import {
+	AlphaPicker,
+	BlockPicker,
+	ChromePicker,
+	CirclePicker,
+	CompactPicker,
+	GithubPicker,
+	HuePicker,
+	SketchPicker,
+	SwatchesPicker,
+	TwitterPicker,
+} from 'react-color'
+import {
+	MdDriveFileRenameOutline,
+	MdOutlineAddCircleOutline,
+	MdOutlineColorLens,
+} from 'react-icons/md'
 import { Navbar, Sidenav } from '../../../components/Admin'
 import React, { useState } from 'react'
 
@@ -14,7 +29,7 @@ import { toast } from 'react-toastify'
 import { BiLoaderCircle } from 'react-icons/bi'
 
 const NewCategory = () => {
-	const [{user}, dispatch] = useStateValue();
+	const [{ user }, dispatch] = useStateValue()
 	const [image, setImage] = useState(null)
 	const [imageURI, setImageURI] = useState()
 	const [showColorPicker, setShowColorPicker] = useState(false)
@@ -22,7 +37,7 @@ const NewCategory = () => {
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
 	const [slug, setSlug] = useState('')
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false)
 
 	const changeColor = (color: any) => {
 		setColor(color.hex)
@@ -49,36 +64,40 @@ const NewCategory = () => {
 		return true
 	}
 
-
 	//Add category to database here
 	const addCategory = () => {
 		if (!validate()) {
-			setLoading(false);
+			setLoading(false)
 			return
-		};
-		setLoading(true);
+		}
+		setLoading(true)
 		uploadImage(imageURI, 'categories', async (url: string) => {
 			const category = {
 				title,
 				slug,
 				description,
 				imageURL: url,
-				color
+				color,
 			}
-			await ADD_CATEGORY(user?.access_token, category, async(data: any) => {
-				if(data.success)
-				{
-					dispatch({
-						type: 'ADD_CATEGORY',
-						category: data.data
-					})
-					toast.success(data?.message || 'Category added successfully')
-					clearFields()
-				}else{
-					await removeImage(url)
-					toast.error(data?.message || 'Something went wrong')
+			await ADD_CATEGORY(
+				user?.access_token,
+				category,
+				async (data: any) => {
+					if (data.success) {
+						dispatch({
+							type: 'ADD_CATEGORY',
+							category: data.data,
+						})
+						toast.success(
+							data?.message || 'Category added successfully'
+						)
+						clearFields()
+					} else {
+						await removeImage(url)
+						toast.error(data?.message || 'Something went wrong')
+					}
 				}
-			})
+			)
 		})
 		setLoading(false)
 	}
@@ -149,24 +168,36 @@ const NewCategory = () => {
 											>
 												Color
 											</label>
-											<div className='flex w-full items-center '>
+											<div className='flex w-full items-center relative '>
 												{showColorPicker ? (
-													<div className='absolute z-10'>
-														<div className='fixed top-0 left-0 bottom-0 right-0' onClick={() => setShowColorPicker(false)} />
+													<div className='flex z-10  '>
 														<SketchPicker
-														onChangeComplete={
-															changeColor
-														}
-												       color={color}
-													   className='absolute z-10'
-													/>
+															onChangeComplete={
+																changeColor
+															}
+															color={color}
+															className='absolute left-0 z-10'
+														/>
+														<div
+															className=' px-5 py-2 mt-4 border-2 rounded-full border-primary text-primary cursor-pointer absolute right-0 '
+															onClick={() =>
+																setShowColorPicker(
+																	false
+																)
+															}
+														>
+															Done
+														</div>
 													</div>
 												) : (
-													<div className='flex items-center gap-4 cursor-pointer' 															onClick={() =>
-																setShowColorPicker(
-																	true
-																)
-															}>
+													<div
+														className='flex items-center gap-4 cursor-pointer'
+														onClick={() =>
+															setShowColorPicker(
+																true
+															)
+														}
+													>
 														<MdOutlineColorLens
 															style={{
 																color: color,
@@ -228,12 +259,22 @@ const NewCategory = () => {
 												/>
 											</div>
 										</div>
-										
-										<Button 
-										icon={!loading? <MdOutlineAddCircleOutline />: <BiLoaderCircle className='animate animate-spin' />}
-										text={loading? "Adding.....": 'Add Category'} 
-										disabled={loading}
-										onClick={addCategory}
+
+										<Button
+											icon={
+												!loading ? (
+													<MdOutlineAddCircleOutline />
+												) : (
+													<BiLoaderCircle className='animate animate-spin' />
+												)
+											}
+											text={
+												loading
+													? 'Adding.....'
+													: 'Add Category'
+											}
+											disabled={loading}
+											onClick={addCategory}
 										/>
 									</div>
 								</form>
