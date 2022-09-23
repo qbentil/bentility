@@ -14,7 +14,7 @@ const [{categories}, dispatch] = useStateValue()
           <h3 className="text-2xl md:text-3xl font-semibold text-primary poppins">
             Categories
           </h3>
-          {/* New Catgory button */}
+          {/* New Category button */}
           <div className="">
           <Link href="/admin/categories/new">
             <div className={`flex gap-3 justify-center items-center cursor-pointer bg-primary text-white hover:bg-active-bg hover:text-active py-2 px-5 w-full rounded-full transition-all duration-75 ease-in-out`}>
