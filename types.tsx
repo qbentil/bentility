@@ -1,5 +1,5 @@
 export type Category = {
-    _id: string;
+    _id?: string;
     title: string;
     slug: string;
     imageURL?: string;
@@ -23,7 +23,8 @@ export type User = {
 
 export type Button = {
     text: string;
-    icon?: any;
+    icon?: JSX.Element;
+    disabled?: boolean;
     onClick?: () => void;
     
 }

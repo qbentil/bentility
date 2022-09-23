@@ -8,7 +8,7 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { LOGOUT } from "../../../util";
 import { useStateValue } from "../../../context/StateProvider";
-import Button from "../../Button/Button";
+import Button from "../../Button";
 const Navs = [
   {
     name: "Dashboard",
