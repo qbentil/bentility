@@ -9,8 +9,11 @@ function NewPost() {
 
   // handle category change
   const handleCategoryChange = (selectedCategories: any) => {
-    setCategories(selectedCategories);
-    console.log(selectedCategories);    
+    const options = selectedCategories.map((category: any) => {
+      return category.value
+    })
+    setCategories(options)
+    console.log(options)
   }
   return (
     <div className="w-full h-full bg-tansparent">
