@@ -16,10 +16,11 @@ import { ADD_CATEGORY } from '../../../util/categories'
 import { useStateValue } from '../../../context/StateProvider'
 import { toast } from 'react-toastify'
 import { BiLoaderCircle } from 'react-icons/bi'
+import { VALIDATE_CATEGORY } from '../../../components/Validations'
 
 const NewCategory = () => {
 	const [{ user }, dispatch] = useStateValue()
-	const [image, setImage] = useState(null)
+	const [image, setImage] = useState('')
 	const [imageURI, setImageURI] = useState()
 	const [showColorPicker, setShowColorPicker] = useState(false)
 	const [color, setColor] = useState('#000')
@@ -43,19 +44,14 @@ const NewCategory = () => {
 		setTitle('')
 		setSlug('')
 		setDescription('')
-		setImage(null)
+		setImage('')
 	}
-	const validate = () => {
-		if (!title || !description || !slug || !image || color == '#000') {
-			toast.error('All fields are required')
-			return false
-		}
-		return true
-	}
+
 
 	//Add category to database here
 	const addCategory = () => {
-		if (!validate()) {
+		let imageURL = image
+		if (!VALIDATE_CATEGORY({title, slug, description, imageURL, color})) {
 			setLoading(false)
 			return
 		}

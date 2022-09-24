@@ -23,6 +23,7 @@ const CategorySelector = ({onChange}: {onChange: (e:any)=>void}) => {
       className={`basic-multi-select `}
       onChange={onChange}
       classNamePrefix="select"
+      id='categories-selector'
     />
   )
 };
