@@ -6,6 +6,7 @@ function NewPost() {
   const [categories, setCategories] = useState([]);
   const [body, setBody] = useState('');
   const [title, setTitle] = useState('');
+  const [slug, setSlug] = useState('');
 
   // handle category change
   const handleCategoryChange = (selectedCategories: any) => {
@@ -15,6 +16,14 @@ function NewPost() {
     setCategories(options)
     console.log(options)
   }
+
+  const handleTitleChange = (e: any) => {
+    setTitle(e.target.value)
+    generateSlug(e.target.value)
+  }
+  const generateSlug = (title: string) => {
+    setSlug(title.toLowerCase().replace(/ /g, '-'))
+  }
   return (
     <div className="w-full h-full bg-white p-4 poppins">
       <form action="" method="post" autoComplete="off" autoCorrect="on" autoSave="on">
@@ -23,26 +32,44 @@ function NewPost() {
         </h1>
         <div className="flex flex-col mb-3">
           <label
-            htmlFor="large-input"
+            htmlFor="title-input"
             className="block mb-2 font-medium text-gray-900"
           >
             Title
           </label>
           <input
             type="text"
-            id="large-input"
+            id="title-input"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="block p-2 px-4 w-full text-gray-900  rounded-lg outline-none border bg-white border-gray-300"
+
+            onChange={handleTitleChange}
+            className="block p-2 px-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+
             placeholder="Title"
           />
         </div>
         <div className="flex flex-col mb-3">
           <label
-            htmlFor="large-input"
+            htmlFor="slug-input"
             className="block mb-2 font-medium text-gray-900"
           >
-            Category
+            Slug
+          </label>
+          <input
+            type="text"
+            id="slug-input"
+            value={slug}
+            onChange={(e) => generateSlug(e.target.value)}
+            className="block p-2 px-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+            placeholder="Slug"
+          />
+        </div>
+        <div className="flex flex-col mb-3">
+          <label
+            htmlFor="categories-selector"
+            className="block mb-2 font-medium text-gray-900"
+          >
+            Category (s)
           </label>
           <CategorySelector onChange={handleCategoryChange} />
         </div>
