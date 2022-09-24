@@ -9,7 +9,7 @@ import { useStateValue } from '../../../context/StateProvider'
 import { LOGOUT } from '../../../util'
 const Navbar = () => {
 	return (
-		<div className='bg-white py-2 px-4 w-screen h-[10vh] flex items-center'>
+		<div className='bg-white py-2 px-4 w-screen h-[10vh] flex items-center z-40'>
 			{/* Brand */}
 			<div className='flex justify-center items-center w-[20%] gap-5'>
 				<Link href='/admin'>

@@ -19,7 +19,7 @@ const Tableunit = ({ data }: { data: Category }) => {
   const viewCategory = () => {};
 
   return (
-    <div className="w-full bg-gray-100 border-b-2 border-blue-200 flex items-center px-4 py-3 justify-between  transition-colors duration-500 ease-in-out cursor-pointer ">
+    <div className="w-full bg-gray-100 border-b-2 border-blue-200 flex items-center px-4 py-3 justify-between  transition-colors duration-500 ease-in-out cursor-pointer z-0">
       <div className="flex items-center gap-2 text-xl w-full max-w-[40%]">
         <img
           src={imageURL || newFunction()}
