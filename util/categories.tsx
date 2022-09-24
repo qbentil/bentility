@@ -9,7 +9,7 @@ export const ADD_CATEGORY = async (access_token:string, category: Category, call
         const { data } = await Axios
         ({
             method: 'POST',
-            url: '/categories',
+            url: 'categories',
             data: category,
             headers: {
                 'Content-Type': 'application/json',
