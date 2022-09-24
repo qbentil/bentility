@@ -14,7 +14,7 @@ const UtilButton = ({ icon, color, onClick }: UtilButton) => {
   };
   return (
       <div className='relative'>
-           <div className='p-1 rounded-md bg-white hover:scale-105 ' onClick={onClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+           <div className='p-1 rounded-md bg-white hover:scale-105 z-0 ' onClick={onClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
           <p className={`${color === 'delete' ? 'text-red-500' : ''} ${color === 'edit' ? 'text-blue-500' : ''} ${color === 'view' ? 'text-emerald-500' : ''} text-lg`}>{icon}</p>
           
           </div>
