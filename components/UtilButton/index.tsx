@@ -20,7 +20,7 @@ const UtilButton = ({ icon, color, onClick }: UtilButton) => {
           </div>
           {
               isHovering && <div className='absolute -top-8 bg-white py-1 px-2 rounded-md'>
-                  <p className='text-sm font-semibold capitalize'>{color}</p>
+                  <p className='text-[0.65rem] font-semibold capitalize'>{color}</p>
               </div>
           }
      </div>
