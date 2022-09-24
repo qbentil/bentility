@@ -26,6 +26,8 @@ export type Button = {
     icon?: JSX.Element;
     disabled?: boolean;
     onClick?: () => void;
+    type?: "button" | "submit" | "reset";
+    shape?: "rounded-full" | "rounded-md" | "rounded-sm";
     
 }
 
