@@ -9,7 +9,7 @@ import { useStateValue } from '../../../context/StateProvider'
 import { LOGOUT } from '../../../util'
 const Navbar = () => {
 	return (
-		<div className='bg-white py-2 px-4 w-screen h-[10vh] flex items-center'>
+		<div className='bg-white py-2 px-4 w-screen h-[10vh] flex items-center z-40'>
 			{/* Brand */}
 			<div className='flex justify-center items-center w-[20%] gap-5'>
 				<Link href='/admin'>
@@ -85,7 +85,7 @@ export const UserProfile = () => {
 					className='w-[90%] h-[90%] border border-active-bg rounded-full'
 				/>
 				{isMenu && (
-					<div className=' bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans flex w-48'>
+					<div className=' bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans flex w-48 z-50'>
 						<div
 							className='text-active flex gap-2 items-center '
 							onClick={showMenu}
