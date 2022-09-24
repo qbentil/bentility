@@ -28,3 +28,9 @@ export type Button = {
     onClick?: () => void;
     
 }
+
+export type UtilButton = {
+    icon: JSX.Element;
+    color: string;
+    onClick?: () => void;
+}
