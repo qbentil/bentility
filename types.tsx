@@ -4,6 +4,20 @@ export type Category = {
     slug: string;
     imageURL?: string;
     description: string;
+    color?: string;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
+export type Post = {
+    _id?: string;
+    title: string;
+    slug: string;
+    content: string;
+    categories: string[];
+    views?: number;
+    writer?: string;
+    isPublished?: boolean;
     createdAt?: string;
     updatedAt?: string;
 }
