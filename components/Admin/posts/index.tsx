@@ -4,10 +4,12 @@ import { FaUserAlt } from 'react-icons/fa'
 import { RiSoundModuleLine } from 'react-icons/ri'
 import { useStateValue } from '../../../context/StateProvider'
 import { FaThList } from 'react-icons/fa'
-import { Post } from '../../../types'
+import { Category, Post, User } from '../../../types'
 import UtilButton from '../../UtilButton'
 import { BiPencil, BiTrashAlt } from 'react-icons/bi'
 import { toast } from 'react-toastify'
+import { ColorOpacity } from '../../../util/functions'
+import { FECTCH_ADMINS } from '../../../util/admins'
 
 const AllPosts = () => {
 	const [{ posts }, dispatch] = useStateValue()
@@ -43,7 +45,7 @@ const AllPosts = () => {
 const Unit = ({ post }: { post: Post }) => {
 	const names = post.title.split(' ')
 	const initials =
-		names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase()
+		names[0].charAt(0).toUpperCase() + names[names.length-1].charAt(0).toUpperCase()
 
 	const convertDate = (word: any) => {
 		const date = new Date(word)
@@ -68,24 +70,22 @@ const Unit = ({ post }: { post: Post }) => {
 				<div className='px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase'>
 					{initials}
 				</div>
-				<div className='flex items-center justify-between w-full'>
-					<div className='flex flex-col '>
+				<div className='flex items-center justify-between gap-x-4 w-full'>
+					<div className='flex flex-col w-[40%]'>
 						<h2 className='text-active capitalize truncate'>
 							{post.title}
 						</h2>
 						<p className='text-[0.7rem] text-[#9F9F9F]'>{date}</p>
 					</div>
-					<div className='bg-red-200 py-1 px-5 rounded-full'>
-						{/*TODO: Category goes here after getting it from database using id */}
-						<p className='text-sm text-red-600'>Frontend</p>
+					<div className='flex items-center justify-center gap-x-2 w-[60%]'>
+					<Categories ids={post.categories} />
 					</div>
 				</div>
 			</div>
 			<div className='flex items-center justify-center gap-5'>
 				<div className='flex items-center justify-center gap-2 font-sans'>
 					<FaUserAlt className='text-primary' />
-					{/*TODO: Writer goes here after getting it from database using id */}
-					<p className='text-[#4B4B4B] text-xs'>Bentil, S</p>
+					<Writer id = {post?.writer || ''} />
 				</div>
 				<div className='flex items-center justify-center gap-2 font-sans'>
 					<BsEye className='text-[#6E6E6E]' />
@@ -106,6 +106,43 @@ const Unit = ({ post }: { post: Post }) => {
 				<UtilButton icon={<BsEye />} color='view' onClick={viewPost} />
 			</div>
 		</div>
+	)
+}
+
+const Categories = ({ids}:{ids: string[]}) => {
+	const [{categories}, dispatch] = useStateValue()
+	return (
+		categories && categories.filter((category: Category) => ids.includes(category?._id ||'')).map((category:Category) => (
+			<div style={{
+				backgroundColor: ColorOpacity(category.color || '', 20),
+			}} className=' py-1 px-5 rounded-md' key={category._id}>
+				<p style={{
+				color: category.color
+			}} className='text-sm'>{category.title}</p>
+			</div>
+		))
+
+	)
+}
+
+const Writer = ({id}:{id: string}) => {
+	const [{users, user}, dispatch] = useStateValue()
+
+	// to make sure users are loaded
+	useEffect(() => {
+		if(users.length > 0) return;
+		if(!user) return;
+		FECTCH_ADMINS(user?.access_token, (data)=> {
+		  dispatch({
+			type: "SET_USERS",
+			users: data
+		  })
+		});
+	  }, []);
+	return (
+		<p className='text-[0.9rem] text-[#4B4B4B]'>
+			{users && users.filter((user: User) => user._id === id)[0]?.name || 'N/A'}
+		</p>
 	)
 }
 
