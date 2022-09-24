@@ -16,9 +16,9 @@ function NewPost() {
     console.log(options)
   }
   return (
-    <div className="w-full h-full bg-tansparent">
+    <div className="w-full h-full bg-white p-4 poppins">
       <form action="" method="post" autoComplete="off" autoCorrect="on" autoSave="on">
-        <h1 className="font-bold text-xl uppercase text-active font-sans mb-4">
+        <h1 className="font-bold text-xl capitalize text-primary font-sans mb-4">
           Create a New Post
         </h1>
         <div className="flex flex-col mb-3">
@@ -33,7 +33,7 @@ function NewPost() {
             id="large-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="block p-2 px-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+            className="block p-2 px-4 w-full text-gray-900  rounded-lg outline-none border bg-white border-gray-300"
             placeholder="Title"
           />
         </div>

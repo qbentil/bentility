@@ -20,7 +20,7 @@ const CategorySelector = ({onChange}: {onChange: (e:any)=>void}) => {
       name="categories"
       options={options}
       placeholder="Select categories......"
-      className={`basic-multi-select`}
+      className={`basic-multi-select `}
       onChange={onChange}
       classNamePrefix="select"
     />
