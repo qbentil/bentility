@@ -1,13 +1,21 @@
-import { useState } from "react";
-import { BiAddToQueue } from "react-icons/bi";
+import { BiAddToQueue, BiLoaderCircle } from "react-icons/bi";
+
 import Button from "../../Button";
+import { CREATE_POST } from "../../../util/posts";
 import CategorySelector from "./categorySelector";
 import CustomEditor from "./editor";
+import { VALIDATE_POST } from "../../Validations";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { useStateValue } from "../../../context/StateProvider";
+
 function NewPost() {
   const [categories, setCategories] = useState([]);
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [{user}, dispatch] = useStateValue();
 
   // handle category change
   const handleCategoryChange = (selectedCategories: any) => {
@@ -25,6 +33,30 @@ function NewPost() {
   const generateSlug = (title: string) => {
     setSlug(title.toLowerCase().replace(/ /g, "-"));
   };
+
+  const createPost = async () => {
+    setLoading(true)
+    const post = {
+      title,
+      slug,
+      content:body,
+      categories
+    };
+    if (!VALIDATE_POST(post)) return;
+    await CREATE_POST(user?.access_token, post, (data: any) => {
+      if (data.success) {
+        dispatch({
+          type: "ADD_POST",
+          post: data.data,
+        });
+        toast.success(data?.message || "Post created successfully");
+      }else{
+        toast.error(data?.message || "Something went wrong >>");
+      }
+    });
+    setLoading(false)
+
+  }
   return (
     <div className="w-full h-full bg-white rounded p-4 poppins">
       <form
@@ -87,10 +119,12 @@ function NewPost() {
             </div>
             <div className="flex flex-col mb-3 items-end">
               <Button 
-                text="Publish"
-                icon={<BiAddToQueue />}
-                type="submit"
+                text={loading? "Publishing...." : "Publish"}
+                icon={loading? <BiLoaderCircle className='animate animate-spin' />: <BiAddToQueue />}
+                type="button"
+                disabled={loading}
                 shape="rounded-md"
+                onClick={createPost}
               />
             </div>
           </div>
