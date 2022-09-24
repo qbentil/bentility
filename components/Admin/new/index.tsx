@@ -3,14 +3,17 @@ import {BiAddToQueue} from 'react-icons/bi'
 import CategorySelector from "./categorySelector";
 import CustomEditor from "./editor";
 function NewPost() {
-  const [categories, setCategories] = useState([{value: "", label: ""}]);
+  const [categories, setCategories] = useState([]);
   const [body, setBody] = useState('');
   const [title, setTitle] = useState('');
 
   // handle category change
   const handleCategoryChange = (selectedCategories: any) => {
-    setCategories(selectedCategories);
-    
+    const options = selectedCategories.map((category: any) => {
+      return category.value
+    })
+    setCategories(options)
+    console.log(options)
   }
   return (
     <div className="w-full h-full bg-tansparent">
