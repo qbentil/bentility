@@ -25,9 +25,9 @@ function NewPost() {
     setSlug(title.toLowerCase().replace(/ /g, '-'))
   }
   return (
-    <div className="w-full h-full bg-tansparent">
+    <div className="w-full h-full bg-white p-4 poppins">
       <form action="" method="post" autoComplete="off" autoCorrect="on" autoSave="on">
-        <h1 className="font-bold text-xl uppercase text-active font-sans mb-4">
+        <h1 className="font-bold text-xl capitalize text-primary font-sans mb-4">
           Create a New Post
         </h1>
         <div className="flex flex-col mb-3">
@@ -41,8 +41,10 @@ function NewPost() {
             type="text"
             id="title-input"
             value={title}
+
             onChange={handleTitleChange}
             className="block p-2 px-4 w-full text-gray-900 bg-gray-50 rounded-lg outline-none"
+
             placeholder="Title"
           />
         </div>
