@@ -97,6 +97,7 @@ function NewPost() {
               <input
                 type="text"
                 id="slug-input"
+                readOnly
                 value={slug}
                 onChange={(e) => generateSlug(e.target.value)}
                 className="block p-2 px-4 w-full text-gray-900 border-2 border-transparent focus:border-primary bg-gray-50 rounded-lg outline-none"
