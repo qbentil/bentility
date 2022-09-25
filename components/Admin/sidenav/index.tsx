@@ -1,6 +1,6 @@
 import { FiHome, FiSettings, FiUsers } from "react-icons/fi";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect} from "react";
 import { FaClipboardList } from "react-icons/fa";
 import { CgListTree } from "react-icons/cg";
 import { BsCalendarEvent } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { LOGOUT } from "../../../util";
 import { useStateValue } from "../../../context/StateProvider";
 import Button from "../../Button";
+import { FECTCH_ADMINS } from "../../../util/admins";
 const Navs = [
   {
     name: "Dashboard",
@@ -41,9 +42,20 @@ const Navs = [
     link: "archives",
   }
 ];
-
 function Sidenav({ page }: { page: string }) {
-  const [{}, dispatch] = useStateValue();
+
+
+  const [{users, user}, dispatch] = useStateValue();
+
+  useEffect(() => {
+    if(users.length > 0) return;
+    FECTCH_ADMINS(user?.access_token, (data)=> {
+      dispatch({
+        type: "SET_USERS",
+        users: data
+      })
+    });
+  }, []);
   return (
     <div className="bg-white px-4 h-[90vh] w-[20%] flex items-center justify-between">
       <div className="w-[85%] mx-auto h-full flex flex-col justify-between items-center pt-20">

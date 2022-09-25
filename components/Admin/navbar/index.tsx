@@ -80,12 +80,12 @@ export const UserProfile = () => {
 				onClick={showMenu}
 			>
 				<img
-					src='https://codersquiz.netlify.app/img/bentil.jpeg'
+					src={user?.avatar}
 					alt=''
 					className='w-[90%] h-[90%] border border-active-bg rounded-full'
 				/>
 				{isMenu && (
-					<div className=' bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 top-14 p-2 font-sans flex w-48 z-50'>
+					<div className=' bg-white rounded-lg shadow-xl gap-0  flex-col absolute right-0 z-50 top-14 p-2 font-sans flex min-w-[12rem]'>
 						<div
 							className='text-active flex gap-2 items-center '
 							onClick={showMenu}
