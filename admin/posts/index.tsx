@@ -17,7 +17,7 @@ const Posts = () => {
 					<div className='flex'>
 						<Sidenav page='Posts' />
 						<div className='min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5 poppins'>
-              <AllPosts />             
+							<AllPosts />
 						</div>
 					</div>
 				</div>

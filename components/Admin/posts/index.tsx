@@ -65,30 +65,28 @@ const Unit = ({ post }: { post: Post }) => {
 
   return (
     <div className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75">
-      <div className="flex items-center w-[50%] gap-8 font-sans ">
+      <div className="flex items-center flex-1  gap-8 font-sans ">
         <div className="px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase">
           {initials}
         </div>
-        <div className="flex items-center justify-between gap-x-4 w-full">
-          <div className="flex flex-col w-[40%]">
+        <div className="flex items-center justify-between gap-x-8 w-full">
+          <div className="flex flex-col max-w-[45%]">
             <h2 className="text-active capitalize truncate">{post.title}</h2>
             <p className="text-[0.7rem] text-[#9F9F9F]">{date}</p>
           </div>
-          <div className="flex items-center justify-center gap-x-2 w-[60%]">
+          <div className="flex flex-1 items-center justify-center  gap-x-2 mr-auto overflow-x-hidden scrollbar-hidden">
             <Categories ids={post.categories} />
           </div>
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
-        <div className="flex items-center justify-center gap-2 font-sans">
+      <div className="flex items-center justify-center gap-2 font-sans">
           <Writer id={post?.writer || ""} />
         </div>
         <div className="flex items-center justify-center gap-2 font-sans">
           <BsEye className="text-[#6E6E6E]" />
           <p className="text-[#4B4B4B] text-[0.9rem]">{post.views}</p>
         </div>
-      </div>
-      <div className="flex items-center justify-center gap-5">
         <UtilButton icon={<BiTrashAlt />} color="delete" onClick={deletePost} />
         <UtilButton icon={<BiPencil />} color="edit" onClick={editPost} />
         <UtilButton icon={<BsEye />} color="view" onClick={viewPost} />
@@ -115,7 +113,7 @@ const Categories = ({ ids }: { ids: string[] }) => {
             style={{
               color: category.color,
             }}
-            className="text-sm"
+            className="text-xs truncate"
           >
             {category.title}
           </p>
