@@ -5,9 +5,11 @@ import { toast } from 'react-toastify'
 import { RiSoundModuleLine } from 'react-icons/ri'
 import { FaThList } from 'react-icons/fa'
 import UtilButton from '../../UtilButton'
-import { BiPencil, BiTrashAlt } from 'react-icons/bi'
+import { BiPencil, BiTrashAlt,  } from 'react-icons/bi'
 import { BsEye } from 'react-icons/bs'
 import { RiAdminLine, RiUser3Line } from 'react-icons/ri'
+import Button from '../../Button'
+import { AiOutlineUserAdd, AiOutlineUsergroupAdd } from 'react-icons/ai'
 
 const AllUsers = () => {
 	const [{ users }, dispatch] = useStateValue()
@@ -21,10 +23,7 @@ const AllUsers = () => {
 							<p className='  font-semibold text-primary'>
 								Users
 							</p>
-							<div className='flex items-center justify-center gap-3 border border-active-bg py-2 px-4 font-sans cursor-pointer'>
-								<RiSoundModuleLine className='text-primary' />
-								<p className=' text-active text-sm'>View All</p>
-							</div>
+							<Button text='Add User' icon={<AiOutlineUsergroupAdd />} />
 						</div>
 						<div>
 							{users &&
