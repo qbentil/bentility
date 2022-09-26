@@ -14,6 +14,7 @@ import {
   generateInitials,
 } from "../../../util/functions";
 import { FECTCH_ADMINS } from "../../../util/admins";
+import { MdDateRange } from "react-icons/md";
 
 const AllPosts = () => {
   const [{ posts }, dispatch] = useStateValue();
@@ -60,9 +61,18 @@ const Unit = ({ post }: { post: Post }) => {
         <div className="flex items-center justify-between gap-x-8 w-full">
           <div className="flex flex-col max-w-[45%]">
             <h2 className="text-active capitalize truncate">{post.title}</h2>
-            <p className="text-[0.7rem] text-[#9F9F9F]">
-              {convertDate(post.createdAt || "")}
+      <div className="flex items-center justify-start gap-x-2">
+      <Writer
+            id={post?.writer || "N/A"}
+            className={"text-[0.7rem] text-gray-500 flex gap-2 items-center"}
+          />
+          <div className="flex items-center justify-center gap-x-2">
+            <MdDateRange className="text-[0.7rem] text-primary" />
+            <p className="text-[0.7rem] text-[#4B4B4B] flex items-center gap-x-1">
+              {convertDate(post.createdAt || "", "long")}
             </p>
+          </div>
+      </div>
           </div>
           <div className="flex flex-1 items-center justify-center  gap-x-2 mr-auto overflow-x-hidden scrollbar-hidden">
             <Categories ids={post.categories} />
@@ -70,12 +80,12 @@ const Unit = ({ post }: { post: Post }) => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
-        <div className="flex items-center justify-center gap-2 font-sans">
+        {/* <div className="flex items-center justify-center gap-2 font-sans">
           <Writer
             id={post?.writer || ""}
             className={"text-[0.9rem] text-[#4B4B4B] flex items-center gap-2"}
           />
-        </div>
+        </div> */}
         <div className="flex items-center justify-center gap-2 font-sans">
           <BsEye className="text-[#6E6E6E]" />
           <p className="text-[#4B4B4B] text-[0.9rem]">{post.views}</p>
