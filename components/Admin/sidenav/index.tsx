@@ -10,7 +10,7 @@ import { LOGOUT } from "../../../util";
 import { useStateValue } from "../../../context/StateProvider";
 import Button from "../../Button";
 import { FECTCH_ADMINS } from "../../../util/admins";
-const Navs = [
+export const Navs = [
   {
     name: "Dashboard",
     icon: <FiHome />,
