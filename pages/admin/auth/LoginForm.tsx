@@ -128,14 +128,14 @@ const LoginForm = ({ setForm }: { setForm: any }) => {
       <div className="flex items-center justify-center py-5">
         <button
           type="submit"
-          {...(loading ? { disabled: true } : {})}
+          disabled={loading}
           onClick={handleSubmit}
           className={`w-[95%] ${
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
           {loading && <ImSpinner9 className="animate-spin text-2xl" />}
-          {!loading && "SIGN IN"}
+          {!loading ? "SIGN IN" : "Authenticating..."}
         </button>
       </div>
     </form>
