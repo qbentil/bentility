@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
 import { useStateValue } from '../../../context/StateProvider'
 import { User } from '../../../types'
@@ -10,6 +11,7 @@ import { BsEye } from 'react-icons/bs'
 import { RiAdminLine, RiUser3Line } from 'react-icons/ri'
 import Button from '../../Button'
 import { AiOutlineUserAdd, AiOutlineUsergroupAdd } from 'react-icons/ai'
+import Link from 'next/link'
 
 const AllUsers = () => {
 	const [{ users }, dispatch] = useStateValue()
@@ -23,7 +25,11 @@ const AllUsers = () => {
 							<p className='  font-semibold text-primary'>
 								Users
 							</p>
-							<Button text='Add User' icon={<AiOutlineUsergroupAdd />} />
+							<Link 
+							  href = "users/new"
+							>
+								<Button text='Add User' icon={<AiOutlineUsergroupAdd />} shape="rounded-md" />
+							</Link>
 						</div>
 						<div>
 							{users &&

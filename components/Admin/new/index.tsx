@@ -2,7 +2,7 @@ import { BiAddToQueue, BiLoaderCircle } from "react-icons/bi";
 
 import Button from "../../Button";
 import { CREATE_POST } from "../../../util/posts";
-import CategorySelector from "./categorySelector";
+import CategorySelector from "../../Selectors/category";
 import CustomEditor from "./editor";
 import { VALIDATE_POST } from "../../Validations";
 import { toast } from "react-toastify";
