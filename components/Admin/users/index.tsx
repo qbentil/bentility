@@ -41,7 +41,7 @@ const AllUsers = () => {
 				) : (
 					<div className='w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500'>
 						<FaThList className='text-blue-600 text-6xl' />
-						<p>No users yet. Create a post to see it here.</p>
+						<p>No users yet. Add Users to see them here.</p>
 					</div>
 				)}
 			</div>
@@ -75,7 +75,7 @@ const Unit = ({ user }: { user: User }) => {
 							) : (
 								<RiUser3Line className='text-md mr-1 inline-block' />
 							)}
-							{user.email}
+							{user.about || user.email}
 						</p>
 					</div>
 				</div>
