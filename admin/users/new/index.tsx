@@ -16,6 +16,8 @@ import { BiLoaderCircle } from "react-icons/bi";
 import { CgNametag } from "react-icons/cg";
 import { FaUserCog, FaUserTag } from "react-icons/fa";
 import Usertype from "../../../components/Selectors/usertype";
+import { ADD_ADMIN } from "../../../util/admins";
+import { User } from "../../../types";
 
 const NewCategory = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -25,7 +27,7 @@ const NewCategory = () => {
   const [about, setAbout] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [usertype, setUsertype] = useState({});
+  const [role, setRole] = useState({value: 'writer', label: 'Writer'});
   const [loading, setLoading] = useState(false);
 
   const clearFields = () => {
@@ -35,13 +37,40 @@ const NewCategory = () => {
     setAbout("");
     setImage("");
     setImageURI("");
+    setRole({value: 'writer', label: 'Writer'});
   };
 
   //Add category to database here
   const adduser = () => {
-    // validate fields
     setLoading(true);
+    // validate fields
+    const userData = {
+      name,
+      email,
+      username,
+      about,
+      avatar: '',
+      role : role.value,
+    };
+    console.log(userData)
+    if (!name || !email || !username || !image || !role.value) {
+      toast.error("Please fill in all fields");
+      return;
+    }
     // upload user photo
+    uploadImage(imageURI, "users", async (url: string) => {
+      userData.avatar = url;
+      // save to database
+      await ADD_ADMIN(user?.access_token, userData, (data:User) => {
+          dispatch({
+            type: "ADD_USER",
+            user: data,
+          })
+      });
+      toast.success("User added successfully🎉");
+      setLoading(false);
+      clearFields();
+    })
     // await add user
     setLoading(false);
   };
@@ -63,7 +92,7 @@ const NewCategory = () => {
                 <h1 className="poppins font-bold text-2xl">New User</h1>
                 <form
                   className="w-full flex gap-6 flex-col md:flex-row"
-				  autoComplete="off"
+                  autoComplete="off"
                 >
                   <div className="flex flex-col mx-auto gap-6 mt-5 w-[40%]">
                     <ImageUploader
@@ -150,7 +179,7 @@ const NewCategory = () => {
                       <div className="flex gap-x-3 w-full items-center border-b-2 border-blue-200 ">
                         <FaUserTag className="text-primary" />
                         <div className="w-full">
-                          <Usertype onChange={setUsertype} />
+                          <Usertype onChange={setRole} />
                         </div>
                       </div>
                     </div>
@@ -188,7 +217,7 @@ const NewCategory = () => {
                       }
                       text={loading ? "Adding....." : "Add User"}
                       disabled={loading}
-					  shape="rounded-md"
+                      shape="rounded-md"
                       onClick={adduser}
                     />
                   </div>
