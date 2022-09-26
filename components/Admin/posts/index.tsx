@@ -8,7 +8,7 @@ import { Category, Post, User } from '../../../types'
 import UtilButton from '../../UtilButton'
 import { BiPencil, BiTrashAlt } from 'react-icons/bi'
 import { toast } from 'react-toastify'
-import { ColorOpacity } from '../../../util/functions'
+import { ColorOpacity, convertDate, generateInitials } from '../../../util/functions'
 import { FECTCH_ADMINS } from '../../../util/admins'
 
 const AllPosts = () => {
@@ -43,21 +43,6 @@ const AllPosts = () => {
 }
 
 const Unit = ({ post }: { post: Post }) => {
-	const names = post.title.split(' ')
-	const initials =
-		names[0].charAt(0).toUpperCase() +
-		names[names.length - 1].charAt(0).toUpperCase()
-
-	const convertDate = (word: any) => {
-		const date = new Date(word)
-		const month = date.toLocaleString('default', { month: 'long' })
-		const day = date.getDate()
-		const year = date.getFullYear()
-		const formattedDate = `${day} ${month}, ${year}`
-		return formattedDate
-	}
-
-	const [date, setDate] = useState<string>(convertDate(post.createdAt))
 
 	const deletePost = () => {
 		toast.success('Deleted Successfully !')
@@ -69,14 +54,14 @@ const Unit = ({ post }: { post: Post }) => {
 		<div className='w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
 			<div className='flex items-center flex-1  gap-8 font-sans '>
 				<div className='px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase'>
-					{initials}
+					{generateInitials(post.title)}
 				</div>
 				<div className='flex items-center justify-between gap-x-8 w-full'>
 					<div className='flex flex-col max-w-[45%]'>
 						<h2 className='text-active capitalize truncate'>
 							{post.title}
 						</h2>
-						<p className='text-[0.7rem] text-[#9F9F9F]'>{date}</p>
+						<p className='text-[0.7rem] text-[#9F9F9F]'>{convertDate(post.createdAt || '')}</p>
 					</div>
 					<div className='flex flex-1 items-center justify-center  gap-x-2 mr-auto overflow-x-hidden scrollbar-hidden'>
 						<Categories ids={post.categories} />
