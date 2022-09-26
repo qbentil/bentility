@@ -8,9 +8,9 @@ function UnitCat({ data }: { data: Category }) {
   return (
     <div
       className="max-w-sm bg-white rounded-lg border cursor-pointer shadow-md poppins"
-      style={{
-        borderColor: color,
-      }}
+      // style={{
+      //   borderColor: color,
+      // }}
     >
       <div className="rounded-t-lg  w-full h-full max-h-[65%] overflow-hidden">
         <img
