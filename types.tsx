@@ -23,14 +23,14 @@ export type Post = {
 }
 
 export type User = {
-    _id: string;
+    _id?: string;
     name?: string;
     email: string;
     username: string;
     role: string;
     about?: string;
     avatar?: string;
-    access_token: string;
+    access_token?: string;
     createdAt?: string;
     updatedAt?: string;
 }
