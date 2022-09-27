@@ -22,7 +22,7 @@ const Tableunit = ({ data }: { data: Category }) => {
   const viewCategory = () => {};
 
   return (
-    <div className="w-full hover:bg-active-bg border-b-2 border-blue-200 flex items-center px-4 py-3 justify-between  transition-colors duration-500 ease-in-out cursor-pointer z-0">
+    <div className="w-full hover:bg-active-bg border-b-2 border-blue-200 px-4 py-3  grid grid-cols-3  transition-colors duration-500 ease-in-out cursor-pointer z-0">
       <div className="flex items-center gap-2 text-xl w-full max-w-[40%]">
         <img
           src={imageURL || newFunction()}
@@ -44,12 +44,12 @@ const Tableunit = ({ data }: { data: Category }) => {
           <p className="text-xs w-full truncate text-gray-500">{description}</p>
         </div>
       </div>
-      <div>
+      <div className="flex items-center justify-center">
         {
           CategoryPostCount(_id || '', posts)
         }
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center justify-end">
         <UtilButton
           icon={<BiTrashAlt />}
           color="delete"

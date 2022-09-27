@@ -22,7 +22,7 @@ const Unit = ({ data }: { data: Category }) => {
             <img
               src={data.imageURL}
               alt={data.slug}
-              className="w-full rounded-md h-full object-cover"
+              className="w-full rounded-sm h-full object-cover "
             />
           ) : (
             generateInitials(data.title)
