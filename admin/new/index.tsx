@@ -14,11 +14,11 @@ const NewPost = () => {
         <div className="">
           <Navbar />
           <div className="flex">
-          <Sidenav page="New" />
-          <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5">
-            <CreatePost />
+            <Sidenav page="New" />
+            <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5">
+              <CreatePost />
+            </div>
           </div>
-        </div>
         </div>
       </main>
     </div>
