@@ -17,12 +17,12 @@ const AllUsers = () => {
 	const [{ users }, dispatch] = useStateValue()
 	console.log(users)
 	return (
-		<div className='w-full h-full bg-white'>
+		<div className='w-full h-full bg-white overflow-y-scroll pb-4 cs-scroll'>
 			<div className='bg-white h-full px-4'>
 				{users && users.length > 0 ? (
 					<div>
-						<div className='bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 border-b-2 border-gray-200'>
-							<p className='  font-semibold text-primary'>
+						<div className='bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 '>
+							<p className='text-xl  font-semibold text-primary'>
 								Users
 							</p>
 							<Link 
@@ -31,11 +31,40 @@ const AllUsers = () => {
 								<Button text='Add User' icon={<AiOutlineUsergroupAdd />} shape="rounded-md" />
 							</Link>
 						</div>
-						<div>
+						<div className=' max-h-[90%]'>
+							{/* Table header */}
+							<div className='' >
+								<div className='w-full  grid grid-cols-3 text-center py-2 border-b-2 border-gray-400 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
+									<div className='flex justify-start'>
+										<p className='text-sm font-semibold text-blue-500'>Name</p>
+									</div>
+									<div>
+										<p className='text-sm font-semibold text-blue-500'>Username</p>
+									</div>
+									<div className='flex justify-end'>
+										<p className='text-sm font-semibold text-blue-500'>Action Buttons</p>
+									</div>
+							</div>
+							</div >
+							<div className='overflow-hidden'>
 							{users &&
 								users.map((user: any) => (
 									<Unit user={user} key={user._id} />
 								))}
+							{users &&
+								users.map((user: any) => (
+									<Unit user={user} key={user._id} />
+								))}
+							{users &&
+								users.map((user: any) => (
+									<Unit user={user} key={user._id} />
+								))}
+							{users &&
+								users.map((user: any) => (
+									<Unit user={user} key={user._id} />
+								))}
+							</div>
+							
 						</div>
 					</div>
 				) : (
@@ -51,7 +80,7 @@ const AllUsers = () => {
 
 const Unit = ({ user }: { user: User }) => {
 	return (
-		<div className='w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
+		<div className='w-full  grid grid-cols-3 py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
 			<div className='flex items-center  gap-8  '>
 				<img
 					src={user.avatar}
@@ -80,8 +109,11 @@ const Unit = ({ user }: { user: User }) => {
 					</div>
 				</div>
 			</div>
-			<p className='text-[#4B4B4B] text-sm'>{user.username}</p>
-			<div className='flex items-center justify-between gap-4  '>
+			<div className='flex items-center'>
+
+			<p className='text-[#4B4B4B] text-sm mx-auto w-full text-center'>{user.username}</p>
+			</div>
+			<div className='flex items-center justify-end gap-4  '>
 				<div className='flex items-center justify-center gap-5'>
 					{user.role === 'admin' ? (
 						<>
