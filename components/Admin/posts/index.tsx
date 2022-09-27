@@ -23,14 +23,27 @@ const AllPosts = () => {
     <div className="bg-white h-full px-4">
       {posts && posts.length > 0 ? (
         <div>
-          <div className="bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 border-b-2 border-gray-200">
-            <p className="  font-semibold text-primary">Posts</p>
+          <div className="bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 ">
+            <p className=" text-xl font-semibold text-primary">Posts</p>
             <div className="flex items-center justify-center gap-3 border border-active-bg py-2 px-4 font-sans cursor-pointer">
               <RiSoundModuleLine className="text-primary" />
               <p className=" text-active text-sm">View All</p>
             </div>
           </div>
           <div>
+          <div className='' >
+								<div className='w-full  grid grid-cols-3 text-center py-2 border-b-2 border-gray-400 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
+									<div className='flex justify-start'>
+										<p className='text-sm font-semibold text-blue-500'>Post Name</p>
+									</div>
+									<div>
+										{/* <p className='text-sm font-semibold text-blue-500'>Category Tags</p> */}
+									</div>
+									<div className='flex justify-end'>
+										<p className='text-sm font-semibold text-blue-500'>Action Buttons</p>
+									</div>
+              </div> 
+              </div>
             {posts &&
               posts.map((post: any) => <Unit post={post} key={post._id} />)}
           </div>
