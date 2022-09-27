@@ -93,7 +93,7 @@ const Unit = ({ user }: { user: User }) => {
 							) : (
 								<RiUser3Line className='text-md mr-1 inline-block' />
 							)}
-							{user.about || user.email}
+							{user.email}
 						</p>
 					</div>
 				</div>
