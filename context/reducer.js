@@ -5,6 +5,7 @@ export const actionTypes = {
     SET_POSTS: 'SET_POSTS',
     ADD_POST: 'ADD_POST',
     ADD_CATEGORY: 'ADD_CATEGORY',
+    ADD_USER: 'ADD_USER',
 
 }
 
@@ -40,6 +41,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 users: action.users,
+            };
+        case actionTypes.ADD_USER:
+            return {
+                ...state,
+                users: [...state.users, action.user],
             };
         default:
             return state;

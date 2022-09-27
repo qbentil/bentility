@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
 import { useStateValue } from '../../../context/StateProvider'
 import { User } from '../../../types'
@@ -10,6 +11,7 @@ import { BsEye } from 'react-icons/bs'
 import { RiAdminLine, RiUser3Line } from 'react-icons/ri'
 import Button from '../../Button'
 import { AiOutlineUserAdd, AiOutlineUsergroupAdd } from 'react-icons/ai'
+import Link from 'next/link'
 
 const AllUsers = () => {
 	const [{ users }, dispatch] = useStateValue()
@@ -23,7 +25,11 @@ const AllUsers = () => {
 							<p className='  font-semibold text-primary'>
 								Users
 							</p>
-							<Button text='Add User' icon={<AiOutlineUsergroupAdd />} />
+							<Link 
+							  href = "users/new"
+							>
+								<Button text='Add User' icon={<AiOutlineUsergroupAdd />} shape="rounded-md" />
+							</Link>
 						</div>
 						<div>
 							{users &&
@@ -35,7 +41,7 @@ const AllUsers = () => {
 				) : (
 					<div className='w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500'>
 						<FaThList className='text-blue-600 text-6xl' />
-						<p>No users yet. Create a post to see it here.</p>
+						<p>No users yet. Add Users to see them here.</p>
 					</div>
 				)}
 			</div>
@@ -69,7 +75,7 @@ const Unit = ({ user }: { user: User }) => {
 							) : (
 								<RiUser3Line className='text-md mr-1 inline-block' />
 							)}
-							{user.email}
+							{user.about || user.email}
 						</p>
 					</div>
 				</div>

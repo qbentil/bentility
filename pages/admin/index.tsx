@@ -7,9 +7,14 @@ import { GET_SESSION_USER } from "../../util/session";
 import { User } from "../../types";
 import Preloader from "../../components/Preloader";
 import { FETCH_DATA } from "../../util";
+import {Navs} from "../../components/Admin/sidenav"
+import { useRouter } from "next/router";
 
 const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
+    const router = useRouter();
+    
     const [{user, posts, categories}, dispatch] = useStateValue();
+    const [forbiden, setForbiden] = useState(false);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (user) return
@@ -38,9 +43,18 @@ const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
     })
     }, [])
 
+    useEffect(() => {
+        if (router.asPath !== router.route) {
+          const route =router.pathname;
+          const nav = Navs.find((nav) => nav.link === route);
+            if (nav && nav.protected && user.role !== 'admin' ) {
+                setForbiden(true)
+            }
+        }
+      }, [router, user]);
 
-    if(loading) return <Preloader />
-    return  user ? page : <Auth />
+
+    return loading ? <Preloader /> : !user ?  <Auth /> : forbiden ? <Dashboard /> : page;
 };
 
 export default Admin;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
-import { useStateValue } from '../../../context/StateProvider';
-import { Category } from '../../../types';
+import { useStateValue } from '../../context/StateProvider';
+import { Category } from '../../types';
 
 const CategorySelector = ({onChange}: {onChange: (e:any)=>void}) => {
   const [{categories}, dispatch] = useStateValue()

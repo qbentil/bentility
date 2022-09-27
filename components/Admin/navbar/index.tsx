@@ -69,7 +69,7 @@ export const UserProfile = () => {
 
 	return (
 		<div className='flex items-center gap-4 group relative'>
-			<div className='flex flex-col items-end font-sans cursor-pointer'>
+			<div onClick={showMenu} className='flex flex-col items-end font-sans cursor-pointer'>
 				<p className='text-active'>{user?.username || 'username'}</p>
 				<p className='text-[#888A91] text-sm'>
 					{user.role == 'admin' ? 'Admin' : 'Writer'}
