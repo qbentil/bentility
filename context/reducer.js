@@ -6,6 +6,7 @@ export const actionTypes = {
     ADD_POST: 'ADD_POST',
     ADD_CATEGORY: 'ADD_CATEGORY',
     ADD_USER: 'ADD_USER',
+    UPDATE_USER: 'UPDATE_USER',
 
 }
 
@@ -46,6 +47,17 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 users: [...state.users, action.user],
+            };
+        case actionTypes.UPDATE_USER:
+            return {
+                ...state,
+                users: state.users.map((user) => {
+                    if (user._id === action.user._id) {
+                        return action.user;
+                    } else {
+                        return user;
+                    }
+                }),
             };
         default:
             return state;
