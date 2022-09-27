@@ -46,23 +46,12 @@ const AllUsers = () => {
 									</div>
 							</div>
 							</div >
-							<div className='overflow-hidden'>
+							<div className=''>
 							{users &&
 								users.map((user: any) => (
 									<Unit user={user} key={user._id} />
 								))}
-							{users &&
-								users.map((user: any) => (
-									<Unit user={user} key={user._id} />
-								))}
-							{users &&
-								users.map((user: any) => (
-									<Unit user={user} key={user._id} />
-								))}
-							{users &&
-								users.map((user: any) => (
-									<Unit user={user} key={user._id} />
-								))}
+							
 							</div>
 							
 						</div>
