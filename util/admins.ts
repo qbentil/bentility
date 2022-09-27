@@ -49,3 +49,28 @@ export const ADD_ADMIN = async (token:string, admin: User, callback: (data:any)=
       toast.error(e?.response?.data?.message);
     }
   }
+
+export const UPDATE_AVATAR = async (token:string, update: {avatar:string}, callback: (data:any)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user',
+      method: "PATCH",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: update
+    })
+    if (data.success) {
+      console.log(`Avatar updated🚀🎉`, data.data);
+      await removeImage(update.avatar);
+      callback(data.data);
+    }else{
+      console.log(`Avatar update failed❌`);
+      toast.error(data?.message || "Something went wrong");
+    }
+  }catch(e:any){
+    await removeImage(update.avatar || '');
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}
