@@ -16,7 +16,7 @@ const UpdateSettings = () => {
   const [image, setImage] = useState(user.avatar);
   const [imageURI, setImageURI] = useState("");
   const [loading, setLoading] = useState(false);
-  const updateAvatar = async () => {
+  const updateAvatar = () => {
     setLoading(true);
     if (image === user.avatar) {
       setLoading(false);
@@ -26,31 +26,30 @@ const UpdateSettings = () => {
       setImage(user.avatar);
       toast.error("Please select an image");
       return setLoading(false);
-      return;
-    }
+      }
 
-    await uploadImage(imageURI, "users", async (url: string) => {
-      const data = {
-        avatar: url,
-      };
-      await UPDATE_AVATAR(user.access_token, data, async (data: User) => {
-        await removeImage(image || "");
-        dispatch({
-          type: "SET_USER",
-          user: data,
-        });
-        // update user in users
-        const updated_users = users.map((user: User) => {
-          if (user._id === data._id) {
-            return data;
-          }
-          return user;
-        });
-        console.log(updated_users);
+    // await uploadImage(imageURI, "users", async (url: string) => {
+    //   const data = {
+    //     avatar: url,
+    //   };
+    //   await UPDATE_AVATAR(user.access_token, data, async (data: User) => {
+    //     await removeImage(image || "");
+    //     dispatch({
+    //       type: "SET_USER",
+    //       user: data,
+    //     });
+    //     // update user in users
+    //     const updated_users = users.map((user: User) => {
+    //       if (user._id === data._id) {
+    //         return data;
+    //       }
+    //       return user;
+    //     });
+    //     console.log(updated_users);
 
-        toast.success("Avatar updated successfully");
-      });
-    });
+    //     toast.success("Avatar updated successfully");
+    //   });
+    // });
 
     setLoading(false);
   };
@@ -85,7 +84,7 @@ const UpdateSettings = () => {
         </div>
         {/*  */}
 
-        <Quickedit customClose />
+        <Quickedit />
       </div>
     </div>
   );
