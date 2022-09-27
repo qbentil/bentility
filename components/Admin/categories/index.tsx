@@ -53,8 +53,20 @@ function Categories() {
 				</div>
 			) : (
 				<div className='w-full h-full pr-4 mb-20 scrollbar-hidden'>
-					<div>
-				
+						<div>
+						<div className='' >
+								<div className='w-full  grid grid-cols-3 text-center py-2 border-b-2 border-gray-400 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
+									<div className='flex justify-start'>
+										<p className='text-sm font-semibold text-blue-500'>Category</p>
+									</div>
+									<div>
+										<p className='text-sm font-semibold text-blue-500'>Number of Posts</p>
+									</div>
+									<div className='flex justify-end'>
+										<p className='text-sm font-semibold text-blue-500'>Action Buttons</p>
+									</div>
+							</div>
+						</div>
 						{categories.map((category: Category) => (
 							<Tableunit key={category._id} data={category} />
 						))}
