@@ -56,7 +56,7 @@ const NewCategory = () => {
 			return
 		}
 		setLoading(true)
-		uploadImage(imageURI, 'categories', async (url: string) => {
+		toast.promise(		uploadImage(imageURI, 'categories', async (url: string) => {
 			const category = {
 				title,
 				slug,
@@ -83,6 +83,8 @@ const NewCategory = () => {
 					}
 				}
 			)
+		}), {
+			pending: 'Adding category...',
 		})
 		setLoading(false)
 	}
@@ -111,15 +113,15 @@ const NewCategory = () => {
 									action=''
 									className='w-full flex gap-6 flex-col md:flex-row'
 								>
-									<div className='flex flex-col mx-auto gap-6 mt-5 w-[60%]'>
+									<div className='flex flex-col mx-auto gap-6 mt-5 w-[40%]'>
 										<ImageUploader
 											image={image}
 											setImage={setImage}
 											setImageURI={setImageURI}
-											className='w-[20px]'
+											// className='w-[0px]'
 										/>
 									</div>
-									<div className=' py-10 w-[40%] flex flex-col gap-6'>
+									<div className=' py-10 w-[50%] flex flex-col gap-6'>
 										<div className='flex flex-col gap-2'>
 											<label
 												htmlFor='name'

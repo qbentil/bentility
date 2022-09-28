@@ -46,7 +46,7 @@ function Categories() {
 				</div>
 			</div>
 			{view === 'card' ? (
-				<div className='grid grid-cols-2 lg:grid-cols-4 gap-7'>
+				<div className='grid grid-cols-2 lg:grid-cols-3 gap-7'>
 					{categories.map((category: Category) => (
 						<Unit key={category._id} data={category} />
 					))}

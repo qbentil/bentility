@@ -46,8 +46,7 @@ const SecuritySettings = () => {
         pending: "Updating password....",
       },
       {
-        toastId: "changePassword",
-      }
+        toastId: "updateProfile",}
     );
     setLoading(false);
   };

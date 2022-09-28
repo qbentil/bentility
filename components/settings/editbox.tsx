@@ -43,7 +43,8 @@ const Quickedit = ({
       pending: "Updating profile",
       success: "Profile updated successfully",
       error: "Failed to update profile",
-    });
+    }, {
+      toastId: "updateProfile"});
 
     setLoading(false);
   }

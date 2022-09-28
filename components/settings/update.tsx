@@ -44,6 +44,8 @@ const UpdateSettings = () => {
         pending: "Updating avatar",
         success: "Avatar updated successfully",
         error: "Failed to update avatar",
+      }, {
+        toastId: "updateProfile",
       })
 
     setLoading(false);

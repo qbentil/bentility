@@ -58,7 +58,7 @@ const NewCategory = () => {
       return;
     }
     // upload user photo
-    uploadImage(imageURI, "users", async (url: string) => {
+    toast.promise(uploadImage(imageURI, "users", async (url: string) => {
       userData.avatar = url;
       // save to database
       await ADD_ADMIN(user?.access_token, userData, (data:User) => {
@@ -70,6 +70,10 @@ const NewCategory = () => {
       toast.success("User added successfully🎉");
       setLoading(false);
       clearFields();
+    }),{
+      pending: "Adding user...",
+    }, {
+      toastId: "addUser",
     })
     // await add user
     setLoading(false);
@@ -86,7 +90,7 @@ const NewCategory = () => {
         <div className="">
           <Navbar />
           <div className="flex">
-            <Sidenav page="Categories" />
+            <Sidenav page="Users" />
             <div className="min-h-[90vh] h-[90vh] overflow-y-auto w-[80%] py-3 px-5">
               <div className="bg-white w-full min-h-full rounded-md shadow-md p-5 flex flex-col gap-8">
                 <h1 className="poppins font-bold text-2xl">New User</h1>
@@ -99,7 +103,7 @@ const NewCategory = () => {
                       image={image}
                       setImage={setImage}
                       setImageURI={setImageURI}
-                      className="w-[20px]"
+                      className="w-[20px] h-[50px]"
                     />
                   </div>
                   <div className=" py-10 w-[60%] flex flex-col gap-6">
