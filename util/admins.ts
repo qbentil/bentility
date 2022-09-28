@@ -97,3 +97,20 @@ export const UPDATE_SELF = async (token:string, admin: User, callback: (data:Use
     toast.error(e?.response?.data?.message || "Something went wrong");
   }
 }
+
+export const CHANGE_PASSWORD = async (token:string, password: {password:string, new_password:string}, callback: (data:any)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user/password',
+      method: "PATCH",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: password
+    })
+    callback(data);
+  }catch(e:any){
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}

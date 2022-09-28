@@ -39,7 +39,6 @@ const Quickedit = ({
         type: "SET_USER",
         user: data,
       });
-      // toast.success("Profile updated successfully");
     }), {
       pending: "Updating profile",
       success: "Profile updated successfully",
