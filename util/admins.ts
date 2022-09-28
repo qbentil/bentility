@@ -62,14 +62,37 @@ export const UPDATE_AVATAR = async (token:string, update: {avatar:string}, callb
     })
     if (data.success) {
       console.log(`Avatar updated🚀🎉`, data.data);
-      await removeImage(update.avatar);
       callback(data.data);
     }else{
+      await removeImage(update.avatar);
       console.log(`Avatar update failed❌`);
       toast.error(data?.message || "Something went wrong");
     }
   }catch(e:any){
     await removeImage(update.avatar || '');
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}
+
+export const UPDATE_SELF = async (token:string, admin: User, callback: (data:User)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user',
+      method: "PUT",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: admin
+    })
+    if (data.success) {
+      console.log(`Admin updated🚀🎉`, data.data);
+      callback(data.data);
+    }else{
+      console.log(`Admin update failed❌`);
+      toast.error(data?.message || "Something went wrong");
+    }
+  }catch(e:any){
     console.log(e);
     toast.error(e?.response?.data?.message || "Something went wrong");
   }
