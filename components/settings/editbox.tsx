@@ -1,8 +1,10 @@
-import React from "react";
-import { AiOutlineEdit } from "react-icons/ai";
+import React, { useState } from "react";
+import { BiLoaderCircle } from "react-icons/bi";
 import { IoMdDoneAll } from "react-icons/io";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import { toast } from "react-toastify";
 import { useStateValue } from "../../context/StateProvider";
+import { UPDATE_SELF } from "../../util/admins";
 import Button from "../Button";
 
 const Quickedit = ({
@@ -13,13 +15,38 @@ const Quickedit = ({
   customClose?: boolean;
 }) => {
   const [{ user }, dispatch] = useStateValue();
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
+  const [about, setAbout] = useState(user.about);
+  const [username, setUsername] = useState(user.username);
+  const [role, setRole] = useState(user.role);
+  const [loading, setLoading] = useState(false);
+
 
   const markComplete = () => {
-    const done = confirm("Are you sure you want to save changes?");
-    if (done) {
       setEditing && setEditing(false);
-    }
   };
+  const UpdateProfile = () => {
+    if ( name === user.name && email === user.email && phone === user.phone && about === user.about && username === user.username && role === user.role) return toast.info("No change detected in profile");
+    if(!name || !email || !phone || !about || !username || !role) return toast.error("Please fill all fields");
+    setLoading(true);
+    const updated = {
+      name,  email, phone, about, username, role
+    }
+    toast.promise(UPDATE_SELF(user.access_token, updated, (data) => {
+      dispatch({
+        type: "SET_USER",
+        user: data,
+      });
+    }), {
+      pending: "Updating profile",
+      success: "Profile updated successfully",
+      error: "Failed to update profile",
+    });
+
+    setLoading(false);
+  }
   return (
     <form className="col-span-1 bg-white rounded-sm shadow-sm p-3">
       <div className="font-semibold flex items-center justify-between">
@@ -37,17 +64,19 @@ const Quickedit = ({
         <div className="w-full">
           <textarea
             className="text-md w-full resize-y border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
-            value={user.about}
+            value={about}
+            onChange= {(e) => setAbout(e.target.value)}
           ></textarea>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full">
           <label htmlFor="name" className="text-active font-semibold w-[18%]">
-            Full Name:{" "}
+            Full Name:
           </label>
           <input
             type="text"
             className="w-[80%] border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
-            value={user.name}
+            value={name}
+            onChange= {(e) => setName(e.target.value)}
             placeholder="Full Name"
             id="name"
           />
@@ -59,8 +88,9 @@ const Quickedit = ({
           <input
             type="email"
             className="w-[80%] border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
-            value={user.email}
+            value={email}
             placeholder="Email ID"
+            onChange= {(e) => setEmail(e.target.value)}
             id="email"
           />
         </div>
@@ -69,37 +99,46 @@ const Quickedit = ({
             htmlFor="username"
             className="text-active font-semibold w-[18%]"
           >
-            Username:{" "}
+            Username:
           </label>
           <input
             type="text"
-            className="w-[80%] border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
+            className="w-[80%] cursor-not-allowed border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
             value={user.username}
             placeholder="Username"
             id="username"
+            readOnly
+            title="Username cannot be changed"
           />
         </div>
         <div className="flex items-center justify-start gap-x-5 w-full text-sm">
           <label htmlFor="phone" className="text-active font-semibold w-[18%]">
-            Phone:{" "}
+            Phone:
           </label>
           <input
-            type="email"
+            type="text"
             className="w-[80%] border border-gray-300 rounded-sm p-2 focus:outline-none focus:border-active"
-            value={user.phone}
+            value={phone}
+            onChange= {(e) => setPhone(e.target.value)}
             placeholder="Phone Number"
             id="phone"
-            readOnly
           />
         </div>
         <div className="flex items-center justify-start gap-x-3 text-sm">
           {/* save changes */}
           <Button
-            text="Save changes"
-            type="submit"
+            type="button"
             shape="rounded-md"
-            onClick={() => markComplete()}
-            icon={<RiSecurePaymentLine className="text-white" />}
+            disabled={loading}
+            onClick={UpdateProfile}
+            text={loading ? "Saving..." : "Save changes"}
+            icon={
+              loading ? (
+                <BiLoaderCircle className="animate animate-spin" />
+              ) : (
+                <RiSecurePaymentLine className="text-white" />
+              )
+            }
           />
         </div>
       </div>

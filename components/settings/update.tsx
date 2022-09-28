@@ -28,28 +28,23 @@ const UpdateSettings = () => {
       return setLoading(false);
       }
 
-    // await uploadImage(imageURI, "users", async (url: string) => {
-    //   const data = {
-    //     avatar: url,
-    //   };
-    //   await UPDATE_AVATAR(user.access_token, data, async (data: User) => {
-    //     await removeImage(image || "");
-    //     dispatch({
-    //       type: "SET_USER",
-    //       user: data,
-    //     });
-    //     // update user in users
-    //     const updated_users = users.map((user: User) => {
-    //       if (user._id === data._id) {
-    //         return data;
-    //       }
-    //       return user;
-    //     });
-    //     console.log(updated_users);
-
-    //     toast.success("Avatar updated successfully");
-    //   });
-    // });
+      toast.promise(uploadImage(imageURI, "users", async (url: string) => {
+        const data = {
+          avatar: url,
+        };
+        console.log(data);
+        await UPDATE_AVATAR(user.access_token, data, async (data: User) => {
+          await removeImage(user.avatar || "");
+          dispatch({
+            type: "SET_USER",
+            user: data,
+          });
+        });
+      }), {
+        pending: "Updating avatar",
+        success: "Avatar updated successfully",
+        error: "Failed to update avatar",
+      })
 
     setLoading(false);
   };
@@ -70,6 +65,7 @@ const UpdateSettings = () => {
             <Button
               onClick={updateAvatar}
               shape="rounded-md"
+              type="button"
               text={loading ? "Changing..." : "Change Avatar"}
               icon={
                 loading ? (

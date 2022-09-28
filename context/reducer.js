@@ -8,6 +8,7 @@ export const actionTypes = {
     ADD_USER: 'ADD_USER',
     UPDATE_USER: 'UPDATE_USER',
 
+
 }
 
 const reducer = (state, action) => {
@@ -51,14 +52,11 @@ const reducer = (state, action) => {
         case actionTypes.UPDATE_USER:
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if (user._id === action.user._id) {
-                        return action.user;
-                    } else {
-                        return user;
-                    }
-                }),
-            };
+                user: {
+                    ...state.user,
+                    ...action.user,
+                }
+            }
         default:
             return state;
     }
