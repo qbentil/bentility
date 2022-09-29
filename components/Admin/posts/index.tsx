@@ -91,7 +91,7 @@ const Unit = ({ post }: { post: Post }) => {
   }
 
 	return (
-		<div className='w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
+		<div className='w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75' onClick={viewPost}>
 			<div className='flex items-center flex-1  gap-8 font-sans '>
 				<div className='px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase'>
 					{generateInitials(post.title)}
@@ -128,7 +128,7 @@ const Unit = ({ post }: { post: Post }) => {
             className={"text-[0.9rem] text-[#4B4B4B] flex items-center gap-2"}
           />
         </div> */}
-				<div className='flex items-center justify-center gap-2 font-sans'>
+				<div className='flex items-center justify-center gap-2 font-sans' onClick={viewPost}>
 					<BsEye className='text-[#6E6E6E]' />
 					<p className='text-[#4B4B4B] text-[0.9rem]'>{post.views}</p>
 				</div>
