@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import { Navbar, Sidenav } from '../../components/Admin'
 
-import ViewC from './edit'
+import ViewC from './view'
 
 const CategoryView = () => {
 	return (
