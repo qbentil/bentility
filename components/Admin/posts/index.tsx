@@ -120,19 +120,19 @@ const Unit = ({ post }: { post: Post }) => {
 					icon={<BiTrashAlt />}
 					color='delete'
 					onClick={deletePost}
-        />
-        <Link href={`/posts/edit/${post.slug}`}>
-				<UtilButton
-					icon={<BiPencil />}
-					color='edit'
-					onClick={editPost}
-          />
-          </Link>
+				/>
+				<Link href={`posts/edit/${post.slug}`}>
+					<UtilButton
+						icon={<BiPencil />}
+						color='edit'
+						
+					/>
+				</Link>
 				<Link href={`posts/view/${post.slug}`}>
 					<UtilButton
 						icon={<BsEye />}
 						color='view'
-						onClick={viewPost}
+						
 					/>
 				</Link>
 			</div>
