@@ -16,6 +16,8 @@ import {
 import { FECTCH_ADMINS } from '../../../util/admins'
 import { MdDateRange } from 'react-icons/md'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 
 const AllPosts = () => {
 	const [{ posts }, dispatch] = useStateValue()
@@ -68,11 +70,25 @@ const AllPosts = () => {
 }
 
 const Unit = ({ post }: { post: Post }) => {
+  const router = useRouter()
+
 	const deletePost = () => {
 		toast.success('Deleted Successfully !')
 	}
-	const editPost = () => {}
-	const viewPost = () => {}
+  const editPost = () => {
+    router.push({
+      pathname: `posts/edit/${post.slug}`,
+      query: { _id : post._id }
+    })
+  
+  }
+  const viewPost = () => {
+    router.push({
+      pathname: `posts/view/${post.slug}`,
+      query: { _id : post._id }
+    })
+  
+  }
 
 	return (
 		<div className='w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
@@ -121,20 +137,20 @@ const Unit = ({ post }: { post: Post }) => {
 					color='delete'
 					onClick={deletePost}
 				/>
-				<Link href={`posts/edit/${post.slug}`}>
+				
 					<UtilButton
 						icon={<BiPencil />}
 						color='edit'
-						
+						onClick={editPost}
 					/>
-				</Link>
-				<Link href={`posts/view/${post.slug}`}>
+		
+				
 					<UtilButton
 						icon={<BsEye />}
 						color='view'
-						
+						onClick={viewPost}
 					/>
-				</Link>
+				
 			</div>
 		</div>
 	)
