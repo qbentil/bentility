@@ -7,6 +7,7 @@ import { FiSettings } from 'react-icons/fi'
 import { BiLogOutCircle } from 'react-icons/bi'
 import { useStateValue } from '../../../context/StateProvider'
 import { LOGOUT } from '../../../util'
+import Searchbar from '../Searchbar'
 const Navbar = () => {
 	return (
 		<div className='bg-white py-2 px-4 w-screen h-[10vh] flex items-center z-40'>
@@ -30,7 +31,7 @@ const Navbar = () => {
 			{/* main */}
 			<div className='flex justify-between items-center w-[80%]'>
 				{/* searchbar */}
-				<Searchbar />
+				<Searchbar tweek />
 				{/* user profile */}
 				<UserProfile />
 			</div>
@@ -38,26 +39,6 @@ const Navbar = () => {
 	)
 }
 
-export const Searchbar = () => {
-	return (
-		<div className='flex w-96 justify-between items-center gap-x-1'>
-			<div className='bg-active-bg h-10 w-[90%] rounded-full flex items-center px-2 gap-2 '>
-				<RiSearch2Line className='text-lg text-active cursor-pointer' />
-				<input
-					type='search'
-					name='search'
-					id='search'
-					autoComplete='off'
-					placeholder='search here...'
-					className='bg-transparent text-base focus:outline-none border-0 w-[90%] placeholder:text-active text-active'
-				/>
-			</div>
-			<Link href={'/'}>
-				<FaBlog className='text-xl text-active cursor-pointer' />
-			</Link>
-		</div>
-	)
-}
 
 export const UserProfile = () => {
 	const [{ user }, dispatch] = useStateValue()
