@@ -6,6 +6,8 @@ export const actionTypes = {
     ADD_POST: 'ADD_POST',
     ADD_CATEGORY: 'ADD_CATEGORY',
     ADD_USER: 'ADD_USER',
+    UPDATE_USER: 'UPDATE_USER',
+
 
 }
 
@@ -47,6 +49,14 @@ const reducer = (state, action) => {
                 ...state,
                 users: [...state.users, action.user],
             };
+        case actionTypes.UPDATE_USER:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    ...action.user,
+                }
+            }
         default:
             return state;
     }

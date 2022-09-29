@@ -22,7 +22,7 @@ const Uploader = ({setImageURI, setImage}: {setImageURI:any, setImage:any}) => {
     <article className="">
       <label
         htmlFor="file-upload"
-        className="w-full h-[450px] max-w-[600px]  flex flex-col justify-center items-center rounded-lg cursor-pointer border-2 border-dashed border-blue-200  p-10"
+        className="w-full h-full max-w-[600px]  flex flex-col justify-center items-center rounded-lg cursor-pointer border-2 border-dashed border-blue-200  p-10"
       >
         <div className="flex flex-col justify-center items-center pt-5 pb-6 gap-2">
           <MdCloudUpload className="text-gray-500 text-3xl " />

@@ -29,6 +29,7 @@ export const uploadImage = async (image:any, storagePath:string, callback:(url:s
     },
     () => {
       getDownloadURL(storageRef).then((downloadURL) => {
+        console.log("File available at", downloadURL);
         callback(downloadURL);
       });
     }

@@ -49,3 +49,68 @@ export const ADD_ADMIN = async (token:string, admin: User, callback: (data:any)=
       toast.error(e?.response?.data?.message);
     }
   }
+
+export const UPDATE_AVATAR = async (token:string, update: {avatar:string}, callback: (data:any)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user',
+      method: "PATCH",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: update
+    })
+    if (data.success) {
+      console.log(`Avatar updated🚀🎉`, data.data);
+      callback(data.data);
+    }else{
+      await removeImage(update.avatar);
+      console.log(`Avatar update failed❌`);
+      toast.error(data?.message || "Something went wrong");
+    }
+  }catch(e:any){
+    await removeImage(update.avatar || '');
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}
+
+export const UPDATE_SELF = async (token:string, admin: User, callback: (data:User)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user',
+      method: "PUT",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: admin
+    })
+    if (data.success) {
+      console.log(`Admin updated🚀🎉`, data.data);
+      callback(data.data);
+    }else{
+      console.log(`Admin update failed❌`);
+      toast.error(data?.message || "Something went wrong");
+    }
+  }catch(e:any){
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}
+
+export const CHANGE_PASSWORD = async (token:string, password: {password:string, new_password:string}, callback: (data:any)=> void) => {
+  try{
+    const {data} = await Axios({
+      url: '/user/password',
+      method: "PATCH",
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      data: password
+    })
+    callback(data);
+  }catch(e:any){
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+}
