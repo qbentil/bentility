@@ -47,6 +47,7 @@ export type Button = {
 
 export type UtilButton = {
     icon: JSX.Element;
-    color: string;
+    color?: string;
+    title: string;
     onClick?: () => void;
 }

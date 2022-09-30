@@ -8,7 +8,7 @@ const PostView = () => {
   return (
     <div>
     <Head>
-      <title>Bentility| Edit Post</title>
+      <title>Bentility| View Post</title>
       <meta name='description' content='Bentility Admin | Post' />
       <link rel='icon' href='/favicon.png' />
     </Head>
