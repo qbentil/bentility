@@ -72,7 +72,7 @@ export const Categories = ({ ids }: { ids: string[] }) => {
   return (
     categories &&
     categories
-      .filter((category: Category) => ids.includes(category?._id || ""))
+      .filter((category: Category) => ids?.includes(category?._id || ""))
       .map((category: Category) => (
         <div
           style={{

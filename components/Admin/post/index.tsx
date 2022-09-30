@@ -13,7 +13,7 @@ const Post = ({ post }: { post: Post }) => {
   const viewPost = () => {
     router.push({
      pathname: `admin/posts/view/${post.slug}`,
-     query: { _id : post._id }
+    //  query: { _id : post._id }
    })
  };
   return (

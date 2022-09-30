@@ -14,7 +14,7 @@ const Unit = ({ data }: { data: Category }) => {
   const viewCategory = () => {
     router.push({
      pathname: `admin/categories/view/${data.slug}`,
-     query: { _id : data._id }
+    //  query: { _id : data._id }
    })
  };
 
