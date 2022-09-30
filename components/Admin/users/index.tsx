@@ -89,7 +89,7 @@ const Unit = ({ user }: { user: User }) => {
     });
   };
   return (
-    <div className="w-full  grid grid-cols-3 py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75">
+    <div className="w-full  grid grid-cols-3 py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75"  onClick={viewUser}>
       <div className="flex items-center  gap-8  ">
         <img
           src={
