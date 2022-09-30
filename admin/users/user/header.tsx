@@ -14,7 +14,7 @@ const SettingsHeader = ({tab, setTab, user}: {tab:string, setTab: (e:string) => 
       {/* avatar */}
       <div className="w-16 h-16 rounded-lg bg-gray-200">
         <img
-          src={user?.avatar}
+          src={user?.avatar || 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'}
           alt=""
           className="w-full h-full object-cover rounded-lg"
         />
