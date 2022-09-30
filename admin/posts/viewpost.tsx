@@ -1,14 +1,19 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { Navbar, Sidenav } from '../../components/Admin'
 import ViewP from './view'
 
 
 const PostView = () => {
+  const router = useRouter()
+	const path = router.asPath;
+	const paths = path.split("/");
+	const slug = paths[paths.length - 1];
   return (
     <div>
     <Head>
-      <title>Bentility| View Post</title>
+      <title>Bentility| Post - {slug}</title>
       <meta name='description' content='Bentility Admin | Post' />
       <link rel='icon' href='/favicon.png' />
     </Head>

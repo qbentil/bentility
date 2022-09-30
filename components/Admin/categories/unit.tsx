@@ -2,17 +2,21 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Category } from "../../../types";
+import { useRouter } from "next/router";
 
 function UnitCat({ data }: { data: Category }) {
+  const router = useRouter();
   const { title, description, imageURL, _id, color, slug } = data;
+  const viewCategory = () => {
+    router.push({
+      pathname: `categories/view/${slug}`,
+    });
+  };
   return (
     <div
       className="max-w-sm h-[25rem] bg-white rounded-lg border cursor-pointer shadow-md font-sans pb-5"
-      // style={{
-      //   borderColor: color,
-      // }}
     >
-      <div className="rounded-t-lg  w-full h-full max-h-[65%] overflow-hidden">
+      <div className="rounded-t-lg  w-full h-full max-h-[65%] overflow-hidden" onClick={viewCategory}>
         <img
           className=" h-full w-full object-cover hover:scale-110 ease-in-out duration-500 transition-all"
           src={imageURL}

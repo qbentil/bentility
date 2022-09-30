@@ -20,7 +20,7 @@ const UtilButton = ({ icon, color,title, onClick }: UtilButton) => {
         onMouseOut={handleMouseOut}
       >
         <p
-          className={`text-${color || 'black'}  text-lg`}
+          className={`text-${color}  text-lg`}
         >
           {icon}
         </p>

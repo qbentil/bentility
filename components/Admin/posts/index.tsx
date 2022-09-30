@@ -62,7 +62,7 @@ const AllPosts = () => {
               </div>
             </div>
           </div>
-          {filtered ? (
+          {filtered && filtered.length > 0 ? (
             filtered.map((post: any) => <Unit post={post} key={post._id} />)
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500">

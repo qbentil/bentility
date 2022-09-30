@@ -3,12 +3,18 @@ import Head from 'next/head'
 import { Navbar, Sidenav } from '../../components/Admin'
 
 import ViewC from './view'
+import { useRouter } from 'next/router'
 
 const CategoryView = () => {
+	const router = useRouter()
+	const path = router.asPath;
+	const paths = path.split("/");
+	const cslug = paths[paths.length - 1];
+
 	return (
 		<div>
 			<Head>
-				<title>Bentility| View Category</title>
+				<title>Bentility| category - {cslug}</title>
 				<meta name='description' content='Bentility Admin | Post' />
 				<link rel='icon' href='/favicon.png' />
 			</Head>

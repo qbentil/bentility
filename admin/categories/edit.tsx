@@ -14,9 +14,14 @@ import { useStateValue } from '../../context/StateProvider'
 
 const EditC = () => {
 	const router = useRouter()
-	const postId = router.query._id
-	const [{ categories, user }, dispatch] = useStateValue()
-	const cat = categories.filter((post: any) => post._id === postId)[0]
+	const path = router.asPath;
+	const paths = path.split("/");
+	const cslug = paths[paths.length - 1];
+	const [{ categories, user }, dispatch] = useStateValue();
+
+	const cat= categories.filter((category: any) =>
+	  category.slug.toLowerCase().includes(cslug.toLowerCase())
+	)[0];
 
 	const [image, setImage] = useState('')
 	const [imageURI, setImageURI] = useState('')
