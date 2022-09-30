@@ -30,6 +30,7 @@ export type User = {
     role: string;
     about?: string;
     avatar?: string;
+    phone?: string;
     access_token?: string;
     createdAt?: string;
     updatedAt?: string;
