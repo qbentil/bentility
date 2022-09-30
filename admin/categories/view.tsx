@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { BiArchiveIn, BiArrowBack } from "react-icons/bi";
+import { BsPencil } from "react-icons/bs";
 import UtilButton from "../../components/UtilButton";
 import { useStateValue } from "../../context/StateProvider";
 import { ColorOpacity, generateInitials } from "../../util/functions";
@@ -62,6 +64,14 @@ const ViewC = () => {
               title="Archive"
               // onClick={()=> router.back}
             />
+            	<Link href={`/admin/posts/edit/${cat.slug}`}>
+					<UtilButton
+						icon={<BsPencil />}
+						color='black'
+						title='Edit'
+						
+					/>
+				</Link>
           </div>
           <h1
             className="text-2xl font-bold poppins text-primary"
