@@ -4,12 +4,22 @@ import { FaClipboardList } from "react-icons/fa";
 import { useStateValue } from "../../../context/StateProvider";
 import { Category } from "../../../types";
 import { CategoryPostCount, ColorOpacity, convertDate, generateInitials } from "../../../util/functions";
+import { useRouter } from "next/router";
+
 
 const Unit = ({ data }: { data: Category }) => {
-	const [{ posts }] = useStateValue();
+  const [{ posts }] = useStateValue();
+  const router = useRouter();
+  
+  const viewCategory = () => {
+    router.push({
+     pathname: `admin/categories/view/${data.slug}`,
+     query: { _id : data._id }
+   })
+ };
 
   return (
-    <div className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75">
+    <div className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75" onClick={viewCategory}>
       <div className="flex items-center w-[80%] gap-8 font-sans ">
         <div
           className="w-20 h-10 flex justify-center items-center rounded-md group-hover:bg-white"

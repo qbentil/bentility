@@ -4,6 +4,7 @@ export const actionTypes = {
     SET_CATEGORIES: 'SET_CATEGORIES',
     SET_POSTS: 'SET_POSTS',
     ADD_POST: 'ADD_POST',
+    // UPDATE_POST: 'UPDATE_POST',
     ADD_CATEGORY: 'ADD_CATEGORY',
     ADD_USER: 'ADD_USER',
     UPDATE_USER: 'UPDATE_USER',
@@ -34,6 +35,11 @@ const reducer = (state, action) => {
                 ...state,
                 posts: [...state.posts, action.post],
             };
+        // case actionTypes.UPDATE_POST:
+        //     return {
+        //         ...state,
+        //         posts: [...state.posts, action.post],
+        //     };
         case actionTypes.ADD_CATEGORY:
             return {
                 ...state,

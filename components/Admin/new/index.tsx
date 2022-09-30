@@ -132,7 +132,7 @@ function NewPost() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
 export default NewPost;

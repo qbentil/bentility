@@ -22,3 +22,23 @@ export const CREATE_POST = async (token:string, post: Post, callback: (data:any)
     }
 
 };
+
+export const UPDATE_POST = async (token: string, post: Post, callback: (data: any) => void) => { 
+    if(!token) return toast.error("Please login to update a post");
+    // This is buggy
+    // try{
+    //     const {data} = await Axios({
+    //         method: "PUT",
+    //         url: `posts/edit/${post.slug}`,
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             Authorization: `Bearer ${token}`
+    //         },
+    //         data: post
+    //     })
+    //     callback(data)
+    // }catch(err: any){
+    //     console.log(err)
+    //     toast.error(err?.response?.data?.message || ">> Something went wrong")
+    // }
+}

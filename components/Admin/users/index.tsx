@@ -72,7 +72,7 @@ const Unit = ({ user }: { user: User }) => {
 		<div className='w-full  grid grid-cols-3 py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75'>
 			<div className='flex items-center  gap-8  '>
 				<img
-					src={user.avatar}
+					src={user.avatar || 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'}
 					alt=''
 					className='object-cover w-10 h-10 rounded-full'
 				/>
