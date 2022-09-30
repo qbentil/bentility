@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Button from '../../components/Button'
-import { UPDATE_POST } from '../../util/posts'
 import CategorySelector from '../../components/Selectors/categorySelector'
 import CustomEditor from '../../components/Admin/new/editor'
 import { VALIDATE_POST } from '../../components/Validations'
@@ -11,9 +10,11 @@ import { useRouter } from 'next/router'
 
 const EditP = () => {
 	const router = useRouter()
-	const postId = router.query._id
-	const [{ posts, user }, dispatch] = useStateValue()
-	const post = posts.filter((post: any) => post._id === postId)[0]
+	const path = router.asPath
+	const paths = path.split("/")
+	const pslug = paths[paths.length -1]
+	const [{ posts, user }, dispatch] = useStateValue();
+	const post = posts.filter((post: any) => post.slug.toLowerCase().includes(pslug.toLowerCase()))[0];
 
 	const [categories, setCategories] = useState(post.categories)
 	const [body, setBody] = useState(post.content)

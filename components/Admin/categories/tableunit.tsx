@@ -11,30 +11,31 @@ import { useRouter } from "next/router";
 
 const Tableunit = ({ data }: { data: Category }) => {
   const { title, description, imageURL, _id, color, slug } = data;
-  const [{posts}, dispatch] = useStateValue()
+  const [{ posts }, dispatch] = useStateValue();
   function newFunction(): string | undefined {
     return "https://flowbite.com/docs/images/blog/image-1.jpg";
   }
-  const router = useRouter()
+  const router = useRouter();
 
   const deleteCategory = () => {
     toast.success("Deleted Successfully !");
   };
   const editCategory = () => {
-     router.push({
+    router.push({
       pathname: `categories/edit/${slug}`,
-      query: { _id : _id }
-    })
+    });
   };
   const viewCategory = () => {
-     router.push({
+    router.push({
       pathname: `categories/view/${slug}`,
-      query: { _id : _id }
-    })
+    });
   };
 
   return (
-    <div className="w-full hover:bg-active-bg border-b-2 border-blue-200 px-4 py-3  grid grid-cols-3  transition-colors duration-500 ease-in-out cursor-pointer z-0" onClick={viewCategory}>
+    <div
+      className="w-full hover:bg-active-bg border-b-2 border-blue-200 px-4 py-3  grid grid-cols-3  transition-colors duration-500 ease-in-out cursor-pointer z-0"
+      onClick={viewCategory}
+    >
       <div className="flex items-center gap-2 text-xl w-full max-w-[40%]">
         <img
           src={imageURL || newFunction()}
@@ -57,18 +58,27 @@ const Tableunit = ({ data }: { data: Category }) => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        {
-          CategoryPostCount(_id || '', posts)
-        }
+        {CategoryPostCount(_id || "", posts)}
       </div>
       <div className="flex gap-4 items-center justify-end">
         <UtilButton
           icon={<BiTrashAlt />}
-          color="delete"
+          title="delete"
+          color="red-500"
           onClick={deleteCategory}
         />
-        <UtilButton icon={<BiPencil />} color="edit" onClick={editCategory} />
-        <UtilButton icon={<BsEye />} color="view" onClick={viewCategory} />
+        <UtilButton
+          icon={<BiPencil />}
+          color="yellow-500"
+          title="edit"
+          onClick={editCategory}
+        />
+        {/* <UtilButton
+          icon={<BsEye />}
+          color="green-500"
+          title="view"
+          onClick={viewCategory}
+        /> */}
       </div>
     </div>
   );

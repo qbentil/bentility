@@ -30,6 +30,7 @@ export type User = {
     role: string;
     about?: string;
     avatar?: string;
+    phone?: string;
     access_token?: string;
     createdAt?: string;
     updatedAt?: string;
@@ -47,6 +48,7 @@ export type Button = {
 
 export type UtilButton = {
     icon: JSX.Element;
-    color: string;
+    color?: string;
+    title: string;
     onClick?: () => void;
 }

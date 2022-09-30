@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Admin/new/editor.js", "components/Button"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Admin/new/editor.js", "components/Button", "components/Promises/index.js"],
   "exclude": ["node_modules"]
 }

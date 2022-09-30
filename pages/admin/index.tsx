@@ -35,7 +35,7 @@ const Admin = ({page = <Dashboard />}: {page?:JSX.Element}) => {
             posts: data
         });
     });
-    posts.length <= 0 && FETCH_DATA("categories", (data:any) => {
+    categories.length <= 0 && FETCH_DATA("categories", (data:any) => {
         dispatch({
             type: "SET_CATEGORIES",
             categories: data
