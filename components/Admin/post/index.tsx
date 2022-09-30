@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BsBook, BsEye } from "react-icons/bs";
 import { MdDateRange } from "react-icons/md";
@@ -7,8 +8,16 @@ import { convertDate, generateInitials } from "../../../util/functions";
 import { Writer, Categories } from "../posts";
 
 const Post = ({ post }: { post: Post }) => {
+  const router = useRouter();
+  
+  const viewPost = () => {
+    router.push({
+     pathname: `admin/posts/view/${post.slug}`,
+     query: { _id : post._id }
+   })
+ };
   return (
-    <div className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75 ">
+    <div className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75 " onClick={viewPost}>
       <div className="flex items-center w-[90%] gap-8 font-sans ">
         <div className="w-10 h-10 flex justify-center text-primary items-center bg-active-bg rounded-full group-hover:bg-white">
           {generateInitials(post.title || "")}

@@ -7,6 +7,7 @@ import { BsEye } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { CategoryPostCount } from "../../../util/functions";
 import { useStateValue } from "../../../context/StateProvider";
+import { useRouter } from "next/router";
 
 const Tableunit = ({ data }: { data: Category }) => {
   const { title, description, imageURL, _id, color, slug } = data;
@@ -14,15 +15,26 @@ const Tableunit = ({ data }: { data: Category }) => {
   function newFunction(): string | undefined {
     return "https://flowbite.com/docs/images/blog/image-1.jpg";
   }
+  const router = useRouter()
 
   const deleteCategory = () => {
     toast.success("Deleted Successfully !");
   };
-  const editCategory = () => {};
-  const viewCategory = () => {};
+  const editCategory = () => {
+     router.push({
+      pathname: `categories/edit/${slug}`,
+      query: { _id : _id }
+    })
+  };
+  const viewCategory = () => {
+     router.push({
+      pathname: `categories/view/${slug}`,
+      query: { _id : _id }
+    })
+  };
 
   return (
-    <div className="w-full hover:bg-active-bg border-b-2 border-blue-200 px-4 py-3  grid grid-cols-3  transition-colors duration-500 ease-in-out cursor-pointer z-0">
+    <div className="w-full hover:bg-active-bg border-b-2 border-blue-200 px-4 py-3  grid grid-cols-3  transition-colors duration-500 ease-in-out cursor-pointer z-0" onClick={viewCategory}>
       <div className="flex items-center gap-2 text-xl w-full max-w-[40%]">
         <img
           src={imageURL || newFunction()}
