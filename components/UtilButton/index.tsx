@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UtilButton } from "../../types";
 
-const UtilButton = ({ icon, color, onClick }: UtilButton) => {
+const UtilButton = ({ icon, color,title, onClick }: UtilButton) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -14,22 +14,20 @@ const UtilButton = ({ icon, color, onClick }: UtilButton) => {
   return (
     <div className="relative">
       <div
-        className="p-1 rounded-md bg-white hover:scale-105 z-0 "
+        className="p-1 rounded-md bg-white hover:scale-105 z-0 cursor-pointer"
         onClick={onClick}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
         <p
-          className={`${color === "delete" ? "text-red-500" : ""} ${
-            color === "edit" ? "text-blue-500" : ""
-          } ${color === "view" ? "text-emerald-500" : ""} text-lg`}
+          className={`text-${color}  text-lg`}
         >
           {icon}
         </p>
       </div>
       {isHovering && (
         <div className="absolute -top-8 bg-white py-1 px-2 rounded-md">
-          <p className="text-[0.65rem] font-semibold capitalize">{color}</p>
+          <p className="text-[0.65rem] font-semibold capitalize">{title}</p>
         </div>
       )}
     </div>

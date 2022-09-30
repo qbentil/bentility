@@ -7,7 +7,7 @@ const Users = () => {
 	return (
 		<div>
 			<Head>
-				<title>Bentility| Admin</title>
+				<title>Bentility| User</title>
 				<meta name='description' content='Bentility Admin | Users' />
 				<link rel='icon' href='/favicon.png' />
 			</Head>

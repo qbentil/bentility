@@ -44,7 +44,7 @@ export const Navs = [
   {
     name: "Archives",
     icon: <BsCalendarEvent />,
-    protected: true,
+    protected: false,
     link: "archives",
   },
 ];
