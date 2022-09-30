@@ -124,37 +124,12 @@ const Unit = ({ user }: { user: User }) => {
       </div>
       <div className="flex items-center justify-end gap-4  ">
         <div className="flex items-center justify-center gap-5">
-          {user.role === "admin" ? (
-            <>
-              <UtilButton
-                icon={<BsEye />}
-                color="green-500"
-                title="view"
-                onClick={viewUser}
-              />
-            </>
-          ) : (
-            <>
-              <UtilButton
-                icon={<BiTrashAlt />}
-                color="red-500"
-                title="delete"
-                onClick={() => {}}
-              />
-              <UtilButton
-                icon={<BiPencil />}
-                color="yellow-500"
-                title="edit"
-                onClick={() => {}}
-              />
-              <UtilButton
-                icon={<BsEye />}
-                color="green-500"
-                title="view"
-                onClick={viewUser}
-              />
-            </>
-          )}
+          <UtilButton
+            icon={<BsEye />}
+            color="green-500"
+            title="view"
+            onClick={viewUser}
+          />
         </div>
       </div>
     </div>
