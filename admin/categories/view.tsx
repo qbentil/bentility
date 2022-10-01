@@ -22,17 +22,17 @@ const ViewC = () => {
     <div className="bg-white h-full w-full rounded-lg">
       <div className="bg-white w-full h-full rounded-md shadow-md p-5 flex gap-8">
         <div
-          className="w-full h-full text-7xl flex justify-center items-center rounded-md group-hover:bg-white"
+          className="w-[80%] h-[80%] text-7xl flex justify-center items-center rounded-md group-hover:bg-white"
           style={{
-            backgroundColor: ColorOpacity(cat.color || "", 20),
-            color: cat.color || "black",
+            backgroundColor: ColorOpacity(cat?.color || "", 20),
+            color: cat?.color || "black",
           }}
         >
-          {cat.imageURL ? (
+          {cat?.imageURL ? (
             <div className="h-full w-full rounded-xl">
               <img
-                src={cat.imageURL}
-                alt={cat.slug}
+                src={cat?.imageURL}
+                alt={cat?.slug}
                 className="w-full  overflow-hidden h-full object-contain "
               />
             </div>
@@ -44,12 +44,12 @@ const ViewC = () => {
                 }}
                 className="poppins"
               >
-                {generateInitials(cat.title)}
+                {generateInitials(cat?.title)}
               </p>
             </div>
           )}
         </div>
-        <div className="flex h-full w-full items-center justify-center flex-col">
+        <div className="flex h-full w-full items-center justify-start flex-col">
           <div className="flex items-center justify-start gap-x-5 p-4">
             {/* back button */}
             <UtilButton
@@ -62,24 +62,18 @@ const ViewC = () => {
               icon={<BiArchiveIn />}
               color="red-600"
               title="Archive"
-              // onClick={()=> router.back}
             />
-            	<Link href={`/admin/posts/edit/${cat.slug}`}>
-					<UtilButton
-						icon={<BsPencil />}
-						color='black'
-						title='Edit'
-						
-					/>
-				</Link>
+            <Link href={`/admin/categories/edit/${cat?.slug}`}>
+              <UtilButton icon={<BsPencil />} color="black" title="Edit" />
+            </Link>
           </div>
           <h1
             className="text-2xl font-bold poppins text-primary"
-            style={{ color: cat.color }}
+            style={{ color: cat?.color }}
           >
-            {cat.title}
+            {cat?.title}
           </h1>
-          <p>{cat.description}</p>
+          <p>{cat?.description}</p>
         </div>
       </div>
     </div>
