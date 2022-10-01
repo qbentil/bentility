@@ -9,34 +9,9 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import type { NextPage } from "next";
 import SearchBar from "../components/Searchbar";
-import { useEffect } from "react";
-import { FETCH_DATA } from "../util";
-import { useStateValue } from "../context/StateProvider";
+
 
 const Home: NextPage = () => {
-  const [{pusers, posts, categories}, dispatch] = useStateValue();
-
-  useEffect(() => {
-    //   fetch and dispatch posts and categories if empty
-    posts.length <= 0 && FETCH_DATA("posts", (data:any) => {
-        dispatch({
-            type: "SET_POSTS",
-            posts: data
-        });
-    });
-    categories.length <= 0 && FETCH_DATA("categories", (data:any) => {
-        dispatch({
-            type: "SET_CATEGORIES",
-            categories: data
-        });
-    })
-    pusers.length <= 0 && FETCH_DATA("users", (data:any) => {
-        dispatch({
-            type: "SET_PUSERS",
-            users: data
-        });
-    })
-    }, [])
   return (
     <div className={"items-center flex flex-col"}>
       <Head>

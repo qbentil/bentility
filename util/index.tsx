@@ -38,7 +38,7 @@ export const LOGOUT:any = async (dispatch:any) => {
 
     } catch (e: any) {
       console.log(e)
-        toast.error(e?.response?.data?.message)
+        // toast.error(e?.response?.data?.message)
     }
   }
 
@@ -50,14 +50,14 @@ export const FETCH_DATA = async (route:any, callback: (data:any)=> void) => {
       method: "GET",
     });
     if (data.success) {
-      console.log(`${route}🚀🎉`, data.data);
+      // console.log(`${route}🚀🎉`, data.data);
       callback(data.data);
     } else {
       console.log(`Fetching ${route} failed❌`);
-      toast.error(data?.message || "Something went wrong");
+      // toast.error(data?.message || "Something went wrong");
     }
   } catch (e: any) {
     console.log(e);
-    toast.error(e?.response?.data?.message);
+    // toast.error(e?.response?.data?.message);
   }
 }
