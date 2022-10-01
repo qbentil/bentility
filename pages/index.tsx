@@ -14,7 +14,7 @@ import { FETCH_DATA } from "../util";
 import { useStateValue } from "../context/StateProvider";
 
 const Home: NextPage = () => {
-  const [{user, posts, categories}, dispatch] = useStateValue();
+  const [{pusers, posts, categories}, dispatch] = useStateValue();
 
   useEffect(() => {
     //   fetch and dispatch posts and categories if empty
@@ -28,6 +28,12 @@ const Home: NextPage = () => {
         dispatch({
             type: "SET_CATEGORIES",
             categories: data
+        });
+    })
+    pusers.length <= 0 && FETCH_DATA("users", (data:any) => {
+        dispatch({
+            type: "SET_PUSERS",
+            users: data
         });
     })
     }, [])
