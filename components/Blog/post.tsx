@@ -7,8 +7,11 @@ import { MdDateRange } from 'react-icons/md';
 import { useStateValue } from '../../context/StateProvider';
 import { convertDate } from '../../util/functions';
 import { Categories } from '../Admin/posts';
+import SectionTitle from '../SectionTitle';
+import { Seperator } from '../Seperator';
 import UtilButton from '../UtilButton';
 import { Writer } from './item';
+import RelatedPosts from './crelated';
 
 const BlogPost = () => {
     const router = useRouter()
@@ -19,7 +22,6 @@ const BlogPost = () => {
 	const post = posts.filter((post: any) =>
 		post.slug.toLowerCase().includes(slug.toLowerCase())
     )[0]
-    console.log(post)
   return (
       <div className='bg-transparent py-10'>
           <div className='w-full h-full bg-white rounded p-4 poppins overflow-y-scroll scrollbar-hidden '>
@@ -65,6 +67,9 @@ const BlogPost = () => {
 				{post?.content || 'N/A'}
 			</div>
 		</div>
+		<Seperator width='2' />
+		<SectionTitle title='Related Posts' tp = "start" />
+		<RelatedPosts />
     </div>
   )
 }
