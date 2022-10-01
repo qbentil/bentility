@@ -3,5 +3,6 @@ export const initialState = {
     categories:[],
     posts:[],
     users:[],
+    pusers:[]
 
 }

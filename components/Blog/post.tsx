@@ -6,8 +6,9 @@ import { BsPencil } from 'react-icons/bs';
 import { MdDateRange } from 'react-icons/md';
 import { useStateValue } from '../../context/StateProvider';
 import { convertDate } from '../../util/functions';
-import { Categories, Writer } from '../Admin/posts';
+import { Categories } from '../Admin/posts';
 import UtilButton from '../UtilButton';
+import { Writer } from './item';
 
 const BlogPost = () => {
     const router = useRouter()

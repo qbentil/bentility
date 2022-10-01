@@ -11,7 +11,7 @@ const AdBanner = () => {
           whatever your location. If you're interested in working with us, we'd
           love to know more.`}
         </p>
-        <p className="text-gray-400 md:text-lg text-sm">Mail us your details on <a href="mailto:bentilshadrack72@gmail.com" className="text-blue-600">bentilshadrack72@gmail.com</a></p>
+        <p className="text-gray-400 md:text-lg text-sm">Mail us your details on <a href="mailto:bentility.blog@gmail.com" className="text-blue-600">bentility.blog@gmail.com</a></p>
       </div>
     </div>
   );

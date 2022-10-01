@@ -3,9 +3,34 @@
 import { BsMoonFill } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect} from "react";
+import { useStateValue } from "../../context/StateProvider";
+import { FETCH_DATA } from "../../util";
 
 const Navbar = () => {
+  const [{pusers, posts, categories}, dispatch] = useStateValue();
+
+  useEffect(() => {
+    //   fetch and dispatch posts and categories if empty
+    posts.length <= 0 && FETCH_DATA("posts", (data:any) => {
+        dispatch({
+            type: "SET_POSTS",
+            posts: data
+        });
+    });
+    categories.length <= 0 && FETCH_DATA("categories", (data:any) => {
+        dispatch({
+            type: "SET_CATEGORIES",
+            categories: data
+        });
+    })
+    pusers.length <= 0 && FETCH_DATA("users", (data:any) => {
+        dispatch({
+            type: "SET_PUSERS",
+            users: data
+        });
+    })
+    }, [])
   return (
     <div
       className={
