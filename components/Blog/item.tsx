@@ -17,7 +17,7 @@ const SingleBlog = ({ data }: { data: Post }) => {
   const router = useRouter();
   const viewPost = () => {
     router.push({
-      pathname: `blog/${data?.slug}`,
+      pathname: `/blog/${data?.slug}`,
     });
   };
   // to make sure pusers are loaded
