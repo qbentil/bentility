@@ -87,6 +87,7 @@ export const Writer = ({ id, className }: WriterProps) => {
     </div>
   );
 };
+
 export const WriterSignature = ({ id }: WriterProps) => {
   const [{ pusers }, dispatch] = useStateValue();
   const writer =
@@ -95,6 +96,7 @@ export const WriterSignature = ({ id }: WriterProps) => {
   const viewWriter = () => {
     router.push({
       pathname: `/writers/${writer?.username}`,
+      query: { id: writer?._id },
     });
   };
   return (
