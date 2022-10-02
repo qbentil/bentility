@@ -63,7 +63,14 @@ const BlogPost = () => {
           </div>
         </div>
         <div className="py-5 px-4 w-full text-gray-700" contentEditable={false}>
-          {post?.content || "N/A"}
+          {
+            // format blog content, show spaces and new lines
+            post?.content
+              .replace(/&nbsp;/g, " ")
+              .replace(/<br>/g, " ")
+              .replace(/<br\/>/g, " ")
+              .replace(/<br \/>/g, " ")
+          }
         </div>
       </div>
       <Seperator width="2" />
