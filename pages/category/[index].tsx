@@ -25,8 +25,7 @@ const UserViewPost = () => {
       </Head>
       <>
         <Navbar />
-        {/* <Hola twColor="primary" message={category?.title || "We have the ability to build infinite way for us."} />
-        <p className="poppins font-medium">{category?.description}</p> */}
+       
       </>
       <main className={`md:w-[80%] w-[95%] min-h-[40vh] `}>
         <SingleCategory category={category} />
