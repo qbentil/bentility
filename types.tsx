@@ -7,6 +7,7 @@ export type Category = {
     color?: string;
     createdAt?: string;
     updatedAt?: string;
+    user?: string;
 }
 
 export type Post = {

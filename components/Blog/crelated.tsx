@@ -5,21 +5,13 @@ import { Empty } from "../Promises";
 import { useRouter } from "next/router";
 import { Post } from "../../types";
 
-const CategoryRelatedPosts = () => {
+const CategoryRelatedPosts = ({categories, filter}: {categories:string[], filter?:string}) => {
   const [{ posts }, dispatch] = useStateValue();
-  const router = useRouter();
-  const path = router.asPath;
-  const paths = path.split("/");
-  const slug = paths[paths.length - 1];
-  const post = posts.filter((post: any) =>
-    post.slug.toLowerCase().includes(slug.toLowerCase())
-  )[0];
 
   const related = posts.filter((p:Post) => {
-    const categories = post?.categories || [];
     const postCategories = p.categories || [];
     const isRelated = categories.some((c:any) => postCategories.includes(c));
-    return isRelated && p.slug !== post?.slug;
+    return isRelated && p.slug !== filter;
   }) 
 
   return (
