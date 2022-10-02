@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { BiArchiveIn, BiArrowBack } from "react-icons/bi";
-import { BsPencil } from "react-icons/bs";
+import {  BiArrowBack } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-import { useStateValue } from "../../context/StateProvider";
 import { convertDate } from "../../util/functions";
 import SectionTitle from "../SectionTitle";
 import { Seperator } from "../Seperator";
@@ -12,16 +10,10 @@ import UtilButton from "../UtilButton";
 import { Writer } from "./item";
 import RelatedPosts from "./crelated";
 import CategoriesBadge from "../Categories/badge";
+import { Post } from "../../types";
 
-const BlogPost = () => {
+const BlogPost = ({post}: {post:Post}) => {
   const router = useRouter();
-  const path = router.asPath;
-  const paths = path.split("/");
-  const slug = paths[paths.length - 1];
-  const [{ posts, user }, dispatch] = useStateValue();
-  const post = posts.filter((post: any) =>
-    post.slug.toLowerCase().includes(slug.toLowerCase())
-  )[0];
   return (
     <div className="bg-transparent py-10">
       <div className="w-full h-full bg-white rounded p-4 poppins overflow-y-scroll scrollbar-hidden ">
@@ -66,16 +58,12 @@ const BlogPost = () => {
           {
             // format blog content, show spaces and new lines
             post?.content
-              .replace(/&nbsp;/g, " ")
-              .replace(/<br>/g, " ")
-              .replace(/<br\/>/g, " ")
-              .replace(/<br \/>/g, " ")
           }
         </div>
       </div>
       <Seperator width="2" />
       <SectionTitle title="Related Posts" tp="start" />
-      <RelatedPosts />
+      <RelatedPosts categories={post?.categories} filter={post?.slug} />
     </div>
   );
 };

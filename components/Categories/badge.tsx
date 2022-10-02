@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { useStateValue } from "../../context/StateProvider";
 import { Category } from "../../types";
@@ -5,6 +6,10 @@ import { ColorOpacity } from "../../util/functions";
 
 const CategoriesBadge = ({ ids }: { ids: string[] }) => {
   const [{ categories }, dispatch] = useStateValue();
+  const router = useRouter();
+  const goToCategory = (category: Category) => {
+    router.push(`/category/${category.slug}`);
+  }
   return (
     categories &&
     categories
@@ -16,12 +21,13 @@ const CategoriesBadge = ({ ids }: { ids: string[] }) => {
           }}
           className=" py-1 px-5 rounded-md"
           key={category._id}
+          onClick={() => goToCategory(category)}
         >
           <p
             style={{
               color: category.color,
             }}
-            className="text-xs truncate"
+            className="text-xs truncate cursor-pointer"
           >
             {category.title}
           </p>

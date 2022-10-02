@@ -10,7 +10,7 @@ import { useStateValue } from "../../context/StateProvider";
 import { Post } from "../../types";
 import { FETCH_DATA } from "../../util";
 import { convertDate, readingTime } from "../../util/functions";
-import { Categories } from "../Admin/posts";
+import CategoriesBadge from "../Categories/badge";
 
 const SingleBlog = ({ data }: { data: Post }) => {
   const [{ pusers }, dispatch] = useStateValue();
@@ -44,7 +44,7 @@ const SingleBlog = ({ data }: { data: Post }) => {
             </div>
           </div>
           <div className="flex gap-3 overflow-hidden max-w-[80%]">
-            <Categories ids={data?.categories} />
+            <CategoriesBadge ids={data?.categories} />
           </div>
           <div className="flex flex-col w-full gap-4">
             <div className="flex gap-4 items-center mx-auto w-full px-4 max-w-[75%] justify-evenly">
@@ -61,7 +61,7 @@ const SingleBlog = ({ data }: { data: Post }) => {
                 </p>
               </div>
             </div>
-            <Writer2 id={data?.writer || ""} />
+            <WriterSignature id={data?.writer || ""} />
           </div>
         </div>
       </div>
@@ -87,14 +87,14 @@ export const Writer = ({ id, className }: WriterProps) => {
     </div>
   );
 };
-export const Writer2 = ({ id }: WriterProps) => {
+export const WriterSignature = ({ id }: WriterProps) => {
   const [{ pusers }, dispatch] = useStateValue();
   const writer =
     (pusers && pusers.filter((user: any) => user._id === id)[0]) || null;
   const router = useRouter();
   const viewWriter = () => {
     router.push({
-      pathname: `writers/${writer?.username}`,
+      pathname: `/writers/${writer?.username}`,
     });
   };
   return (
