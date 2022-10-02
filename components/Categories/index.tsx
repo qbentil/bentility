@@ -23,7 +23,7 @@ const Categories: React.FC<Props> = ({ titlePosition }) => {
 			<div className='w-full pb-20 bg-white grid grid-flow-row grid-cols-2 gap-1 md:grid-cols-5 lg:grid-cols-7 md:gap-2 col-start-auto p-2'>
 				{categories.map((category: any) => (
 					<Link
-						href={`category/${category.title}`}
+						href={`category/${category.slug}`}
 						key={category._id}
 					>
 						<div
