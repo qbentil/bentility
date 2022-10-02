@@ -3,7 +3,6 @@ import { Category, Post } from './../../types';
 export const VALIDATE_POST = (post: Post) => {
     const {title, slug, content, categories} = post;
     if(!title || !slug || !content || !categories.length){
-        toast.error("Please fill all the fields")
         return false
     }
     return true

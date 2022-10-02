@@ -15,7 +15,7 @@ function NewPost() {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [loading, setLoading] = useState(false);
-  const [{user}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   // handle category change
   const handleCategoryChange = (selectedCategories: any) => {
@@ -35,14 +35,14 @@ function NewPost() {
   };
 
   const createPost = async () => {
-    setLoading(true)
+    setLoading(true);
     const post = {
       title,
       slug,
-      content:body,
-      categories
+      content: body,
+      categories,
     };
-    if (!VALIDATE_POST(post)) return;
+    if (!VALIDATE_POST(post)) return toast.error("Please fill all the fields");
     await CREATE_POST(user?.access_token, post, (data: any) => {
       if (data.success) {
         dispatch({
@@ -50,13 +50,12 @@ function NewPost() {
           post: data.data,
         });
         toast.success(data?.message || "Post created successfully");
-      }else{
+      } else {
         toast.error(data?.message || "Something went wrong >>");
       }
     });
-    setLoading(false)
-
-  }
+    setLoading(false);
+  };
   return (
     <div className="w-full h-full bg-white rounded p-4 poppins">
       <form
@@ -69,7 +68,7 @@ function NewPost() {
         <h1 className="font-bold text-xl capitalize text-primary font-sans mb-4">
           Create a New Post
         </h1>
-        <div className='w-full h-full flex items-center jusstify-center gap-x-4'>
+        <div className="w-full h-full flex items-center jusstify-center gap-x-4">
           <div className="w-1/2">
             <div className="flex flex-col mb-3">
               <label
@@ -119,9 +118,15 @@ function NewPost() {
               <CustomEditor val={body} setVal={setBody} />
             </div>
             <div className="flex flex-col mb-3 items-end">
-              <Button 
-                text={loading? "Publishing...." : "Publish"}
-                icon={loading? <BiLoaderCircle className='animate animate-spin' />: <BiAddToQueue />}
+              <Button
+                text={loading ? "Publishing...." : "Publish"}
+                icon={
+                  loading ? (
+                    <BiLoaderCircle className="animate animate-spin" />
+                  ) : (
+                    <BiAddToQueue />
+                  )
+                }
                 type="button"
                 disabled={loading}
                 shape="rounded-md"
@@ -132,7 +137,7 @@ function NewPost() {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default NewPost;
