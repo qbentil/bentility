@@ -16,13 +16,14 @@ const SingleCategory = ({ category }: { category: Category }) => {
   const [{ posts }, dispatch] = useStateValue();
   const router = useRouter();
   return (
-    <div className="bg-transparent py-10">
+    <div className="bg-transparent py-10 ">
       <div 
         style={{
             backgroundImage: `url(${category?.imageURL || ""})`,
+            backgroundSize: 'cover',
             backgroundColor: ColorOpacity(category?.color || '', 20)
         }}
-      className="w-full h-full rounded p-4 poppins overflow-y-scroll scrollbar-hidden ">
+      className="object-cover w-full h-full rounded p-4 poppins overflow-y-scroll scrollbar-hidden ">
         <div className="flex flex-col gap-3" style={{color: category?.color || ''}}>
           <div className="flex items-center justify-between md:justify-start md:gap-x-4">
             {/* back button */}
