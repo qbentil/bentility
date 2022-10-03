@@ -11,6 +11,8 @@ import { BiArchiveIn, BiArrowBack } from 'react-icons/bi'
 import { BsPencil } from 'react-icons/bs'
 import UtilButton from '../../components/UtilButton'
 import Link from 'next/link'
+import Preview from '../../components/Admin/Editor/preview'
+
 
 const ViewP = () => {
 	const router = useRouter()
@@ -75,7 +77,7 @@ const ViewP = () => {
 				className='py-5 px-4 w-full text-gray-700'
 				contentEditable={false}
 			>
-				{post?.content || 'N/A'}
+				<Preview content={post?.content || ''} />
 			</div>
 		</div>
 	)

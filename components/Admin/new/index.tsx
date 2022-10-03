@@ -50,6 +50,7 @@ function NewPost() {
           type: "ADD_POST",
           post: data.data,
         });
+        clearForm();
         toast.success(data?.message || "Post created successfully");
       } else {
         toast.error(data?.message || "Something went wrong >>");
@@ -57,6 +58,12 @@ function NewPost() {
     });
     setLoading(false);
   };
+  const clearForm = () => {
+    setTitle("");
+    setBody("");
+    setCategories([]);
+    setSlug("");
+  }
   return (
     <div className="w-full h-full bg-white rounded p-4 poppins">
       <form
@@ -130,7 +137,7 @@ function NewPost() {
               <CategorySelector onChange={handleCategoryChange} />
             </div>
           </div>
-          <div className="w-full bg-active">
+          <div className="w-full">
             <TextEditor value={body} setValue={setBody} mode={mode} />
           </div>
         </div>

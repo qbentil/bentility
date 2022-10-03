@@ -5,6 +5,8 @@ const MDEditor = dynamic(
   { ssr: false }
 );
 
+
+
 interface Props {
   value: string;
   setValue: (e: any) => void;
@@ -14,6 +16,7 @@ interface Props {
 const TextEditor = ({ value, setValue, mode }: Props) => {
   return (
     <div data-color-mode={mode} className="h-full w-full">
+      <div className="wmde-markdown-var"> </div>
       <MDEditor
         value={value}
         onChange={(e: any) => setValue(e)}
