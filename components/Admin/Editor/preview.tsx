@@ -13,10 +13,15 @@ const Markdown = dynamic(
   () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
   { ssr: false }
 );
-const Preview = ({ value }: { value: string }) => {
+interface Props {
+  content: string;
+  className?: string;
+  mode?: string;
+}
+const Preview = ({ content, className, mode }: Props) => {
   return (
-    <div className="h-full w-full absolute z-10 top-0 left-0 bg-white">
-      <Markdown source={value} />
+    <div data-color-mode={mode || 'light'} className={className}>
+      <Markdown source={content} />
     </div>
   );
 };
