@@ -1,16 +1,17 @@
+import { BiArrowBack } from "react-icons/bi";
+import CategoriesBadge from "../Categories/badge";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
-import {  BiArrowBack } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-import { convertDate } from "../../util/functions";
+import { Post } from "../../types";
+import React from "react";
+import RelatedPosts from "./crelated";
 import SectionTitle from "../SectionTitle";
 import { Seperator } from "../Seperator";
 import UtilButton from "../UtilButton";
 import { Writer } from "./item";
-import RelatedPosts from "./crelated";
-import CategoriesBadge from "../Categories/badge";
-import { Post } from "../../types";
+import { convertDate } from "../../util/functions";
+import { useRouter } from "next/router";
+import Preview from "../Admin/Editor/preview";
 
 const BlogPost = ({post}: {post:Post}) => {
   const router = useRouter();
@@ -55,13 +56,10 @@ const BlogPost = ({post}: {post:Post}) => {
           </div>
         </div>
         <div className="py-5 px-4 w-full text-gray-700" contentEditable={false}>
-          {
-            // format blog content, show spaces and new lines
-            post?.content
-          }
+                <Preview content={post?.content || ""} />
         </div>
       </div>
-      <Seperator width="2" />
+      <Seperator width="1" />
       <SectionTitle title="Related Posts" tp="start" />
       <RelatedPosts categories={post?.categories} filter={post?.slug} />
     </div>
