@@ -32,13 +32,13 @@ const BlogPost = ({post}: {post:Post}) => {
                 {post?.title || "N/A"}
               </h1>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4">            
               <Writer
                 id={post?.writer || "N/A"}
                 className={
                   "text-[0.6rem] md:text-[0.7rem] text-gray-500 flex gap-2 items-center"
                 }
-              />
+                />
               <div className="flex items-center justify-center gap-x-2">
                 <MdDateRange className="text-[0.6rem] md:text-[0.7rem] text-primary" />
                 <p className="hidden text-[0.6rem] md:text-[0.7rem] text-[#4B4B4B] md:flex items-center gap-x-1">

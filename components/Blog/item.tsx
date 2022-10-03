@@ -76,17 +76,21 @@ type WriterProps = {
 
 export const Writer = ({ id, className }: WriterProps) => {
   const [{ pusers }, dispatch] = useStateValue();
-
+  const writer = pusers.filter((user: any) => user._id === id)[0]
+  
   return (
+    <Link href={`/writers/${writer?.username}?id=${writer?._id}`} className='cursor-pointer'>
     <div className={className}>
       <FaUserAlt className="text-primary " />
-      <p>
-        {(pusers && pusers.filter((user: any) => user._id === id)[0]?.name) ||
+      <p className='cursor-pointer hover:text-primary'>
+        {writer?.name ||
           "N/A"}
       </p>
-    </div>
+      </div>
+      </Link>
   );
 };
+
 export const WriterSignature = ({ id }: WriterProps) => {
   const [{ pusers }, dispatch] = useStateValue();
   const writer =
@@ -95,6 +99,7 @@ export const WriterSignature = ({ id }: WriterProps) => {
   const viewWriter = () => {
     router.push({
       pathname: `/writers/${writer?.username}`,
+      query: { id: writer?._id },
     });
   };
   return (
