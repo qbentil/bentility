@@ -8,6 +8,7 @@ import { VALIDATE_POST } from "../../Validations";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useStateValue } from "../../../context/StateProvider";
+import TextEditor from "../Editor";
 
 function NewPost() {
   const [categories, setCategories] = useState([]);
@@ -115,7 +116,8 @@ function NewPost() {
           </div>
           <div className="w-1/2">
             <div className="flex flex-col mb-3">
-              <CustomEditor val={body} setVal={setBody} />
+              {/* <CustomEditor val={body} setVal={setBody} /> */}
+              <TextEditor value={body} setValue={setBody} />
             </div>
             <div className="flex flex-col mb-3 items-end">
               <Button

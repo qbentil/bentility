@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const removeImports = require("next-remove-imports")({});
+const withTM = require('next-transpile-modules')(['react-markdown']);
+const nextConfig = removeImports({
   reactStrictMode: true,
   images: {
-    domains: ['codersquiz.netlify.app']
-  }
-}
+    domains: ["codersquiz.netlify.app"],
+  },
+});
 
-module.exports = nextConfig
+module.exports = withTM(nextConfig);
