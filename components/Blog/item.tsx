@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { BsClock } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
-import { MdDateRange } from "react-icons/md";
-import { useStateValue } from "../../context/StateProvider";
-import { Post } from "../../types";
-import { FETCH_DATA } from "../../util";
 import { convertDate, readingTime } from "../../util/functions";
+
+import { BsClock } from "react-icons/bs";
 import CategoriesBadge from "../Categories/badge";
+import { FETCH_DATA } from "../../util";
+import { FaUserAlt } from "react-icons/fa";
+import Link from "next/link";
+import { MdDateRange } from "react-icons/md";
+import { Post } from "../../types";
+import { useRouter } from "next/router";
+import { useStateValue } from "../../context/StateProvider";
 
 const SingleBlog = ({ data }: { data: Post }) => {
   const [{ pusers }, dispatch] = useStateValue();
@@ -29,7 +30,6 @@ const SingleBlog = ({ data }: { data: Post }) => {
         users: data,
       });
     });
-    // setWriter(pusers && pusers.filter((user: any) => user._id === id)[0]);
   }, []);
 
   return (
@@ -79,7 +79,7 @@ export const Writer = ({ id, className }: WriterProps) => {
   const writer = pusers.filter((user: any) => user._id === id)[0]
   
   return (
-    <Link href={`/writers/${writer?.username}?id=${writer?._id}`} className='cursor-pointer'>
+    <Link href={`/writers/${writer?.username}`} className='cursor-pointer'>
     <div className={className}>
       <FaUserAlt className="text-primary " />
       <p className='cursor-pointer hover:text-primary'>
@@ -99,7 +99,7 @@ export const WriterSignature = ({ id }: WriterProps) => {
   const viewWriter = () => {
     router.push({
       pathname: `/writers/${writer?.username}`,
-      query: { id: writer?._id },
+      // query: { id: writer?._id },
     });
   };
   return (
