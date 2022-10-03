@@ -18,7 +18,7 @@ const TextEditor = ({ value, setValue, mode }: Props) => {
     <div data-color-mode={mode} className="h-full w-full">
       <div className="wmde-markdown-var"> </div>
       <MDEditor
-        value={value}
+        value={value || ""}
         onChange={(e: any) => setValue(e)}
         className="min-h-[25rem]"
         placeholder="Write your post here..."
