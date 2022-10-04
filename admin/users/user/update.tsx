@@ -5,46 +5,57 @@ import { RiSecurePaymentLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { User } from "../../../types";
 import { removeImage, uploadImage } from "../../../firebase";
-import { UPDATE_AVATAR } from "../../../util/admins";
+import { CHANGE_AVATAR } from "../../../util/admins";
 import Quickedit from "./editbox";
 import ImageUploader from "../../../components/ImageUploader";
 import Button from "../../../components/Button";
+import { useStateValue } from "../../../context/StateProvider";
 
-const UpdateSettings = ({user}:{user:User}) => {
-  const [image, setImage] = useState(user.avatar);
+const UpdateSettings = ({ admin }: { admin: User }) => {
+  const [{ user }, dispatch] = useStateValue();
+  const [image, setImage] = useState(admin?.avatar);
   const [imageURI, setImageURI] = useState("");
   const [loading, setLoading] = useState(false);
   const updateAvatar = () => {
     setLoading(true);
-    if (image === user.avatar) {
+    if (image === admin?.avatar) {
       setLoading(false);
       return toast.info("No change detected in avatar");
     }
     if (!image || !imageURI) {
-      setImage(user.avatar);
+      setImage(admin?.avatar);
       toast.error("Please select an image");
       return setLoading(false);
-      }
+    }
 
-      // toast.promise(uploadImage(imageURI, "users", async (url: string) => {
-      //   const data = {
-      //     avatar: url,
-      //   };
-      //   console.log(data);
-      //   await UPDATE_AVATAR(user.access_token, data, async (data: User) => {
-      //     await removeImage(user.avatar || "");
-      //     dispatch({
-      //       type: "SET_USER",
-      //       user: data,
-      //     });
-      //   });
-      // }), {
-      //   pending: "Updating avatar",
-      //   success: "Avatar updated successfully",
-      //   error: "Failed to update avatar",
-      // }, {
-      //   toastId: "updateProfile",
-      // })
+    // upload image
+    toast.promise(
+      uploadImage(imageURI, "users", async (url) => {
+        // update user
+        const updated = {
+          avatar: url,
+        };
+
+        CHANGE_AVATAR(
+          user?.access_token || "",
+          admin._id || "",
+          updated,
+          async (data) => {
+            setLoading(false);
+            toast.success("Avatar updated successfully");
+            setImage(data.avatar);
+            // dispatch
+            dispatch({
+              type: "UPDATE_USER",
+              user: data,
+            });
+          }
+        );
+      }),
+      {
+        pending: "Uploading image...",
+      }
+    );
 
     setLoading(false);
   };
@@ -80,7 +91,7 @@ const UpdateSettings = ({user}:{user:User}) => {
         </div>
         {/*  */}
 
-        <Quickedit user={user} />
+        <Quickedit admin={admin} />
       </div>
     </div>
   );
