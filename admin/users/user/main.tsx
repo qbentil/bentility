@@ -21,8 +21,8 @@ const UserView = () => {
       {/* Body */}
       <div className="w-full h-full pt-4">
         {tab === "app" && <AppSettings user={user} />}
-        {tab === "update" && <UpdateSettings user={user} />}
-        {tab === "security" && <SecuritySettings user={user} />}
+        {tab === "update" && <UpdateSettings admin={user} />}
+        {tab === "security" && <SecuritySettings admin={user} />}
       </div>
     </div>
   );
