@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+
 import { BiLoaderCircle } from "react-icons/bi";
+import Button from "../../../components/Button";
 import { IoMdDoneAll } from "react-icons/io";
 import { RiSecurePaymentLine } from "react-icons/ri";
-import { toast } from "react-toastify";
-import Button from "../../../components/Button";
-import { useStateValue } from "../../../context/StateProvider";
-import { User } from "../../../types";
 import { UPDATE_USER } from "../../../util/admins";
+import { User } from "../../../types";
+import { toast } from "react-toastify";
+import { useStateValue } from "../../../context/StateProvider";
+
 interface Props {
   setEditing?: (e: boolean) => void;
   customClose?: boolean;
@@ -47,7 +49,7 @@ const Quickedit = ({ setEditing, customClose, admin }: Props) => {
       username,
       role,
     };
-    toast.promise(    UPDATE_USER(user?.access_token, admin._id || '', updated, async (data:User) => {
+    toast.promise(UPDATE_USER(user?.access_token, admin._id || '', updated, async (data:User) => {
       setLoading(false);
       toast.success("Profile updated successfully");
       dispatch({
