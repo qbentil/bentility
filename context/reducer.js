@@ -58,10 +58,12 @@ const reducer = (state, action) => {
     case actionTypes.UPDATE_USER:
       return {
         ...state,
-        user: {
-          ...state.user,
-          ...action.user,
-        },
+        users: state.users.map((user) => {
+          if (user._id === action.user._id) {
+            return action.user;
+          }
+          return user;
+        }),
       };
     case actionTypes.EDIT_CATEGORY:
       return {

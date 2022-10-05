@@ -17,29 +17,29 @@ const Profile = ({ setEditing, user }: { setEditing: (e: boolean) => void, user:
       </div>
       <div className="flex flex-col items-start justify-center gap-y-4 py-2 mt-2">
         <div className="w-full">
-          <p className="text-md text-gray-600">{user.about}</p>
+          <p className="text-md text-gray-600">{user?.about}</p>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full ">
           <p className="text-active font-semibold">Full Name: </p>
-          <span>{user.name}</span>
+          <span>{user?.name}</span>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full ">
           <p className="text-active font-semibold">Email: </p>
-          <span>{user.email}</span>
+          <span>{user?.email}</span>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full ">
           <p className="text-active font-semibold">Username: </p>
-          <span>{user.username}</span>
+          <span>{user?.username}</span>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full ">
           <p className="text-active font-semibold">Phone: </p>
-          <span>{user.phone || "N/A"}</span>
+          <span>{user?.phone || "N/A"}</span>
         </div>
         <div className="flex items-center justify-start gap-x-5 text-sm w-full ">
           <p className="text-active font-semibold">Role: </p>
           <span className="capitalize flex items-center justify-center gap-x-1">
-            {user.role || "N/A"}
-            {user.role == "admin" && (
+            {user?.role || "N/A"}
+            {user?.role == "admin" && (
               <RiSecurePaymentLine className="text-green-600" />
             )}
           </span>

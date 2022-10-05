@@ -15,7 +15,7 @@ import { Empty } from "../../Promises";
 import { useRouter } from "next/router";
 
 const AllUsers = () => {
-  const [{ users }, dispatch] = useStateValue();
+  const [{ users, user }, dispatch] = useStateValue();
   const [filtered, setFiltered] = useState<User[]>(users);
   const [query, setQuery] = useState("");
   const search = (query: string) => {
@@ -67,7 +67,11 @@ const AllUsers = () => {
             </div>
             <div className="">
               {filtered && filtered.length > 0 ? (
-                filtered.map((user: any) => <Unit user={user} key={user._id} />)
+                filtered.map((u: any) => {
+                  // return if user is logged in user
+                  if (u._id === user._id) return;
+                  return <Unit user={u} key={u._id} />
+                })
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500">
                   <Empty text="No users yet. Add Users to see them here." />
