@@ -1,7 +1,7 @@
+import Axios from "./axios";
+import { User } from "../types";
 import { removeImage } from './../firebase/index';
 import { toast } from "react-toastify";
-import { User } from "../types";
-import Axios from "./axios";
 
 export const FECTCH_ADMINS = async (token:string, callback: (data:any)=> void) => {
     try {
@@ -119,7 +119,7 @@ export const CHANGE_PASSWORD = async (token:string, password: {password:string, 
 export const UPDATE_USER = async (token:string, id:string, user: User, callback: (data:any)=> void) => {
   try{
     const {data} = await Axios({
-      url: `user/${id}`,
+      url: `admin/${id}`,
       method: "PUT",
       headers: {
           Authorization: `Bearer ${token}`,
