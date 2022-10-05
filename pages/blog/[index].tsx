@@ -22,6 +22,22 @@ const UserViewPost = () => {
         <title>Bentility | Blog - {slug}</title>
         <meta name="description" content="Bentil's Blog | Bentility" />
         <link rel="icon" href="/favicon.png" />
+        {/* site except */}
+        {/* <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@bentil" />
+        <meta name="twitter:creator" content="@bentil" />
+        <meta name="twitter:title" content="Bentility | Blog" />
+        <meta name="twitter:description" content="Bentil's Blog | Bentility" />
+        <meta name="twitter:image" content="https://bentility.com/images/og.png" />
+        <meta property="og:url" content="https://bentility.com" />
+        <meta property="og:title" content="Bentility | Blog" />
+        <meta property="og:description" content="Bentil's Blog | Bentility" />
+        <meta property="og:image" content="https://bentility.com/images/og.png" />
+        <meta property="og:image:secure_url" content="https://bentility.com/images/og.png" />
+        <meta property="og:image:alt" content="Bentility | Blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Bentility | Blog" /> */}
+
       </Head>
       <>
         <Navbar />

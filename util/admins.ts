@@ -120,7 +120,7 @@ export const UPDATE_USER = async (token:string, id:string, user: User, callback:
   try{
     const {data} = await Axios({
       url: `user/${id}`,
-      method: "PATCH",
+      method: "PUT",
       headers: {
           Authorization: `Bearer ${token}`,
       },
