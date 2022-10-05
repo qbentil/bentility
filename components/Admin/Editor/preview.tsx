@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 //   { ssr: false }
 // );
 
-const Markdown = dynamic(
+const Markdown = dynamic<any>(
   () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
   { ssr: false }
 );
