@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import rehypeSanitize from 'rehype-sanitize'
-const MDEditor = dynamic(
+const MDEditor = dynamic<any>(
   () => import("@uiw/react-md-editor").then((mod) => mod.default),
   { ssr: false }
 );

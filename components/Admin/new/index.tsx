@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useStateValue } from "../../../context/StateProvider";
 
 function NewPost() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]); //max: 4
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
@@ -19,13 +19,6 @@ function NewPost() {
   const [mode, setMode] = useState("light");
 
   // handle category change
-  const handleCategoryChange = (selectedCategories: any) => {
-    const options = selectedCategories.map((category: any) => {
-      return category.value;
-    });
-    setCategories(options);
-    console.log(options);
-  };
 
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
@@ -134,7 +127,7 @@ function NewPost() {
               />
             </div>
             <div className="flex flex-col mb-3">
-              <CategorySelector onChange={handleCategoryChange} />
+              <CategorySelector values={categories} onChange={setCategories} />
             </div>
           </div>
           <div className="w-full">

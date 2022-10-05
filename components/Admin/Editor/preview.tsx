@@ -1,15 +1,14 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
 
-const EditerMarkdown = dynamic(
-  () =>
-    import("@uiw/react-md-editor").then((mod) => {
-      return mod.default.Markdown;
-    }),
-  { ssr: false }
-);
+// const EditerMarkdown = dynamic(
+//   () =>
+//     import("@uiw/react-md-editor").then((mod) => {
+//       return mod.default.Markdown;
+//     }),
+//   { ssr: false }
+// );
 
-const Markdown = dynamic(
+const Markdown = dynamic<any>(
   () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
   { ssr: false }
 );

@@ -14,7 +14,7 @@ const AppSettings = ({user}:{user:User}) => {
         <PlatformSettings user={user} />
         {/*  */}
         {
-            !editing ? <Profile setEditing={setEditing} user={user} /> : <Quickedit setEditing={setEditing} user={user} customClose />
+            !editing ? <Profile setEditing={setEditing} user={user} /> : <Quickedit setEditing={setEditing} admin={user} customClose />
         }
       </div>
     </div>
