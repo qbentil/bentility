@@ -9,7 +9,7 @@ import { CategoryPostCount } from "../../../util/functions";
 import { useStateValue } from "../../../context/StateProvider";
 import { useRouter } from "next/router";
 
-const Tableunit = ({ data }: { data: Category }) => {
+export const Tableunit = ({ data }: { data: Category }) => {
   const { title, description, imageURL, _id, color, slug } = data;
   const [{ posts }, dispatch] = useStateValue();
   function newFunction(): string | undefined {

@@ -75,7 +75,7 @@ const AllPosts = () => {
   );
 };
 
-const Unit = ({ post }: { post: Post }) => {
+export const Unit = ({ post }: { post: Post }) => {
   const router = useRouter();
 
   const deletePost = () => {
