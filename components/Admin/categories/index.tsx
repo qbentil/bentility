@@ -95,7 +95,7 @@ function Categories() {
               ))
             ) : (
               <div className="w-full h-full flex items-center justify-center">
-                <Empty text="Empty cateogries" />
+                <Empty text="Empty categories" />
               </div>
             )}
           </div>

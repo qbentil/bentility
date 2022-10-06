@@ -17,11 +17,12 @@ const BlogPost = ({post}: {post:Post}) => {
   const router = useRouter();
   return (
     <div className="bg-transparent py-10">
-      <div className="w-full h-full bg-white rounded p-4 poppins overflow-y-scroll scrollbar-hidden ">
+      <div className="w-full h-full bg-white rounded p-4 poppins overflow-x-hidden overflow-y-scroll scrollbar-hidden relative">
         <div className="flex flex-col md:flex-row items-center p-4 justify-start md:justify-between gap-y-2 md:gap-0">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between md:justify-start md:gap-x-4">
               {/* back button */}
+              <div className="absolute">
               <UtilButton
                 icon={<BiArrowBack />}
                 color="blue-600"
@@ -29,9 +30,12 @@ const BlogPost = ({post}: {post:Post}) => {
                 onClick={() => router.back()}
               />
 
-              <h1 className="text-lg md:text-2xl font-bold capitalize text-primary truncate">
+             </div>
+              <div className="max-w-[80%] lg:max-w-[90%] mx-auto">
+              <h1 className="text-lg md:text-2xl font-bold capitalize text-primary   ">
                 {post?.title || "N/A"}
               </h1>
+              </div>
             </div>
             <div className="flex gap-4">            
               <Writer
