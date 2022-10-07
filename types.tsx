@@ -19,6 +19,7 @@ export type Post = {
     views?: number;
     writer?: string;
     isPublished?: boolean;
+    status?: string;
     createdAt?: string;
     updatedAt?: string;
 }
