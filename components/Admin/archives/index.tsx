@@ -1,14 +1,20 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { BiArchiveIn } from 'react-icons/bi'
 import { useStateValue } from '../../../context/StateProvider'
-import { Category } from '../../../types'
+import { Category, Post } from '../../../types'
 import { Empty } from '../../Promises'
 import Tableunit from '../categories/tableunit'
 import { Unit } from '../posts'
 
 const ArchiveOptions = () => {
     const [{posts, categories}, dispatch] = useStateValue()
+	const [draftPosts, setDraftPosts] = useState<Post[]>(
+		posts.filter((post:Post) => post?.status === 'draft')
+	)
+	const [draftCategories, setDraftCategories] = useState<Category[]>(
+		categories.filter((category:Category) => category?.status === 'draft')
+	)
 
 	const [view, setView] = React.useState('posts')
 
@@ -66,15 +72,15 @@ const ArchiveOptions = () => {
 											</div>
 										</div>
 									</div>
-									{posts && posts.length > 0 ? (
-										posts.map((post: any) => (
+									{draftPosts && draftPosts.length > 0 ? (
+										draftPosts.map((post: any) => (
 											<Unit post={post} key={post._id} />
 										))
 									) : (
 										<div className='w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500'>
 											<Empty
 												text={
-													'No posts yet. Create a post to see it here.'
+													'No Draft posts yet. Draft a post to see it here.'
 												}
 											/>
 										</div>
@@ -106,13 +112,13 @@ const ArchiveOptions = () => {
 											</div>
 										</div>
 									</div>
-									{categories && categories.length > 0 ? (
-										categories.map((category: Category) => (
+									{draftCategories && draftCategories.length > 0 ? (
+										draftCategories.map((category: Category) => (
 											<Tableunit key={category._id} data={category} />
 										))
 									) : (
 										<div className='w-full h-full flex items-center justify-center'>
-											<Empty text='No archived Categories yet' />
+											<Empty text='No drafted Categories yet' />
 										</div>
 									)}
 								</div>
