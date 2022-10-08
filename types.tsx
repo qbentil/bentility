@@ -8,6 +8,7 @@ export type Category = {
     createdAt?: string;
     updatedAt?: string;
     user?: string;
+    status?: string;
 }
 
 export type Post = {
@@ -19,6 +20,7 @@ export type Post = {
     views?: number;
     writer?: string;
     isPublished?: boolean;
+    status?: string;
     createdAt?: string;
     updatedAt?: string;
 }
@@ -44,6 +46,10 @@ export type Button = {
     onClick?: () => void;
     type?: "button" | "submit" | "reset";
     shape?: "rounded-full" | "rounded-md" | "rounded-sm";
+    bgColor?: string;
+    textColor?: string;
+    bgHoverColor?: string;
+    textHoverColor?: string;
     
 }
 

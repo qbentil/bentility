@@ -25,6 +25,7 @@ const EditP = () => {
   const [title, setTitle] = useState(post?.title);
   const [slug, setSlug] = useState(post?.slug);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
   const [mode, setMode] = useState("light");
 
   const handleTitleChange = (e: any) => {
@@ -36,13 +37,15 @@ const EditP = () => {
     setSlug(title.toLowerCase().replace(/ /g, "-"));
   };
 
-  const updatePost = async () => {
+  const updatePost = async (status:string) => {
+    setStatus(status);
     setLoading(true);
     const data = {
       title,
       slug,
       content: body,
       categories,
+      status
     };
     if (!VALIDATE_POST(post)) return toast.error("Please fill all the fields");
     toast.promise(
@@ -102,18 +105,36 @@ const EditP = () => {
               </span>
             </label>
             <Button
-              text={loading ? "Updating...." : "Update"}
+              text={
+                loading && status == "published" ? "Publishing...." : "Publish"
+              }
               icon={
-                loading ? (
+                loading && status == "published" ? (
                   <BiLoaderCircle className="animate animate-spin" />
                 ) : (
                   <BiAddToQueue />
                 )
               }
               type="button"
-              disabled={loading}
+              disabled={loading && status == "published"}
               shape="rounded-md"
-              onClick={updatePost}
+              onClick={() => updatePost("published")}
+            />
+            <Button
+              text={
+                loading && status === "draft" ? "Saving...." : "Save as Draft"
+              }
+              icon={
+                loading && status === "draft" ? (
+                  <BiLoaderCircle className="animate animate-spin" />
+                ) : (
+                  <BiAddToQueue />
+                )
+              }
+              type="button"
+              disabled={loading && status === "draft"}
+              shape="rounded-md"
+              onClick={() => updatePost("draft")}
             />
           </div>
         </div>

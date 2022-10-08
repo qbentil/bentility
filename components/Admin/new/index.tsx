@@ -17,6 +17,7 @@ function NewPost() {
   const [loading, setLoading] = useState(false);
   const [{ user }, dispatch] = useStateValue();
   const [mode, setMode] = useState("light");
+  const [status, setStatus] = useState("");
 
   // handle category change
 
@@ -28,27 +29,34 @@ function NewPost() {
     setSlug(title.toLowerCase().replace(/ /g, "-"));
   };
 
-  const createPost = async () => {
+  const createPost = async (status: string) => {
+    setStatus(status);
     setLoading(true);
     const post = {
       title,
       slug,
       content: body,
       categories,
+      status,
     };
     if (!VALIDATE_POST(post)) return toast.error("Please fill all the fields");
-    await CREATE_POST(user?.access_token, post, (data: any) => {
-      if (data.success) {
-        dispatch({
-          type: "ADD_POST",
-          post: data.data,
-        });
-        clearForm();
-        toast.success(data?.message || "Post created successfully");
-      } else {
-        toast.error(data?.message || "Something went wrong >>");
+    toast.promise(
+      CREATE_POST(user?.access_token, post, (data: any) => {
+        if (data.success) {
+          dispatch({
+            type: "ADD_POST",
+            post: data.data,
+          });
+          clearForm();
+          toast.success(data?.message || "Post created successfully");
+        } else {
+          toast.error(data?.message || "Something went wrong");
+        }
+      }),
+      {
+        pending: "Please wait....",
       }
-    });
+    );
     setLoading(false);
   };
   const clearForm = () => {
@@ -56,7 +64,7 @@ function NewPost() {
     setBody("");
     setCategories([]);
     setSlug("");
-  }
+  };
   return (
     <div className="w-full h-full bg-white rounded p-4 poppins">
       <form
@@ -68,7 +76,7 @@ function NewPost() {
       >
         <div className="w-full flex items-center justify-between gap-x-4 py-2">
           <h1 className="font-bold text-xl capitalize text-primary font-sans mb-4">
-            Create a New Post
+            Create Post
           </h1>
           <div className="flex items-center justify-center gap-x-3">
             <label
@@ -88,18 +96,36 @@ function NewPost() {
               </span>
             </label>
             <Button
-              text={loading ? "Publishing...." : "Publish"}
+              text={
+                loading && status == "published" ? "Publishing...." : "Publish"
+              }
               icon={
-                loading ? (
+                loading && status == "published" ? (
                   <BiLoaderCircle className="animate animate-spin" />
                 ) : (
                   <BiAddToQueue />
                 )
               }
               type="button"
-              disabled={loading}
+              disabled={loading && status == "published"}
               shape="rounded-md"
-              onClick={createPost}
+              onClick={() => createPost("published")}
+            />
+            <Button
+              text={
+                loading && status === "draft" ? "Saving...." : "Save as Draft"
+              }
+              icon={
+                loading && status === "draft" ? (
+                  <BiLoaderCircle className="animate animate-spin" />
+                ) : (
+                  <BiAddToQueue />
+                )
+              }
+              type="button"
+              disabled={loading && status === "draft"}
+              shape="rounded-md"
+              onClick={() => createPost("draft")}
             />
           </div>
         </div>

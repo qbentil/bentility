@@ -3,7 +3,6 @@ import { BsBook, BsEye } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { RiSoundModuleLine } from "react-icons/ri";
 import { useStateValue } from "../../../context/StateProvider";
-import { FaThList } from "react-icons/fa";
 import { Category, Post, User } from "../../../types";
 import UtilButton from "../../UtilButton";
 import { BiPencil, BiTrashAlt } from "react-icons/bi";
@@ -39,7 +38,7 @@ const AllPosts = () => {
     <div className="bg-white h-full px-4">
       <div>
         <div className="bg-white w-full rounded-t-lg flex justify-between items-center py-2 px-4 ">
-          <p className=" text-xl font-semibold text-primary">Posts</p>
+          <p className=" text-xl font-semibold text-primary">Published Posts</p>
           <Searchbar value={query} onSearch={search} />
           <div className="flex items-center justify-center gap-3 border border-active-bg py-2 px-4 font-sans cursor-pointer">
             <RiSoundModuleLine className="text-primary" />
@@ -63,7 +62,11 @@ const AllPosts = () => {
             </div>
           </div>
           {filtered && filtered.length > 0 ? (
-            filtered.map((post: any) => <Unit post={post} key={post._id} />)
+            filtered.map((post: Post) => {
+              // return if post is not published
+              if (post?.status == "draft") return;
+              return <Unit post={post} key={post._id} />
+            })
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-4 text-blue-500">
               <Empty text={"No posts yet. Create a post to see it here."} />
