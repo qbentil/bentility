@@ -6,9 +6,9 @@ import { Category, User } from '../../types'
 import { ColorOpacity, convertDate } from '../../util/functions'
 import { FaUserAlt } from 'react-icons/fa'
 import { FECTCH_ADMINS } from '../../util/admins'
-import { MdDateRange } from 'react-icons/md'
-import { BiArchiveIn, BiArrowBack } from 'react-icons/bi'
-import { BsPencil } from 'react-icons/bs'
+import { MdDateRange, MdOutlinePublishedWithChanges } from 'react-icons/md'
+import { BiAddToQueue, BiArchiveIn, BiArrowBack, BiLoaderCircle } from 'react-icons/bi'
+import { BsArchive, BsPencil } from 'react-icons/bs'
 import UtilButton from '../../components/UtilButton'
 import Link from 'next/link'
 import Preview from '../../components/Admin/Editor/preview'
@@ -26,6 +26,7 @@ const ViewP = () => {
 
 	return (
 		<div className='w-full h-full bg-white rounded p-4 poppins overflow-y-scroll scrollbar-hidden '>
+			<div className='flex items-center justify-between p-4'>
 			<div className='flex items-center justify-start gap-x-5 px-4'>
 				{/* back button */}
 				<UtilButton
@@ -48,6 +49,20 @@ const ViewP = () => {
 						
 					/>
 				</Link>
+			</div>
+				{
+					post?.status !== 'draft' ? (<UtilButton
+						icon={<BsArchive />}
+						color='blue-600'
+						title='Draft'
+						onClick={() => null}
+					/>):(<UtilButton
+					icon={<MdOutlinePublishedWithChanges />}
+					color='blue-600'
+					title='Publish'
+					onClick={() => null}
+				/>)
+				}
 			</div>
 			<div className='flex items-center p-4 justify-between'>
 				<div className='flex flex-col gap-3'>
