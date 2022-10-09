@@ -13,7 +13,7 @@ import {
   generateInitials,
 } from "../../../util/functions";
 import { FECTCH_ADMINS } from "../../../util/admins";
-import { MdDateRange } from "react-icons/md";
+import { MdDateRange, MdOutlinePublishedWithChanges } from "react-icons/md";
 import { useRouter } from "next/router";
 import { Empty } from "../../Promises";
 import Searchbar from "../Searchbar";
@@ -95,6 +95,10 @@ export const Unit = ({ post }: { post: Post }) => {
     });
   };
 
+  const publishPost = () => {
+    toast.success("Published Successfully !");
+  };
+
   return (
     <div
       onClick={viewPost}
@@ -128,13 +132,25 @@ export const Unit = ({ post }: { post: Post }) => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
-        <div className="flex items-center justify-center gap-2 font-sans mr-10">
-          <UtilButton
-            icon={<BsEye />}
-            title={`Views`}
+        {
+          post.status === 'draft' ? (
+            <UtilButton
+            icon={<MdOutlinePublishedWithChanges />}
+                title={`Publish`}
+              color="primary"
+              onClick={publishPost}
           />
-          <p className="text-[#4B4B4B] text-[0.9rem]">{post.views}</p>
-        </div>
+          ) : (
+            <div className="flex items-center justify-center gap-2 font-sans mr-10">
+            <UtilButton
+              icon={<BsEye />}
+              title={`Views`}
+            />
+            <p className="text-[#4B4B4B] text-[0.9rem]">{post.views}</p>
+          </div> 
+          )
+        }
+        
         <UtilButton
           icon={<BiTrashAlt />}
           title="delete"

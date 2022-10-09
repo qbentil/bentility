@@ -8,9 +8,10 @@ import { toast } from "react-toastify";
 import { CategoryPostCount } from "../../../util/functions";
 import { useStateValue } from "../../../context/StateProvider";
 import { useRouter } from "next/router";
+import { MdOutlinePublishedWithChanges } from "react-icons/md";
 
 export const Tableunit = ({ data }: { data: Category }) => {
-  const { title, description, imageURL, _id, color, slug } = data;
+  const { title, description, imageURL, _id, color, slug, status } = data;
   const [{ posts }, dispatch] = useStateValue();
   function newFunction(): string | undefined {
     return "https://flowbite.com/docs/images/blog/image-1.jpg";
@@ -29,6 +30,9 @@ export const Tableunit = ({ data }: { data: Category }) => {
     router.push({
       pathname: `categories/view/${slug}`,
     });
+  };
+  const publishCategory = () => {
+    toast.success("Deleted Successfully !");
   };
 
   return (
@@ -73,12 +77,16 @@ export const Tableunit = ({ data }: { data: Category }) => {
           title="edit"
           onClick={editCategory}
         />
-        {/* <UtilButton
-          icon={<BsEye />}
+        {
+          status === "draft" && (
+            <UtilButton
+          icon={<MdOutlinePublishedWithChanges />}
           color="green-500"
           title="view"
-          onClick={viewCategory}
-        /> */}
+          onClick={publishCategory}
+        />
+          )
+        }
       </div>
     </div>
   );
