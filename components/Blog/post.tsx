@@ -22,7 +22,7 @@ const BlogPost = ({post}: {post:Post}) => {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between md:justify-start md:gap-x-4">
               {/* back button */}
-              <div className="absolute">
+              <div className="">
               <UtilButton
                 icon={<BiArrowBack />}
                 color="blue-600"

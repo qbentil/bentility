@@ -42,10 +42,10 @@ export const Navs = [
     link: "settings",
   },
   {
-    name: "Archives",
+    name: "Drafts",
     icon: <BsCalendarEvent />,
     protected: false,
-    link: "archives",
+    link: "drafts",
   },
 ];
 function Sidenav({ page }: { page: string }) {

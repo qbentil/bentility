@@ -1,13 +1,21 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { BiArchiveIn } from 'react-icons/bi'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { BiArchiveIn, BiPencil, BiTrashAlt } from 'react-icons/bi'
+import { BsEye } from 'react-icons/bs'
+import { FaUserAlt } from 'react-icons/fa'
+import { MdDateRange, MdOutlinePublishedWithChanges, MdPublish } from 'react-icons/md'
+import { toast } from 'react-toastify'
 import { useStateValue } from '../../../context/StateProvider'
-import { Category, Post } from '../../../types'
+import { Category, Post, User } from '../../../types'
+import { FECTCH_ADMINS } from '../../../util/admins'
+import { ColorOpacity, convertDate, generateInitials } from '../../../util/functions'
 import { Empty } from '../../Promises'
+import UtilButton from '../../UtilButton'
 import Tableunit from '../categories/tableunit'
 import { Unit } from '../posts'
 
-const ArchiveOptions = () => {
+const DraftOptions = () => {
     const [{posts, categories}, dispatch] = useStateValue()
 	const [draftPosts, setDraftPosts] = useState<Post[]>(
 		posts.filter((post:Post) => post?.status === 'draft')
@@ -24,7 +32,7 @@ const ArchiveOptions = () => {
 
 	return (
 		<div className='bg-white w-full h-full py-5 px-8 overflow-y-scroll'>
-			<h1 className='text-primary font-bold text-3xl'>Archives</h1>
+			<h1 className='text-primary font-bold text-3xl'>Drafts</h1>
 			<div className='flex flex-col'>
 				<div className=' flex justify-center  mt-4 font-medium  gap-8'>
 					<div className='border-b-2 border-blue-200 flex gap-8 text-xl'>
@@ -133,4 +141,5 @@ const ArchiveOptions = () => {
 
 
 
-export default ArchiveOptions
+
+export default DraftOptions
