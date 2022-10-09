@@ -35,12 +35,7 @@ const ViewP = () => {
 					title='Go back'
 					onClick={() => router.back()}
 				/>
-				<UtilButton
-					icon={<BiArchiveIn />}
-					color='red-600'
-					title='Archive'
-					// onClick={()=> router.back}
-				/>
+				
 				<Link href={`/admin/posts/edit/${post.slug}`}>
 					<UtilButton
 						icon={<BsPencil />}
