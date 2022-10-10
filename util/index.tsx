@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
 import Axios from "./axios";
+import { toast } from "react-toastify";
 
 export const LOGOUT:any = async (dispatch:any) => {
     try {
@@ -59,5 +59,24 @@ export const FETCH_DATA = async (route:any, callback: (data:any)=> void) => {
   } catch (e: any) {
     console.log(e);
     // toast.error(e?.response?.data?.message);
+  }
+}
+
+// send email to the server
+export const SEND_EMAIL = async (formData:any, callback: (data:any)=> void) => {
+  try {
+    const { data } = await Axios({
+      url: "contact",
+      method: "POST",
+      data: formData,
+    });
+    if (data.success) {
+      callback(data);
+    } else {
+      toast.error(data?.message || "Something went wrong");
+    }
+  } catch (e: any) {
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
   }
 }
