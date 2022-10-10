@@ -243,7 +243,7 @@ const Form = () => {
                 onChange={(e) => {
                   setSubject(e.target.value);
                   ValidateOnInputChange(
-                    "normal",
+                    "text",
                     e.target.value,
                     setSubject,
                     setSubjectError
