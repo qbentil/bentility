@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { ValidateInput as ValidateOnInputChange} from "../Validations";
 
+import { ImSpinner9 } from "react-icons/im";
+import { SEND_EMAIL } from "../../util";
 import SectionTitle from "../SectionTitle";
+import { ValidateInput as ValidateOnInputChange } from "../Validations";
+import { toast } from "react-toastify";
 
 const Form = () => {
-
   // FormData state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,13 +16,60 @@ const Form = () => {
   const [subject, setSubject] = useState("");
 
   // Error states
-  const [fnameError, setFnameError] = useState('');
-  const [lnameError, setLnameError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [messageError, setMessageError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [subjectError, setSubjectError] = useState('');
+  const [fnameError, setFnameError] = useState("");
+  const [lnameError, setLnameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [subjectError, setSubjectError] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const HandleSubmit = (e: any) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !message || !phone || !subject)
+      return toast.error("Please fill all the fields");
+    if (
+      fnameError ||
+      lnameError ||
+      emailError ||
+      messageError ||
+      phoneError ||
+      subjectError
+    )
+      return toast.error("Please fill all the fields correctly");
+
+    const data = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      message,
+      phone,
+      subject,
+    };
+    setLoading(true);
+    SEND_EMAIL(data, (data: any) => {
+      toast.success(data?.message || "Email sent!");
+      console.log("Data", data);
+      setLoading(false);
+      resetForm();;
+    });
+    
+  };
+
+  const resetForm = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMessage("");
+    setPhone("");
+    setSubject("");
+    setFnameError("");
+    setLnameError("");
+    setEmailError("");
+    setMessageError("");
+    setPhoneError("");
+    setSubjectError("");
+  };
 
   return (
     <div className="w-full bg-white px-4 md:px-0">
@@ -30,7 +79,7 @@ const Form = () => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label
-                className={`block uppercase tracking-wide text-xs font-bold mb-2 ${ 
+                className={`block uppercase tracking-wide text-xs font-bold mb-2 ${
                   fnameError.length > 0 ? "text-red-500" : "text-blue-700"
                 } `}
                 htmlFor="grid-first-name"
@@ -39,13 +88,20 @@ const Form = () => {
               </label>
               <input
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  fnameError.length > 0 ? "border-red-500" : "border-blue-500 focus:border-blue-500" 
-                  } `}
+                  fnameError.length > 0
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-first-name"
                 type="text"
                 onChange={(e) => {
                   setFirstName(e.target.value);
-                  ValidateOnInputChange('normal', e.target.value, setFirstName, setFnameError);
+                  ValidateOnInputChange(
+                    "normal",
+                    e.target.value,
+                    setFirstName,
+                    setFnameError
+                  );
                 }}
                 value={firstName}
                 placeholder={"First Name"}
@@ -67,13 +123,20 @@ const Form = () => {
               </label>
               <input
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  lnameError.length > 0 ? "border-red-500" : "border-blue-500 focus:border-blue-500"
-                  } `}
+                  lnameError.length > 0
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-last-name"
                 type="text"
                 onChange={(e) => {
                   setLastName(e.target.value);
-                  ValidateOnInputChange('normal', e.target.value, setLastName, setLnameError);
+                  ValidateOnInputChange(
+                    "normal",
+                    e.target.value,
+                    setLastName,
+                    setLnameError
+                  );
                 }}
                 value={lastName}
                 placeholder={`Last Name`}
@@ -97,13 +160,20 @@ const Form = () => {
               </label>
               <input
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  emailError.length > 0 ? "border-red-500" : "border-blue-500 focus:border-blue-500"
-                  } `}
+                  emailError.length > 0
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-email"
                 type="email"
                 onChange={(e) => {
-                  setEmail(e.target.value)
-                  ValidateOnInputChange('email', e.target.value, setEmail, setEmailError);
+                  setEmail(e.target.value);
+                  ValidateOnInputChange(
+                    "email",
+                    e.target.value,
+                    setEmail,
+                    setEmailError
+                  );
                 }}
                 value={email}
                 placeholder={`example@gmail.com`}
@@ -113,7 +183,6 @@ const Form = () => {
                   <span className="font-medium">Oops!</span> {emailError}
                 </p>
               )}
-
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -128,13 +197,20 @@ const Form = () => {
               </label>
               <input
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  phoneError ? "border-red-500" : "border-blue-500 focus:border-blue-500"
-                  } `}
+                  phoneError
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-phone"
                 type="text"
                 onChange={(e) => {
-                  setPhone(e.target.value)
-                  ValidateOnInputChange("phone", e.target.value, setPhone, setPhoneError);
+                  setPhone(e.target.value);
+                  ValidateOnInputChange(
+                    "phone",
+                    e.target.value,
+                    setPhone,
+                    setPhoneError
+                  );
                 }}
                 value={phone}
                 placeholder={`0-556-844-331`}
@@ -152,20 +228,26 @@ const Form = () => {
                 className={`block uppercase tracking-wide text-xs font-bold mb-2 ${
                   subjectError.length > 0 ? "text-red-500" : "text-blue-700"
                 } `}
-
                 htmlFor="grid-subject"
               >
                 Subject <span className="text-red-500">*</span>
               </label>
               <input
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  subjectError.length > 0 ? "border-red-500" : "border-blue-500 focus:border-blue-500"
-                  } `}
+                  subjectError.length > 0
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-subject"
                 type="text"
                 onChange={(e) => {
                   setSubject(e.target.value);
-                  ValidateOnInputChange('normal', e.target.value, setSubject, setSubjectError);
+                  ValidateOnInputChange(
+                    "text",
+                    e.target.value,
+                    setSubject,
+                    setSubjectError
+                  );
                 }}
                 value={subject}
                 placeholder={`Subject`}
@@ -189,12 +271,19 @@ const Form = () => {
               </label>
               <textarea
                 className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
-                  messageError.length > 0 ? "border-red-500" : "border-blue-500 focus:border-blue-500"
-                  } `}
+                  messageError.length > 0
+                    ? "border-red-500"
+                    : "border-blue-500 focus:border-blue-500"
+                } `}
                 id="grid-message"
                 onChange={(e) => {
                   setMessage(e.target.value);
-                  ValidateOnInputChange('text', e.target.value, setMessage, setMessageError);
+                  ValidateOnInputChange(
+                    "text",
+                    e.target.value,
+                    setMessage,
+                    setMessageError
+                  );
                 }}
                 value={message}
                 placeholder="Message"
@@ -209,14 +298,15 @@ const Form = () => {
           <div className="flex flex-wrap -mx-3 mb-2">
             <div className="w-full px-3 flex items-center justify-end">
               <button
-                className="bg-blue-500 w-[40%] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="flex items-center justify-center gap-x-3 bg-blue-500 w-[40%] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // sendMessage();
-                }}
+                onClick={HandleSubmit}
               >
-                Send
+                {loading && <ImSpinner9 className="animate-spin text-2xl" />}
+                <span>
+                  {loading ? "Sending..." : "Send Message"}
+                </span>
+                
               </button>
             </div>
           </div>
