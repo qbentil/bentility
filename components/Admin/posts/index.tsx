@@ -101,10 +101,10 @@ export const Unit = ({ post }: { post: Post }) => {
 
   return (
     <div
-      onClick={viewPost}
+    
       className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75"
     >
-      <div className="flex items-center flex-1  gap-8 font-sans ">
+      <div className="flex items-center flex-1  gap-8 font-sans " onClick={viewPost}>
         <div className="px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase">
           {generateInitials(post.title)}
         </div>
