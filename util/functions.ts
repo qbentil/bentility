@@ -16,8 +16,8 @@ export const CategoryPostCount = (category: string, posts: Post[]) => {
 }
 
 export const generateInitials = (name: string) => {
-    const names = name.split(' ');
-    const init = names.length > 1 ? names[0].charAt(0) + names[names.length - 1].charAt(0) : names[0].charAt(0) + names[0].charAt(1);
+    const names = name?.split(' ');
+    const init = names?.length > 1 ? names[0].charAt(0) + names[names.length - 1].charAt(0) : names[0].charAt(0) + names[0].charAt(1);
     return init.toUpperCase();
 }
 
