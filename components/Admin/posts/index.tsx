@@ -17,6 +17,7 @@ import { MdDateRange, MdOutlinePublishedWithChanges } from "react-icons/md";
 import { useRouter } from "next/router";
 import { Empty } from "../../Promises";
 import Searchbar from "../Searchbar";
+import { EDIT_POST } from "../../../util/posts";
 
 const AllPosts = () => {
   const [{ posts, user }, dispatch] = useStateValue();
@@ -79,6 +80,7 @@ const AllPosts = () => {
 };
 
 export const Unit = ({ post }: { post: Post }) => {
+  const [{user}, dispatch] = useStateValue();
   const router = useRouter();
 
   const deletePost = () => {
@@ -96,7 +98,26 @@ export const Unit = ({ post }: { post: Post }) => {
   };
 
   const publishPost = () => {
-    toast.success("Published Successfully !");
+    const update = {
+      ...post, 
+      status: "published"
+    }
+    toast.promise(
+        EDIT_POST(user?.access_token, post?._id ||'', update, (data) => {
+          if(data.success)
+          {
+            dispatch({
+               type: "EDIT_POST",
+               post: data.data
+            })
+            toast.success("Post published successfully")
+          }else{
+            toast.error("Post publish failed. Try again!")
+          }
+        })
+      , {
+      pending: "Publishing post...",
+    })
   };
 
   return (
