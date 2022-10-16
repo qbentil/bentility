@@ -25,7 +25,7 @@ const EditP = () => {
   const [title, setTitle] = useState(post?.title);
   const [slug, setSlug] = useState(post?.slug);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
   const [mode, setMode] = useState("light");
 
   const handleTitleChange = (e: any) => {
@@ -37,7 +37,7 @@ const EditP = () => {
     setSlug(title.toLowerCase().replace(/ /g, "-"));
   };
 
-  const updatePost = async (status:string) => {
+  const updatePost = async (status: string) => {
     setStatus(status);
     setLoading(true);
     const data = {
@@ -45,7 +45,7 @@ const EditP = () => {
       slug,
       content: body,
       categories,
-      status
+      status,
     };
     if (!VALIDATE_POST(post)) return toast.error("Please fill all the fields");
     toast.promise(
@@ -104,22 +104,45 @@ const EditP = () => {
                 {mode} Mode
               </span>
             </label>
-            <Button
-              text={
-                loading && status == "published" ? "Publishing...." : "Publish"
-              }
-              icon={
-                loading && status == "published" ? (
-                  <BiLoaderCircle className="animate animate-spin" />
-                ) : (
-                  <BiAddToQueue />
-                )
-              }
-              type="button"
-              disabled={loading && status == "published"}
-              shape="rounded-md"
-              onClick={() => updatePost("published")}
-            />
+            {post?.status === "draft" ? (
+              <Button
+                text={
+                  loading && status == "published"
+                    ? "Publishing...."
+                    : "Publish"
+                }
+                icon={
+                  loading && status == "published" ? (
+                    <BiLoaderCircle className="animate animate-spin" />
+                  ) : (
+                    <BiAddToQueue />
+                  )
+                }
+                type="button"
+                disabled={loading && status == "published"}
+                shape="rounded-md"
+                onClick={() => updatePost("published")}
+              />
+            ) : (
+              <Button
+                text={
+                  loading 
+                    ? "Updating...."
+                    : "Update"
+                }
+                icon={
+                  loading && status == "published" ? (
+                    <BiLoaderCircle className="animate animate-spin" />
+                  ) : (
+                    <BiAddToQueue />
+                  )
+                }
+                type="button"
+                disabled={loading && status == "published"}
+                shape="rounded-md"
+                onClick={() => updatePost("published")}
+              />
+            )}
             <Button
               text={
                 loading && status === "draft" ? "Saving...." : "Save as Draft"
