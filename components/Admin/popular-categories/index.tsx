@@ -26,7 +26,12 @@ function PopularCategories() {
 					categories &&
 						categories
 							.slice(0, 8)
-							.map((cat : any) => <Unit data={cat} key={cat._id} />)
+							.map((cat : any) => {
+                // return if status is draft
+                if(cat?.status === 'draft') return;
+                return <Unit key={cat._id} data={cat} />;
+              
+              })
 				}
         </div>
     </div>
