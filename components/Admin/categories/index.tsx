@@ -58,9 +58,13 @@ function Categories() {
       {view === "card" ? (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-7">
           {filtered && filtered.length > 0 ? (
-            filtered.map((category: Category) => (
-              <Unit key={category._id} data={category} />
-            ))
+            filtered.map((category: Category) => {
+              // return if it is draft
+              if (category.status === "draft") return;
+              return (
+                <Unit key={category._id} data={category} />
+              )
+            })
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <Empty text="Empty cateogries" />
