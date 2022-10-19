@@ -299,7 +299,8 @@ const Form = () => {
             <div className="w-full px-3 flex items-center justify-end">
               <button
                 className="flex items-center justify-center gap-x-3 bg-blue-500 w-[40%] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
+                type="submit"
+                disabled={loading}
                 onClick={HandleSubmit}
               >
                 {loading && <ImSpinner9 className="animate-spin text-2xl" />}

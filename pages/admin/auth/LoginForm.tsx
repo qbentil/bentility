@@ -1,11 +1,10 @@
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import { ImSpinner9 } from "react-icons/im";
-import { toast } from "react-toastify";
-import Axios from "../../../util/axios";
-import { useStateValue } from "../../../context/StateProvider";
 import { LOGIN } from "../../../util";
+import { RiLoader5Line } from "react-icons/ri";
+import { toast } from "react-toastify";
+import { useStateValue } from "../../../context/StateProvider";
 
 const LoginForm = ({ setForm }: { setForm: any }) => {
   const [{}, dispatch] = useStateValue();
@@ -16,29 +15,20 @@ const LoginForm = ({ setForm }: { setForm: any }) => {
   const [passwordInputType, setPasswordInputType] = useState("password");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    setLoading(true);
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (credentials.email === "" || credentials.secret === "") {
-      toast.error("Please enter all fields");
+    if (credentials.email === "" || credentials.secret === "") return toast.error("Please enter all fields");
+    if (!validateEmail(credentials.email)) return toast.error("Please enter a valid email",);
+    
+    setLoading(true);
+    LOGIN(credentials, setLoading, (data: any) => {
       setLoading(false);
-      return;
-    }
-    if (!validateEmail(credentials.email)) {
-      toast.error("Please enter a valid email", {
-        autoClose: 3000,
-      });
-      setLoading(false);
-      return;
-    }
-    LOGIN(credentials, (data: any) => {
+      if(!data.success) return toast.error(data?.message || 'Something went wrong 😔');
       dispatch({
         type: "SET_USER",
-        user: data,
+        user: data.data,
       });
-      toast.success("Login successful");
     });
-    setLoading(false);
   };
   const validateEmail = (email: string) => {
     const re =
@@ -134,7 +124,7 @@ const LoginForm = ({ setForm }: { setForm: any }) => {
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
-          {loading && <ImSpinner9 className="animate-spin text-2xl" />}
+          {loading && <RiLoader5Line className="animate-spin text-2xl" />}
           {!loading ? "SIGN IN" : "Authenticating..."}
         </button>
       </div>
