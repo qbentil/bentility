@@ -1,8 +1,8 @@
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import React, { useState } from "react";
 
-import { ImSpinner9 } from "react-icons/im";
 import { LOGIN } from "../../../util";
+import { RiLoader5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { useStateValue } from "../../../context/StateProvider";
 
@@ -124,7 +124,7 @@ const LoginForm = ({ setForm }: { setForm: any }) => {
             loading ? "bg-active-bg text-primary" : "bg-primary text-white"
           }  font-sans font-bold py-2 px-4 cursor-pointer flex items-center justify-center gap-x-3`}
         >
-          {loading && <ImSpinner9 className="animate-spin text-2xl" />}
+          {loading && <RiLoader5Line className="animate-spin text-2xl" />}
           {!loading ? "SIGN IN" : "Authenticating..."}
         </button>
       </div>
