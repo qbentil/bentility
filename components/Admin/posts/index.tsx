@@ -17,6 +17,7 @@ import { MdDateRange, MdOutlinePublishedWithChanges } from "react-icons/md";
 import { useRouter } from "next/router";
 import { Empty } from "../../Promises";
 import Searchbar from "../Searchbar";
+import { EDIT_POST } from "../../../util/posts";
 
 const AllPosts = () => {
   const [{ posts, user }, dispatch] = useStateValue();
@@ -79,6 +80,7 @@ const AllPosts = () => {
 };
 
 export const Unit = ({ post }: { post: Post }) => {
+  const [{user}, dispatch] = useStateValue();
   const router = useRouter();
 
   const deletePost = () => {
@@ -96,15 +98,34 @@ export const Unit = ({ post }: { post: Post }) => {
   };
 
   const publishPost = () => {
-    toast.success("Published Successfully !");
+    const update = {
+      ...post, 
+      status: "published"
+    }
+    toast.promise(
+        EDIT_POST(user?.access_token, post?._id ||'', update, (data) => {
+          if(data.success)
+          {
+            dispatch({
+               type: "EDIT_POST",
+               post: data.data
+            })
+            toast.success("Post published successfully")
+          }else{
+            toast.error("Post publish failed. Try again!")
+          }
+        })
+      , {
+      pending: "Publishing post...",
+    })
   };
 
   return (
     <div
-      onClick={viewPost}
+    
       className="w-full  flex items-center justify-between py-2 border-b-2 border-gray-200 px-4 hover:bg-active-bg group cursor-pointer transition-all ease-in-out duration-75"
     >
-      <div className="flex items-center flex-1  gap-8 font-sans ">
+      <div className="flex items-center flex-1  gap-8 font-sans " onClick={viewPost}>
         <div className="px-5 py-2 flex justify-center text-primary items-center bg-active-bg  group-hover:bg-white uppercase">
           {generateInitials(post.title)}
         </div>

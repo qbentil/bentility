@@ -26,6 +26,7 @@ function PopularPosts() {
             .slice(0, 8)
             .map((post: POST_TYPE) => {
 				if(post.status !== "published" || !post.isPublished) return null;
+
 				return <Post post={post} key={post._id} />
 			})}
       </div>
