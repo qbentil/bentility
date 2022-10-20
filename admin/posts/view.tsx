@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-import Button from '../../components/Button'
-import { useRouter } from 'next/router'
-import { useStateValue } from '../../context/StateProvider'
-import { Category, User } from '../../types'
-import { ColorOpacity, convertDate } from '../../util/functions'
-import { FaUserAlt } from 'react-icons/fa'
-import { FECTCH_ADMINS } from '../../util/admins'
-import { MdDateRange, MdOutlinePublishedWithChanges } from 'react-icons/md'
 import { BiAddToQueue, BiArchiveIn, BiArrowBack, BiLoaderCircle } from 'react-icons/bi'
 import { BsArchive, BsPencil } from 'react-icons/bs'
-import UtilButton from '../../components/UtilButton'
+import { Category, User } from '../../types'
+import { ColorOpacity, convertDate } from '../../util/functions'
+import { MdDateRange, MdOutlinePublishedWithChanges } from 'react-icons/md'
+import React, { useEffect } from 'react'
+
+import Button from '../../components/Button'
+import { FECTCH_ADMINS } from '../../util/admins'
+import { FaUserAlt } from 'react-icons/fa'
 import Link from 'next/link'
 import Preview from '../../components/Admin/Editor/preview'
-
+import UtilButton from '../../components/UtilButton'
+import { useRouter } from 'next/router'
+import { useStateValue } from '../../context/StateProvider'
 
 const ViewP = () => {
 	const router = useRouter()
@@ -36,7 +36,7 @@ const ViewP = () => {
 					onClick={() => router.back()}
 				/>
 				
-				<Link href={`/admin/posts/edit/${post.slug}`}>
+				<Link href={`/admin/posts/edit/${post?.slug}`}>
 					<UtilButton
 						icon={<BsPencil />}
 						color='black'

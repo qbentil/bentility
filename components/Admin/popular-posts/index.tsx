@@ -1,8 +1,9 @@
+import Link from "next/link";
+import { Post as POST_TYPE } from "../../../types";
+import Post from "../post";
 import React from "react";
 import { RiSoundModuleLine } from "react-icons/ri";
-import Post from "../post";
 import { useStateValue } from "../../../context/StateProvider";
-import Link from "next/link";
 
 function PopularPosts() {
   const [{ posts }, dispatch] = useStateValue();
@@ -23,9 +24,9 @@ function PopularPosts() {
         {posts &&
           posts
             .slice(0, 8)
-            .map((post: any) => {
-				// return if post status is draft
-				if (post?.status === "draft") return;											
+            .map((post: POST_TYPE) => {
+				if(post.status !== "published" || !post.isPublished) return null;
+
 				return <Post post={post} key={post._id} />
 			})}
       </div>
