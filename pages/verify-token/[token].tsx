@@ -17,6 +17,8 @@ const Auth = () => {
     const path = router.asPath;
     const paths = path.split("/");
     setToken(paths[paths.length - 1])
+    // Verfiy Token Metthod => data
+    // set confirmed to true if => data.success
   }, [])
   return (
     <div>
