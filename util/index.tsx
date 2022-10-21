@@ -82,3 +82,20 @@ export const SEND_EMAIL = async (
     toast.error(e?.response?.data?.message || "Something went wrong");
   }
 };
+// send email to the server
+export const VERIFY_TOKEN = async (
+  formData: any,
+  callback: (data: any) => void
+) => {
+  try {
+    const { data } = await Axios({
+      url: "/verify_reset_token",
+      method: "POST",
+      data: formData,
+    });
+    callback(data);
+  } catch (e: any) {
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+};
