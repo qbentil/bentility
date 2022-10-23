@@ -18,7 +18,7 @@ const Auth = () => {
     const paths = path.split("/");
     const token = paths[paths.length - 1];
     setToken(token);
-    VERIFY_TOKEN(token, (data: any) => {
+    VERIFY_TOKEN(token, setStatus, (data: any) => {
       if (data.success) {
         setStatus("success");
       } else {
