@@ -82,3 +82,38 @@ export const SEND_EMAIL = async (
     toast.error(e?.response?.data?.message || "Something went wrong");
   }
 };
+
+//  send token
+export const SEND_TOKEN = async (email: string, callback: any) => {
+  try {
+    const { data } = await Axios({
+      url: "auth/forgot-password",
+      method: "POST",
+      data: { email },
+    });
+    callback(data);
+  } catch (e: any) {
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+};
+// send email to the server
+export const VERIFY_TOKEN = async (
+  token: string,
+  callback: (data: any) => void
+) => {
+  try {
+    const { data } = await Axios({
+      url: "auth/verify-token",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    callback(data);
+  } catch (e: any) {
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+};

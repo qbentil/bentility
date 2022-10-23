@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import {ImSpinner9} from "react-icons/im";
+import { SEND_TOKEN } from "../../../util";
 const ForgotForm = ({setForm}: {setForm: any}) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState("");
@@ -16,8 +17,15 @@ const ForgotForm = ({setForm}: {setForm: any}) => {
           autoClose: 3000,
         });
       } else {
-        setError("");
-        toast.success("Login Successful");
+        SEND_TOKEN(email,  (data: any) => {
+          setLoading(false);
+          if (data.success) {
+            toast.success("Reset password link sent to your email");
+            setEmail("");
+          } else {
+            toast.error(data?.message|| "Something went wrong, please try again");
+          }
+        });
       }
     }
     // setLoading(false);
