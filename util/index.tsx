@@ -100,6 +100,7 @@ export const SEND_TOKEN = async (email: string, callback: any) => {
 // send email to the server
 export const VERIFY_TOKEN = async (
   token: string,
+  setStatus:(e:string) => void,
   callback: (data: any) => void
 ) => {
   try {
@@ -114,6 +115,7 @@ export const VERIFY_TOKEN = async (
     callback(data);
   } catch (e: any) {
     console.log(e);
+    setStatus("failed");
     toast.error(e?.response?.data?.message || "Something went wrong");
   }
 };
