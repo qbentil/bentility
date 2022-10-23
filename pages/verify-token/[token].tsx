@@ -7,19 +7,25 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import NewPassword from "../../components/forgot-password";
 import { ImSpinner9 } from "react-icons/im";
-
+import { VERIFY_TOKEN } from "../../util";
 
 const Auth = () => {
+  const [status, setStatus] = useState("started");
   const [token, setToken] = useState("");
-  const [confirmed, setConfirmed] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const path = router.asPath;
     const paths = path.split("/");
-    setToken(paths[paths.length - 1])
-    // Verfiy Token Metthod => data
-    // set confirmed to true if => data.success
-  }, [])
+    const token = paths[paths.length - 1];
+    setToken(token);
+    VERIFY_TOKEN(token, (data: any) => {
+      if (data.success) {
+        setStatus("success");
+      } else {
+        setStatus("failed");
+      }
+    });
+  }, []);
   return (
     <div>
       <Head>
@@ -53,11 +59,14 @@ const Auth = () => {
           {/* form */}
           <div className="bg-white rounded-lg py-5 px-10">
             <h2 className="font-sans text-center font-bold text-2xl mb-4">
-             {
-                !confirmed? <Loader /> : <NewPassword token={token} />
-             }
+              {status == "started" ? (
+                <Loader />
+              ) : status == "failed" ? (
+                <Failed />
+              ) : (
+                <NewPassword token={token} />
+              )}
             </h2>
-
           </div>
         </div>
       </main>
@@ -70,7 +79,23 @@ const Loader = () => (
     <ImSpinner9 className="animate-spin text-2xl" />
     <p className="text-base">Verifying token</p>
   </div>
-
-)
+);
+const Failed = () => (
+  <div className="flex items-center flex-col justify-center gap-x-3">
+    <p className="text-base">Token verification failed</p>
+    <p className="text-base">
+      <span className="text-red-500">Possible reasons: </span>
+      <ul className="list-disc list-inside">
+        <li>Token has expired</li>
+        <li>Token is invalid</li>
+      </ul>
+    </p>
+    {/* request new token */}
+    <p>
+      Use the forgot password form to request a new token Link to forgot
+      password form : <Link href="/admin">Forgot Password</Link>
+    </p>
+  </div>
+);
 
 export default Auth;
