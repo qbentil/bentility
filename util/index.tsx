@@ -85,11 +85,15 @@ export const SEND_EMAIL = async (
 
 //  send token
 export const SEND_TOKEN = async (email: string, callback: any) => {
+  const request = {
+    email,
+    domain: "hrrps://bentility.vercel.app"
+  } 
   try {
     const { data } = await Axios({
       url: "auth/forgot-password",
       method: "POST",
-      data: { email },
+      data: request,
     });
     callback(data);
   } catch (e: any) {
