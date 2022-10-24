@@ -87,7 +87,7 @@ export const SEND_EMAIL = async (
 export const SEND_TOKEN = async (email: string, callback: any) => {
   const request = {
     email,
-    domain: process.env.NEXT_PUBLIC_DOMAIN,
+    domain: "hrrps://bentility.vercel.app"
   } 
   try {
     const { data } = await Axios({
