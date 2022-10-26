@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import NewPassword from "../../components/forgot-password";
 import { ImSpinner9 } from "react-icons/im";
+import Link from "next/link";
+import NewPassword from "../../components/forgot-password";
 import { VERIFY_TOKEN } from "../../util";
+import { useRouter } from "next/router";
 
 const Auth = () => {
   const [status, setStatus] = useState("started");
@@ -85,15 +85,15 @@ const Failed = () => (
     <p className="text-base">Token verification failed</p>
     <p className="text-base">
       <span className="text-red-500">Possible reasons: </span>
-      <ul className="list-disc list-inside">
+      <ul className="list-none">
         <li>Token has expired</li>
         <li>Token is invalid</li>
       </ul>
     </p>
     {/* request new token */}
-    <p>
-      Use the forgot password form to request a new token Link to forgot
-      password form : <Link href="/admin">Forgot Password</Link>
+    <p className="text-sm">
+      Use the forgot password form to request a new token. <br />
+      Form : <Link href="/admin">Forgot Password</Link>
     </p>
   </div>
 );
