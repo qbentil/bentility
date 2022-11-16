@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+
 import {
 	BiArchiveIn,
 	BiArrowBack,
@@ -10,19 +8,23 @@ import {
 	BiTrashAlt,
 } from 'react-icons/bi'
 import { BsEye, BsPencil } from 'react-icons/bs'
-import { FaUserAlt } from 'react-icons/fa'
-import { MdDateRange, MdOutlinePublishedWithChanges } from 'react-icons/md'
-import { toast } from 'react-toastify'
-import UtilButton from '../../components/UtilButton'
-import { useStateValue } from '../../context/StateProvider'
 import { Category, Post, User } from '../../types'
-import { FECTCH_ADMINS } from '../../util/admins'
 import {
 	CategoryPostCount,
 	ColorOpacity,
 	convertDate,
 	generateInitials,
 } from '../../util/functions'
+import { MdDateRange, MdOutlinePublishedWithChanges } from 'react-icons/md'
+import React, { useEffect } from 'react'
+
+import { FECTCH_ADMINS } from '../../util/admins'
+import { FaUserAlt } from 'react-icons/fa'
+import Link from 'next/link'
+import UtilButton from '../../components/UtilButton'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
+import { useStateValue } from '../../context/StateProvider'
 
 const ViewC = () => {
 	const router = useRouter()
@@ -67,8 +69,8 @@ const ViewC = () => {
 								/>
 							</div>
 						) : (
-							<div className='w-full h-full flex items-center justify-center '>
-								<p className='poppins text-3xl'>
+							<div className='w-full h-full flex items-center justify-center truncate'>
+								<p className='poppins text-3xl truncate	'>
 									{generateInitials(cat?.title)}
 								</p>
 							</div>
