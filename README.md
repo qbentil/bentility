@@ -47,7 +47,7 @@
 
 ## :dart: About ##
 
-Describe your project
+I write about my journey as a developer and share my knowledge with the community. I use platforms like dev.to to write my articles. As a developer who is much interested in whats goes on in an Application rather than just using it to my benefit, I tried my hands on a Blog using MERN STACK.  
 
 ## :sparkles: Features ##
 
@@ -62,6 +62,7 @@ The following tools were used in this project:
 - [Next.js](https://nextjs.org)
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com)
 
 ## :white_check_mark: Requirements ##
 
@@ -87,8 +88,7 @@ $ npm run dev
 
 ## :memo: License ##
 
-This project is lin
-
+This project is not 
 
 
 ## :memo: Contributors
