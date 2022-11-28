@@ -62,6 +62,7 @@ The following tools were used in this project:
 - [Next.js](https://nextjs.org)
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com)
 
 ## :white_check_mark: Requirements ##
 
@@ -87,8 +88,7 @@ $ npm run dev
 
 ## :memo: License ##
 
-This project is lin
-
+This project is not 
 
 
 ## :memo: Contributors
