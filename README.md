@@ -90,10 +90,28 @@ $ npm run dev
 This project is lin
 
 
+
 ## :memo: Contributors
 
 These wonderful people have contributed to this project:
-<!-- readme: contributors -start -->
+<!-- readme: contributors -start --><table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/qbentil">
+            <img src="https://avatars.githubusercontent.com/u/55560024?v=4" width="100;" alt="qbentil"/>
+            <br />
+            <sub><b>Bentil Shadrack</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/neophyte-programmer">
+            <img src="https://avatars.githubusercontent.com/u/88439064?v=4" width="100;" alt="neophyte-programmer"/>
+            <br />
+            <sub><b>Nutifafa Afi Attor</b></sub>
+        </a>
+    </td>
+  </tr>
+</table>
 <!-- readme: contributors -end -->
 
 &#xa0;
