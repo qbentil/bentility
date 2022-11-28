@@ -1,12 +1,101 @@
-## BENTILITY
-**Bentil's** Personal BLOG
-
-## PHASE I
 ![image](https://user-images.githubusercontent.com/55560024/170698745-72270c45-d37e-41d4-aac6-e32cab36682c.png)
-![image](https://user-images.githubusercontent.com/55560024/170698750-ae6d23f8-db41-425b-8b42-f9c269110dca.png)
-![image](https://user-images.githubusercontent.com/55560024/185719757-33ec0ad6-dc7f-481a-a4a5-bfe3f0f512f6.png)
-![image](https://user-images.githubusercontent.com/55560024/170698754-a3b6dcaf-2677-4bdd-9266-458b32690869.png)
-![image](https://user-images.githubusercontent.com/55560024/170698761-94f60120-1253-42bf-9ee9-66bfcd1b31b0.png)
-![image](https://user-images.githubusercontent.com/55560024/180502379-02524d3b-84fd-42b8-a0fb-afb3dea0e6b1.png)
-## 404 (NOT FOUND)
-![image](https://user-images.githubusercontent.com/55560024/170893305-8a932451-cbe3-49e2-89f6-875875894210.png)
+
+<div align="center" id="top"> 
+
+  &#xa0;
+
+  <a href="https://bentility.vercel.app">Demo</a>
+</div>
+
+<h1 align="center">Bentility</h1>
+
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/qbentil/bentility?color=56BEB8">
+
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/qbentil/bentility?color=56BEB8">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/qbentil/bentility?color=56BEB8">
+
+  <!-- <img alt="License" src="https://img.shields.io/github/license/qbentil/bentility?color=56BEB8"> -->
+
+  <img alt="Github issues" src="https://img.shields.io/github/issues/qbentil/bentility?color=56BEB8" />
+
+  <img alt="Github forks" src="https://img.shields.io/github/forks/qbentil/bentility?color=56BEB8" />
+
+  <img alt="Github stars" src="https://img.shields.io/github/stars/qbentil/bentility?color=56BEB8" />
+</p>
+
+<!-- Status -->
+
+<h4 align="center"> 
+	🚧  Bentility 🚀 Under construction...  🚧
+</h4> 
+
+<hr>
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <!-- <a href="#memo-license">License</a> &#xa0; | &#xa0; -->
+  <a href="#memo-contributors" target="_blank">Contributors</a>
+</p>
+
+<br>
+
+## :dart: About ##
+
+Describe your project
+
+## :sparkles: Features ##
+
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3;
+
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+- [Next.js](https://nextjs.org)
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+# Clone this project
+$ git clone https://github.com/qbentil/bentility
+
+# Access
+$ cd bentility
+
+# Install dependencies
+$ npm i
+
+# Run the project
+$ npm run dev
+
+# The server will initialize in the <http://localhost:3000>
+```
+
+## :memo: License ##
+
+This project is lin
+
+
+## :memo: Contributors
+
+These wonderful people have contributed to this project:
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+&#xa0;
+
+<a href="#top">Back to top</a>
