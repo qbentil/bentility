@@ -47,7 +47,7 @@
 
 ## :dart: About ##
 
-Describe your project
+I write about my journey as a developer and share my knowledge with the community. I use platforms like dev.to to write my articles. As a developer who is much interested in whats goes on in an Application rather than just using it to my benefit, I tried my hands on a Blog using MERN STACK.  
 
 ## :sparkles: Features ##
 
