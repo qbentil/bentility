@@ -5,14 +5,14 @@ import { useStateValue } from "../../context/StateProvider";
 
 const Blog = () => {
   const [{ posts }, dispatch] = useStateValue();
-
+  // console.log({posts})
   return (
     <div>
       {posts.length > 0 ? (
         <div className="py-2 grid grid-flow-row grid-cols-1 md:grid-cols-2 md:gap-4 gap-0">
           {posts &&
             posts.slice(0, 8).map((post: any) => {
-              if (post.status !== "published" || !post.isPublished) return null;
+              // if (post.status !== "published" || !post.isPublished) return null;
               <SingleBlog key={post._id} data={post} />;
             })}
         </div>
