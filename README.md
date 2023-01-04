@@ -1,5 +1,8 @@
-![image](https://user-images.githubusercontent.com/55560024/170698745-72270c45-d37e-41d4-aac6-e32cab36682c.png)
-
+<video width="320" height="240" autoplay>
+  <source src="./demo.mp4" type="video/mp4">
+  <source src="demo.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
 <div align="center" id="top"> 
 
   &#xa0;
@@ -51,9 +54,15 @@ I write about my journey as a developer and share my knowledge with the communit
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Writer & Admin Authentication \
+:heavy_check_mark:  Create-Read-Update-Delete Blog \
+:heavy_check_mark: Save blog as draft \
+:heavy_check_mark:  Create-Read-Update-Delete Categories \
+:heavy_check_mark:  Save category as draft \
+:heavy_check_mark:  Create-Read-Update-Delete Writer \
+:heavy_check_mark: Persist user login with access and refresh token using JWT \
+:heavy_check_mark:  protect Admin routes using JWT authentications \
+:heavy_check_mark:  Send email notifications on security updates and blog updates  using nodemailer
 
 ## :rocket: Technologies ##
 
@@ -66,7 +75,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [TypeScript](https://www.typescriptlang.org/) and [Node](https://nodejs.org/en/) installed.
 
 ## :checkered_flag: Starting ##
 
@@ -85,6 +94,7 @@ $ npm run dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
+![image](https://user-images.githubusercontent.com/55560024/170698745-72270c45-d37e-41d4-aac6-e32cab36682c.png)
 
 ## :memo: License ##
 
