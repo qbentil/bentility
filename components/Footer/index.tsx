@@ -26,9 +26,9 @@ const Footer: React.FC<Props> = ({ nav }) => {
             <Link href={"contact"}>
               <p className="text-blue-700 font-thin cursor-pointer">Contact</p>
             </Link>
-            <Link href={"policy"}>
+            <Link href={"admin"}>
               <p className="text-blue-700 font-thin cursor-pointer">
-                Privacy Policy
+                Writer
               </p>
             </Link>
           </>
