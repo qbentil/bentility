@@ -88,7 +88,7 @@ export const SEND_TOKEN = async (email: string, callback: any) => {
   const request = {
     email,
     domain: "https://bentility.vercel.app"
-  } 
+  }
   try {
     const { data } = await Axios({
       url: "auth/forgot-password",
@@ -104,7 +104,7 @@ export const SEND_TOKEN = async (email: string, callback: any) => {
 // send email to the server
 export const VERIFY_TOKEN = async (
   token: string,
-  setStatus:(e:string) => void,
+  setStatus: (e: string) => void,
   callback: (data: any) => void
 ) => {
   try {
