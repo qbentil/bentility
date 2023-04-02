@@ -23,12 +23,11 @@ function PopularPosts() {
       <div className="w-full flex flex-col bg-white pt-2 gap-2 overflow-y-auto h-[59vh]">
         {posts &&
           posts
+            .filter((post: POST_TYPE) => post.status != "published" || !post.isPublished)
             .slice(0, 8)
-            .map((post: POST_TYPE) => {
-				if(post.status !== "published" || !post.isPublished) return null;
-
-				return <Post post={post} key={post._id} />
-			})}
+            .map((post: POST_TYPE) => (
+				<Post post={post} key={post._id} />
+			))}
       </div>
     </div>
   );
