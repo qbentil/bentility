@@ -87,13 +87,9 @@ export const SEND_EMAIL = async (
 export const SEND_TOKEN = async (email: string, callback: any) => {
   const request = {
     email,
-<<<<<<< HEAD:util/index.tsx
     domain: process.env.NEXT_PUBLIC_DOMAIN,
   } 
-=======
-    domain: "https://bentility.vercel.app"
-  }
->>>>>>> 46cfe354c965115665329c79c44938a850b77c83:util/index.ts
+
   try {
     const { data } = await Axios({
       url: "auth/forgot-password",
