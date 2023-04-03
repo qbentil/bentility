@@ -1,4 +1,3 @@
-import {	SketchPicker} from 'react-color'
 import {
 	MdDriveFileRenameOutline,
 	MdOutlineAddCircleOutline,
@@ -6,17 +5,18 @@ import {
 } from 'react-icons/md'
 import { Navbar, Sidenav } from '../../../components/Admin'
 import React, { useState } from 'react'
+import { removeImage, uploadImage } from '../../../firebase'
 
+import { ADD_CATEGORY } from '../../../util/categories'
+import { BiLoaderCircle } from 'react-icons/bi'
 import { BsTextCenter } from 'react-icons/bs'
 import Button from '../../../components/Button/'
 import Head from 'next/head'
 import ImageUploader from '../../../components/ImageUploader'
-import { removeImage, uploadImage } from '../../../firebase'
-import { ADD_CATEGORY } from '../../../util/categories'
-import { useStateValue } from '../../../context/StateProvider'
-import { toast } from 'react-toastify'
-import { BiLoaderCircle } from 'react-icons/bi'
+import {SketchPicker} from 'react-color'
 import { VALIDATE_CATEGORY } from '../../../components/Validations'
+import { toast } from 'react-toastify'
+import { useStateValue } from '../../../context/StateProvider'
 
 const NewCategory = () => {
 	const [{ user }, dispatch] = useStateValue()
@@ -64,7 +64,7 @@ const NewCategory = () => {
 				imageURL: url,
 				color,
 			}
-			await ADD_CATEGORY(
+			 ADD_CATEGORY(
 				user?.access_token,
 				category,
 				async (data: any) => {

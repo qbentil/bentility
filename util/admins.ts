@@ -13,7 +13,7 @@ export const FECTCH_ADMINS = async (token:string, callback: (data:any)=> void) =
         }
       });
       if (data.success) {
-        console.log(`Admins🚀🎉`, data.data);
+        // console.log(`Admins🚀🎉`, data.data);
         callback(data.data);
       } else {
         console.log(`Fetching admins failed❌`);

@@ -10,7 +10,6 @@ import Newsletter from "../components/Newsletter";
 import type { NextPage } from "next";
 import SearchBar from "../components/Searchbar";
 
-
 const Home: NextPage = () => {
   return (
     <div className={"items-center flex flex-col"}>
@@ -28,6 +27,7 @@ const Home: NextPage = () => {
         <BlogHeader />
         <AdBanner />
         <Blog />
+        <hr />
         <Categories titlePosition="start" />
         <Newsletter  />
       </main>
