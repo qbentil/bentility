@@ -12,11 +12,15 @@ export const GET_SESSION_USER = async (callback:(e:any) => void) => {
       console.log("User persists in session 🚀🎉");
       callback(data.data);
     }else{
-      toast.error(data.message || "Something went wrong");
+      toast.error(data.message || "Session expired. Login!", {
+      toastId: "session-toast"
+      });
     }
 
   } catch (e: any) {
     console.log(e);
-    toast.error(e?.response?.data?.message);
+    toast.error(e?.response?.data?.message || e?.message, {
+      toastId: "session-toast"
+    });
   }
 };
