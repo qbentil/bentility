@@ -20,13 +20,13 @@ const Footer: React.FC<Props> = ({ nav }) => {
       <div className="w-full md:w-[60%]  flex items-center justify-around mb-5 md:mb-0">
         {nav && (
           <>
-            <Link href={"about"}>
+            <Link href={"/about"}>
               <p className="text-blue-700 font-thin cursor-pointer">About</p>
             </Link>
-            <Link href={"contact"}>
+            <Link href={"/contact"}>
               <p className="text-blue-700 font-thin cursor-pointer">Contact</p>
             </Link>
-            <Link href={"admin"}>
+            <Link href={"/admin"}>
               <p className="text-blue-700 font-thin cursor-pointer">
                 Writer
               </p>
