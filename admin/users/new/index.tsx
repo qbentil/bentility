@@ -28,7 +28,7 @@ const NewCategory = () => {
   const [about, setAbout] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState({ value: 'writer', label: 'Writer' });
+  const [role, setRole] = useState({value: 'writer', label: 'Writer'});
   const [loading, setLoading] = useState(false);
 
   const clearFields = () => {
@@ -38,7 +38,7 @@ const NewCategory = () => {
     setAbout("");
     setImage("");
     setImageURI("");
-    setRole({ value: 'writer', label: 'Writer' });
+    setRole({value: 'writer', label: 'Writer'});
   };
 
   //Add category to database here
@@ -51,31 +51,33 @@ const NewCategory = () => {
       username,
       about,
       avatar: '',
-      role: role.value,
+      role : role.value,
     };
-    // console.log(userData)
+    console.log(userData)
     if (!name || !email || !username || !image || !role.value) {
       toast.error("Please fill in all fields");
       return;
     }
     // upload user photo
-    uploadImage(imageURI, "users", async (url: string) => {
+    toast.promise(uploadImage(imageURI, "users", async (url: string) => {
       userData.avatar = url;
       // save to database
-      toast.promise(ADD_ADMIN(user?.access_token, userData, (data: User) => {
-        dispatch({
-          type: "ADD_USER",
-          user: data,
-        })
-        toast.success("User added successfully🎉");
-        setLoading(false);
-        clearFields();
-      }), {
-        pending: "Adding user...",
-      }, {
-        toastId: "addUser",
+      await ADD_ADMIN(user?.access_token, userData, (data:User) => {
+          dispatch({
+            type: "ADD_USER",
+            user: data,
+          })
       });
+      toast.success("User added successfully🎉");
+      setLoading(false);
+      clearFields();
+    }),{
+      pending: "Adding user...",
+    }, {
+      toastId: "addUser",
     })
+    // await add user
+    setLoading(false);
   };
 
   return (
