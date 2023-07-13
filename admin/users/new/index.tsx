@@ -1,23 +1,24 @@
-import { SketchPicker } from "react-color";
+import { FaUserCog, FaUserTag } from "react-icons/fa";
 import {
   MdOutlineAddCircleOutline,
   MdOutlineAlternateEmail,
 } from "react-icons/md";
-import { SiAboutdotme } from "react-icons/si";
 import { Navbar, Sidenav } from "../../../components/Admin";
 import React, { useState } from "react";
+import { removeImage, uploadImage } from "../../../firebase";
+
+import { ADD_ADMIN } from "../../../util/admins";
+import { BiLoaderCircle } from "react-icons/bi";
 import Button from "../../../components/Button/";
+import { CgNametag } from "react-icons/cg";
 import Head from "next/head";
 import ImageUploader from "../../../components/ImageUploader";
-import { removeImage, uploadImage } from "../../../firebase";
-import { useStateValue } from "../../../context/StateProvider";
-import { toast } from "react-toastify";
-import { BiLoaderCircle } from "react-icons/bi";
-import { CgNametag } from "react-icons/cg";
-import { FaUserCog, FaUserTag } from "react-icons/fa";
-import Usertype from "../../../components/Selectors/usertype";
-import { ADD_ADMIN } from "../../../util/admins";
+import { SiAboutdotme } from "react-icons/si";
+import { SketchPicker } from "react-color";
 import { User } from "../../../types";
+import Usertype from "../../../components/Selectors/usertype";
+import { toast } from "react-toastify";
+import { useStateValue } from "../../../context/StateProvider";
 
 const NewCategory = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -27,7 +28,7 @@ const NewCategory = () => {
   const [about, setAbout] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState({value: 'writer', label: 'Writer'});
+  const [role, setRole] = useState({ value: 'writer', label: 'Writer' });
   const [loading, setLoading] = useState(false);
 
   const clearFields = () => {
@@ -37,7 +38,7 @@ const NewCategory = () => {
     setAbout("");
     setImage("");
     setImageURI("");
-    setRole({value: 'writer', label: 'Writer'});
+    setRole({ value: 'writer', label: 'Writer' });
   };
 
   //Add category to database here
@@ -50,33 +51,31 @@ const NewCategory = () => {
       username,
       about,
       avatar: '',
-      role : role.value,
+      role: role.value,
     };
-    console.log(userData)
+    // console.log(userData)
     if (!name || !email || !username || !image || !role.value) {
       toast.error("Please fill in all fields");
       return;
     }
     // upload user photo
-    toast.promise(uploadImage(imageURI, "users", async (url: string) => {
+    uploadImage(imageURI, "users", async (url: string) => {
       userData.avatar = url;
       // save to database
-      await ADD_ADMIN(user?.access_token, userData, (data:User) => {
-          dispatch({
-            type: "ADD_USER",
-            user: data,
-          })
+      toast.promise(ADD_ADMIN(user?.access_token, userData, (data: User) => {
+        dispatch({
+          type: "ADD_USER",
+          user: data,
+        })
+        toast.success("User added successfully🎉");
+        setLoading(false);
+        clearFields();
+      }), {
+        pending: "Adding user...",
+      }, {
+        toastId: "addUser",
       });
-      toast.success("User added successfully🎉");
-      setLoading(false);
-      clearFields();
-    }),{
-      pending: "Adding user...",
-    }, {
-      toastId: "addUser",
     })
-    // await add user
-    setLoading(false);
   };
 
   return (
