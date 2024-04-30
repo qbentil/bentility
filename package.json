@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/core": "^6.1.2",
     "@uiw/react-md-editor": "^3.18.1",
     "axios": "^0.27.2",
     "babel-polyfill": "^6.26.0",

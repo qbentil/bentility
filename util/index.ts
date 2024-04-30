@@ -1,4 +1,6 @@
 import Axios from "./axios";
+import axios from "axios";
+import octokit from "./octokit";
 import { toast } from "react-toastify";
 
 export const LOGOUT: any = async (dispatch: any) => {
@@ -61,6 +63,24 @@ export const FETCH_DATA = async (route: any, callback: (data: any) => void) => {
   }
 };
 
+// fetch data from octokit
+export const FETCH_OCTOKIT = async (
+  callback: (data: any) => void
+) => {
+  try {
+    const res1 = await axios.get("https://api.github.com/repos/qbentil/bentility/stargazers?per_page=100", {
+      headers: { 'Accept': 'application/vnd.github.v3.star+json' }
+    });
+    const res2 = await axios.get("https://api.github.com/repos/qbentil/bentility/forks?per_page=100", {
+      headers: { 'Accept': 'application/vnd.github.v3.star+json' }
+    });
+    callback({ data: { stars: res1.data.length, forks: res2.data.length } });
+  } catch (e: any) {
+    console.log(e);
+    toast.error(e?.response?.data?.message || "Something went wrong");
+  }
+};
+
 // send email to the server
 export const SEND_EMAIL = async (
   formData: any,
@@ -88,7 +108,7 @@ export const SEND_TOKEN = async (email: string, callback: any) => {
   const request = {
     email,
     domain: process.env.NEXT_PUBLIC_DOMAIN,
-  } 
+  }
 
   try {
     const { data } = await Axios({
