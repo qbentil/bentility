@@ -72,7 +72,7 @@ const Footer: React.FC<Props> = ({ nav }) => {
           <BiCoffeeTogo />
         </a>
         <a
-          href="https://qbentil.com"
+          href="https://qbentil.me"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-black"
